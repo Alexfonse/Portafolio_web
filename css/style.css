@@ -5,6 +5,7 @@
     scrollbar-width: none;
 }
 
+
 @font-face {
     font-family: Bauh;
     src: url(/assets/tipografias/BAUHS93.ttf);
@@ -13,8 +14,6 @@
 p {
     font-family: 'Inter', sans-serif;
 }
-
-
 
 
 .contenedor_1 {
@@ -1048,7 +1047,7 @@ p {
 
   .articulo-imagen {
     width: 100%;
-    height: 300px;
+    height: 800px;
     object-fit: cover;
     border-radius: 8px;
     margin-bottom: 15px;
@@ -1093,4 +1092,133 @@ p {
     border-radius: 15px;
     font-size: 12px;
     color: #666;
+  }
+
+  /*contactos*/
+  .contenedor-magico {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: radial-gradient(circle, #45c4ff, #0d2d4b);
+    color: white;
+}
+.marco-decorado {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 30px;
+    border-radius: 15px;
+    border: 3px solid rgba(255, 221, 0, 0.821);
+    box-shadow: 0 0 20px rgba(255, 221, 0, 0.885);
+    position: relative;
+}
+
+.redes-sociales a {
+    display: inline-block;
+    margin: 10px;
+    padding: 10px 20px;
+    border-radius: 50px;
+    background: rgba(255, 221, 0, 0.934);
+    text-decoration: none;
+    color: black;
+    transition: 0.3s;
+}
+.redes-sociales a:hover {
+    background: rgba(255, 223, 0, 1);
+    transform: scale(1.1);
+}
+.formulario-contacto input, .formulario-contacto textarea {
+    display: block;
+    width: 100%;
+    margin: 10px 0;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+}
+.formulario-contacto button {
+    background: rgba(255, 221, 0, 0.874);
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+.formulario-contacto button:hover {
+    background: rgba(255, 223, 0, 1);
+    transform: scale(1.1);
+}
+canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+
+.contenedor_art1 {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 1.5s ease-in-out;
+  }
+  
+  .contenedor_art1 h1 {
+    color: var(--color-destacado);
+    margin-bottom: 1rem;
+    font-size: 2.5rem;
+  }
+  
+  .contenedor_art1 .fecha-autor {
+    color: var(--color-secundario);
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+  }
+  
+  .contenedor_art1 img {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 1.5rem;
+    transition: transform 0.3s ease;
+  }
+  
+  .contenedor_art1 img:hover {
+    transform: scale(1.02);
+  }
+  
+  .contenedor_art1 p {
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+  }
+  
+  .contenedor_art1 .destacado {
+    font-weight: bold;
+    color: var(--color-destacado);
+  }
+  
+  .contenedor_art1 .enlace-destacado {
+    color: var(--color-secundario);
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+  }
+  
+  .contenedor_art1 .enlace-destacado:hover {
+    color: var(--color-destacado);
+  }
+  
+  .contenedor_art1 .icono {
+    font-size: 1.2rem;
+    vertical-align: middle;
+    margin-right: 0.5rem;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
   }
