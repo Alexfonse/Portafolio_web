@@ -4,105 +4,758 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Portafolio</title>
-    <link rel="icon" href="assets/img/flowers.png" type="image/x-icon" />
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <title>Jhon Fonseca | Desarrollador Web y Creativo Multimedia</title>
+    <meta name="description" content="Portafolio de Jhon Fonseca: Desarrollador Web, Power Platform y Productor Multimedia con experiencia en JavaScript, Power Apps, fotografía y producción audiovisual.">
+    <meta name="icon" href="assets/img/flowers.png" type="image/x-icon" />
+    
+    <!-- ⚡ Resource Hints for Performance -->
+    <link rel="preconnect" href="https://unpkg.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://unpkg.com">
+    <link rel="preconnect" href="https://unpkg.com">
+    <!-- Preload removed to fix 'unused resource' warning (loaded naturally by img tags) -->
+    <!-- Video preload removed to avoid double download warnings -->
+    
+    <!-- ⚡ CRITICAL CSS (Inline for First Paint) -->
+    <!-- Async CSS Loading for Menu (Critical Fix) -->
+
+    
+    <!-- ⚡ CRITICAL CSS (Standard Load) -->
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- ⚡ STANDARD STYLES (Blocking to ensure structure) -->
+    <!-- ⚡ BOOTSTRAP (CDN - v5.3.8) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+    <!-- ⚡ LEGACY CSS RESTORED -->
+    <link rel="stylesheet" href="css/imports.css">
+    <link rel="stylesheet" href="css/style.base.css">
+    <link rel="stylesheet" href="css/main.css">
+    
+    <!-- ⚡ UNIFIED STYLES (New Arcane Theme) -->
+    <link rel="stylesheet" href="css/unified-styles.css">
+    
+    <!-- Components -->
+    <!-- <link rel="stylesheet" href="css/header-navbar.css"> Unified in unified-styles.css to prevent conflicts -->
+    <link rel="stylesheet" href="css/hamburger-menu.css">
+    <link rel="stylesheet" href="css/arcane-loader.css">
+    <!-- <link rel="stylesheet" href="css/magic-orb-menu.css"> Replacing with unified --> 
+    <link rel="stylesheet" href="css/modal-system.css">
+    <link rel="stylesheet" href="css/gallery-enhancements.css">
+    <link rel="stylesheet" href="css/masonry-grid.css">
+    <link rel="stylesheet" href="css/video-preview.css">
+    <link rel="stylesheet" href="css/spotlight-effect.css">
+    <link rel="stylesheet" href="css/glitch-effects.css">
+    <link rel="stylesheet" href="css/floating-particles.css">
+    <link rel="stylesheet" href="css/destructible-canvas.css">
+    <link rel="stylesheet" href="css/interactive-enhancements.css">
+    <link rel="stylesheet" href="css/scroll-effects.css">
+    <link rel="stylesheet" href="css/parallax-effects.css">
+    <link rel="stylesheet" href="css/custom-cursor.css">
+
+    <!-- <link rel="stylesheet" href="css/arcane-scrollbar.css"> REMOVED: Default scrollbar restored -->
+    <link rel="stylesheet" href="css/magical-typography.css">
+    <link rel="stylesheet" href="css/magical-typography.css">
+    <!-- <link rel="stylesheet" href="css/overflow-fix.css"> Consolidated into unified-styles -->
+    <link rel="stylesheet" href="css/arcane-palette.css">
+    
+    <!-- Scripts loaded in body -->
+    <!-- ⚡ FAILSAFE: Force Loader Hide -->
+    <script>
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                const loader = document.querySelector('.arcane-loader');
+                if (loader) loader.style.display = 'none';
+            }, 3000); // 3s fallback
+        });
+    </script>
+    </noscript>
 </head>
 
 <body>
 
-    <div class="contenedor_1">
-        <!--video-->
-        <div class="banner">
-            <video autoplay muted loop class="bgvideo">
-                <source src="assets/video/fondo_1.webm" type="video/webm">
-            </video>
+    <!-- ⚡ ARCANE PAGE LOADER -->
+    <div class="arcane-loader">
+        <!-- Logo in center -->
+        <div class="loader-logo">
+            <img src="assets/img/logo_blanco.svg" alt="Logo Jhon Fonseca">
         </div>
         
-        <!--header-->
-        <header>
-            <div class="logo">
-                <img src="assets/img/logo_blanco.svg" alt="Logo Marca de Agua">
-            </div>
-        </header>
-        <!--Menu-->
-        <ul class="menu">
-            <div class="toggle">
-              <ion-icon name="add-outline"></ion-icon>
-            </div>
-            <li style="--i:0" class="active">
-              <a href="index.html" data-label="Inicio">
-                <ion-icon class="icon" name="home-outline"></ion-icon>
-                <span class="label">Inicio</span>
-              </a>
-            </li>
-            <li style="--i:1">
-              <a href="perfil.html" data-label="Perfil">
-                <ion-icon class="icon" name="person-outline"></ion-icon>
-                <span class="label">Perfil</span>
-              </a>
-            </li>
-            <li style="--i:2">
-              <a href="contacto.html" data-label="Contacto">
-                <ion-icon class="icon" name="mail-outline"></ion-icon>
-                <span class="label">Contacto</span>
-              </a>
-            </li>
-            <li style="--i:3">
-              <a href="videos.html" data-label="Videos">
-                <ion-icon class="icon" name="videocam-outline"></ion-icon>
-                <span class="label">Videos</span>
-              </a>
-            </li>
-            <li style="--i:4">
-              <a href="fotos.html" data-label="Fotos">
-                <ion-icon class="icon" name="camera-outline"></ion-icon>
-                <span class="label">Fotos</span>
-              </a>
-            </li>
-            <li style="--i:5">
-              <a href="blog.html" data-label="Blog">
-                <ion-icon class="icon" name="reader-outline"></ion-icon>
-                <span class="label">Blog</span>
-              </a>
-            </li>
-            <li style="--i:6">
-              <a href="flower.html" data-label="Flores">
-                <ion-icon class="icon" name="flower-outline"></ion-icon>
-                <span class="label">Flores</span>
-              </a>
-            </li>
-            <li style="--i:7">
-              <a href="precios.html" data-label="Precios">
-                <ion-icon class="icon" name="cash-outline"></ion-icon>
-                <span class="label">Precios</span>
-              </a>
-            </li>
-          </ul>
-          
-            <!-- total numero de intems de la lista = 8-->
-            <div class="indicator">
-            </div>
-        </ul>
+        <div class="rune-circle">
+            <svg viewBox="0 0 200 200">
+                <circle cx="100" cy="100" r="90" />
+            </svg>
+            <div class="inner-glow"></div>
+        </div>
+        <div class="loading-text">INVOCANDO...</div>
+        <div class="progress-rune"></div>
+        
+        <!-- Floating Runes -->
+        <div class="floating-rune">⟐</div>
+        <div class="floating-rune">◉</div>
+        <div class="floating-rune">⬢</div>
+        <div class="floating-rune">◈</div>
     </div>
 
-    <div class="contenedor_6">
-        <div class="titulo_1">
-            <h4 class="elementor-heading-title elementor-size-default">Portafolio - Productor multimedia</h4>
-            <h1 class="elementor-heading-title elementor-size-default ">Alexander Fonseca</h1>
+    <!-- HEADER NAVBAR (Shows on scroll) -->
+    <header class="header-navbar hidden">
+        <div class="header-container">
+            <!-- Logo (No text, enlarged) -->
+        <div class="header-content">
+            <a href="index.html" class="header-logo logo-link">
+                <img src="assets/img/logo_blanco.svg" alt="Estudio Paradox">
+            </a>
+            
+            <!-- Mobile Toggle Button -->
+            <button class="mobile-menu-toggle" aria-label="Abrir Menú">
+                <span>MENÚ</span>
+                <ion-icon name="menu-outline"></ion-icon>
+            </button>
+
+            <!-- Navigation -->
+            <nav class="header-nav main-nav">
+                <a href="index.html" class="nav-link nav-item active">Inicio</a>
+                <a href="proyectos.html" class="nav-link nav-item">Proyectos</a>
+                <a href="fotos.html" class="nav-link nav-item">Fotografías</a>
+                <a href="videos.html" class="nav-link nav-item">Videos</a>
+            </nav>
+        </div>
+    </header>
+
+
+
+
+
+
+    <!-- ============================= -->
+    <!-- SECCIÓN 1: HERO (structure from fotos.html) -->
+    <!-- ============================= -->
+    <div class="contenedor_1 hero-internal">
+        <div class="banner">
+            <video muted loop playsinline class="bgvideo" preload="none" poster="assets/img/logo_blanco.svg">
+                <source src="assets/video/fondo_1.webm" type="video/webm">
+            </video>
+            <div class="overlay-gradient"></div>
+        </div>
+
+    <!-- Menú Circular Optimizado (NEW ARCANE STRUCTURE) -->
+    <nav class="circular-menu">
+        <button class="menu-toggle" aria-label="Toggle Menu">
+            <ion-icon name="add-outline" role="img" class="md hydrated"><template shadowrootmode="open"><div class="icon-inner"><svg xmlns="http://www.w3.org/2000/svg" class="ionicon s-ion-icon" viewBox="0 0 512 512"><path stroke-linecap="round" stroke-linejoin="round" d="M256 112v288M400 256H112" class="ionicon-fill-none ionicon-stroke-width"></path></svg></div></template></ion-icon>
+        </button>
+        <div class="menu-text-label">MENÚ</div>
+        
+        <ul class="menu-items">
+            <li class="menu_item" style="--angle: 270deg;">
+                <a href="index.html" aria-label="Inicio">
+                    <ion-icon name="home-outline"></ion-icon>
+                    <span class="menu-label">Inicio</span>
+                </a>
+            </li>
+            <li class="menu_item" style="--angle: 0deg;">
+                <a href="proyectos.html" aria-label="Proyectos">
+                    <ion-icon name="briefcase-outline"></ion-icon>
+                    <span class="menu-label">Proyectos</span>
+                </a>
+            </li>
+            <li class="menu_item" style="--angle: 90deg;">
+                <a href="fotos.html" aria-label="Fotografías">
+                    <ion-icon name="camera-outline"></ion-icon>
+                    <span class="menu-label">Fotos</span>
+                </a>
+            </li>
+            <li class="menu_item" style="--angle: 180deg;">
+                <a href="videos.html" aria-label="Videos">
+                    <ion-icon name="videocam-outline"></ion-icon>
+                    <span class="menu-label">Videos</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+        
+
+        <!-- Scroll Hint -->
+        <div class="scroll-hint" style="position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%); z-index: 10; animation: bounce 2s infinite;">
+            <ion-icon name="chevron-down-outline" style="font-size: 2rem; color: var(--color-primary);"></ion-icon>
         </div>
     </div>
 
+    <!-- ============================= -->
+    <!-- SECCIÓN 2: SOBRE MÍ -->
+    <!-- ============================= -->
+    <section class="contenedor_4 gallery-section" style="padding: 100px 20px;">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="glass-panel" style="padding: 60px 40px; text-align: center;">
+                        <!-- Foto de Perfil -->
+                        <div style="width: 180px; height: 180px; margin: 0 auto 30px; border-radius: 50%; overflow: hidden; border: 4px solid var(--color-primary); box-shadow: 0 0 30px rgba(0, 217, 255, 0.6), 0 0 60px rgba(0, 217, 255, 0.3), 0 0 90px rgba(0, 217, 255, 0.1);">
+                            <img src="assets/img/foto de perfil profesional.png" alt="Jhon Alexander Fonseca" style="width: 100%; height: 100%; object-fit: cover;" loading="eager" fetchpriority="high" decoding="async" onerror="this.src='assets/img/logo_blanco.svg'">
+                        </div>
+                        
+                        <!-- Nombre -->
+                        <h1 class="neon-text" style="font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 15px; font-family: var(--font-display);">
+                            Jhon Alexander Fonseca
+                        </h1>
+                        
+                        <!-- Título Profesional -->
+                        <h4 style="color: var(--color-accent); font-size: clamp(1.2rem, 3vw, 1.6rem); margin-bottom: 30px; font-family: var(--font-body); font-weight: 500;">
+                            Desarrollador Web y Creativo Multimedia
+                        </h4>
+                        
+                        <!-- Tagline -->
+                        <p style="color: var(--text-secondary); line-height: 1.8; font-size: clamp(1.05rem, 2.5vw, 1.2rem); margin-bottom: 0;">
+                            Me apasiona la creación de contenidos y diseños interactivos. <br class="d-none d-md-block">
+                            <span class="text-gradient">La fotografía es mi lienzo</span>, el desarrollo web mi herramienta, <span class="text-gradient">y la edición mi firma</span>.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <script src="js/script.js"></script>
-    <script src="./js/bootstrap.min.js"> </script>
-    <script type="module" src=" https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js "> </script>
-    <script nomodule src=" https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js "> </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-        crossorigin="anonymous"></script>
+    <!-- ============================= -->
+    <!-- SECCIÓN 3: HABILIDADES -->
+    <!-- ============================= -->
+    <section class="contenedor_5 gallery-section lazy-section" style="padding: 80px 20px;">
+        <div class="container">
+            <!-- Título -->
+            <div class="row mb-5">
+                <div class="col-12 text-center">
+                    <h2 class="neon-text" style="font-size: clamp(2.2rem, 5vw, 3rem); margin-bottom: 15px;">Habilidades Técnicas</h2>
+                    <p style="color: #10B981; font-size: clamp(1rem, 2vw, 1.2rem); max-width: 700px; margin: 0 auto; opacity: 0.95;">
+                        Perfil híbrido que combina desarrollo web, automatización low-code y producción multimedia
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Grid de 3 Categorías -->
+            <div class="row g-4">
+                
+                <!-- Categoría 1: Desarrollo Web -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="glass-panel h-100 p-4" style="border-left: 3px solid var(--color-primary);">
+                        <div class="d-flex align-items-center mb-3">
+                            <ion-icon name="code-slash-outline" style="font-size: 2.5rem; color: var(--color-primary); margin-right: 15px;"></ion-icon>
+                            <h3 class="text-gradient mb-0" style="font-size: 1.4rem;">Desarrollo Web</h3>
+                        </div>
+                        <ul class="list-unstyled" style="color: var(--text-secondary); line-height: 2; font-size: 1rem;">
+                            <li><ion-icon name="checkmark-circle" style="color: var(--color-primary); margin-right: 8px;"></ion-icon> HTML5, CSS3, JavaScript ES6+</li>
+                            <li><ion-icon name="checkmark-circle" style="color: var(--color-primary); margin-right: 8px;"></ion-icon> Bootstrap, Responsive Design</li>
+                            <li><ion-icon name="checkmark-circle" style="color: var(--color-primary); margin-right: 8px;"></ion-icon> GSAP, A-Frame (3D Web)</li>
+                            <li><ion-icon name="checkmark-circle" style="color: var(--color-primary); margin-right: 8px;"></ion-icon> Web Speech API, View Transitions API</li>
+                            <li><ion-icon name="checkmark-circle" style="color: var(--color-primary); margin-right: 8px;"></ion-icon> Git/GitHub, REST APIs</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Categoría 2: Low-Code & Automatización -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="glass-panel h-100 p-4" style="border-left: 3px solid var(--color-accent);">
+                        <div class="d-flex align-items-center mb-3">
+                            <ion-icon name="flash-outline" style="font-size: 2.5rem; color: var(--color-accent); margin-right: 15px;"></ion-icon>
+                            <h3 class="text-gradient mb-0" style="font-size: 1.4rem;">Low-Code & Automatización</h3>
+                        </div>
+                        <ul class="list-unstyled" style="color: var(--text-secondary); line-height: 2; font-size: 1rem;">
+                            <li><ion-icon name="checkmark-circle" style="color: var(--color-accent); margin-right: 8px;"></ion-icon> Power Apps (Canvas)</li>
+                            <li><ion-icon name="checkmark-circle" style="color: var(--color-accent); margin-right: 8px;"></ion-icon> Power Automate (Flujos)</li>
+                            <li><ion-icon name="checkmark-circle" style="color: var(--color-accent); margin-right: 8px;"></ion-icon> SharePoint Online</li>
+                            <li><ion-icon name="checkmark-circle" style="color: var(--color-accent); margin-right: 8px;"></ion-icon> API Integration (HTTP)</li>
+                            <li><ion-icon name="checkmark-circle" style="color: var(--color-accent); margin-right: 8px;"></ion-icon> Data Architecture Design</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Categoría 3: Producción Multimedia -->
+                <div class="col-lg-4 col-md-12">
+                    <div class="glass-panel h-100 p-4" style="border-left: 3px solid var(--color-secondary);">
+                        <div class="d-flex align-items-center mb-3">
+                            <ion-icon name="camera-outline" style="font-size: 2.5rem; color: var(--color-secondary); margin-right: 15px;"></ion-icon>
+                            <h3 class="text-gradient mb-0" style="font-size: 1.4rem;">Producción Multimedia</h3>
+                        </div>
+                        <ul class="list-unstyled" style="color: var(--text-secondary); line-height: 2; font-size: 1rem;">
+                            <li><ion-icon name="checkmark-circle" style="color: var(--color-secondary); margin-right: 8px;"></ion-icon> Adobe Photoshop (Fotomontaje)</li>
+                            <li><ion-icon name="checkmark-circle" style="color: var(--color-secondary); margin-right: 8px;"></ion-icon> Adobe Premiere Pro (Edición)</li>
+                            <li><ion-icon name="checkmark-circle" style="color: var(--color-secondary); margin-right: 8px;"></ion-icon> Adobe Illustrator (Ilustración)</li>
+                            <li><ion-icon name="checkmark-circle" style="color: var(--color-secondary); margin-right: 8px;"></ion-icon> Fotografía & Color Grading</li>
+                            <li><ion-icon name="checkmark-circle" style="color: var(--color-secondary); margin-right: 8px;"></ion-icon> Composición & Postproducción</li>
+                        </ul>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================= -->
+    <!-- SECCIÓN 4: EXPERIENCIA -->
+    <!-- ============================= -->
+    <section class="lazy-section section-experience" style="padding: 80px 20px;">
+        <div class="container">
+            <!-- Título -->
+            <div class="row mb-5">
+                <div class="col-12 text-center">
+                    <h2 class="neon-text" style="font-size: clamp(2.2rem, 5vw, 3rem); margin-bottom: 15px;">Experiencia Destacada</h2>
+                    <p style="color: #10B981; font-size: clamp(1rem, 2vw, 1.2rem); max-width: 700px; margin: 0 auto; opacity: 0.95;">
+                        Proyectos que combinan tecnología y creatividad
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Cards de Experiencia -->
+            <div class="row g-4 mb-5">
+                
+                <!-- Proyecto 1: Aviatur -->
+                <div class="col-lg-6">
+                    <div class="glass-panel p-0 h-100 overflow-hidden project-card" style="transition: all 0.4s ease;">
+                        <!-- Imagen del Proyecto -->
+                        <div class="project-thumbnail" style="position: relative; height: 250px; overflow: hidden;">
+                            <img src="assets/img/pagina_1.jpg" alt="Aviatur Project" class="project-img" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;" loading="lazy" decoding="async">
+                            <div class="project-overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(180deg, transparent 0%, rgba(10,14,39,0.95) 100%); display: flex; align-items: flex-end; padding: 20px; opacity: 0; transition: opacity 0.4s ease;">
+                                <span style="background: linear-gradient(135deg, var(--color-accent), #FF8C00); padding: 8px 20px; border-radius: 20px; font-size: 0.9rem; font-weight: 600; color: #000;">Power Platform</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Contenido -->
+                        <div class="p-4">
+                            <!-- Título del Proyecto -->
+                            <h3 class="text-gradient mb-2" style="font-size: 1.7rem;">
+                                <ion-icon name="business-outline" style="vertical-align: middle; margin-right: 8px;"></ion-icon>
+                                Aviatur - Sistema de Gestión Documental
+                            </h3>
+                            
+                            <!-- Periodo -->
+                            <p style="color: #999; font-size: 0.95rem; margin-bottom: 15px;">
+                                <ion-icon name="calendar-outline" style="margin-right: 5px;"></ion-icon> Octubre 2025 - Enero 2026
+                            </p>
+                            
+                            <!-- Descripción -->
+                            <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 20px; font-size: 1.05rem;">
+                                Diseñé la arquitectura completa y desarrollé un prototipo funcional de sistema low-code para trazabilidad documental corporativa. Implementé <strong>6 pantallas en Power Apps</strong> y <strong>3 flujos automatizados</strong> con Power Automate, integrando APIs HTTP para creación dinámica de estructuras.
+                            </p>
+                            
+                            <!-- Skills Tags -->
+                            <div class="d-flex flex-wrap gap-2">
+                                <span class="badge-tech">Power Apps</span>
+                                <span class="badge-tech">Power Automate</span>
+                                <span class="badge-tech">SharePoint</span>
+                                <span class="badge-tech">API Integration</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Proyecto 2: Ecos de una Ciudad -->
+                <div class="col-lg-6">
+                    <div class="glass-panel p-0 h-100 overflow-hidden project-card" style="transition: all 0.4s ease;">
+                        <!-- Imagen del Proyecto -->
+                        <div class="project-thumbnail" style="position: relative; height: 250px; overflow: hidden;">
+                            <img src="assets/img/Macbook-Air-alexfonse.github.io.png" alt="Ecos de una Ciudad Project" class="project-img" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;" loading="lazy" decoding="async">
+                            <div class="project-overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(180deg, transparent 0%, rgba(10,14,39,0.95) 100%); display: flex; align-items: flex-end; padding: 20px; opacity: 0; transition: opacity 0.4s ease;">
+                                <span style="background: linear-gradient(135deg, var(--color-primary), var(--color-secondary)); padding: 8px 20px; border-radius: 20px; font-size: 0.9rem; font-weight: 600; color: #fff;">Frontend Development</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Contenido -->
+                        <div class="p-4">
+                            <!-- Título del Proyecto -->
+                            <h3 class="text-gradient mb-2" style="font-size: 1.7rem;">
+                                <ion-icon name="globe-outline" style="vertical-align: middle; margin-right: 8px;"></ion-icon>
+                                Ecos de una Ciudad - Web Inmersiva
+                            </h3>
+                            
+                            <!-- Periodo -->
+                            <p style="color: #999; font-size: 0.95rem; margin-bottom: 15px;">
+                                <ion-icon name="calendar-outline" style="margin-right: 5px;"></ion-icon> 2024 - 2025 | Proyecto Final SENA
+                            </p>
+                            
+                            <!-- Descripción -->
+                            <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 20px; font-size: 1.05rem;">
+                                Experiencia web narrativa sobre patrimonio cultural bogotano. Implementé <strong>navegación SPA con View Transitions API</strong>, chatbot con Web Speech API, modelos 3D con A-Frame, y galería GSAP. Todo con <strong>JavaScript vanilla</strong>, sin frameworks.
+                            </p>
+                            
+                            <!-- Skills Tags -->
+                            <div class="d-flex flex-wrap gap-2 mb-3">
+                                <span class="badge-tech">JavaScript ES6+</span>
+                                <span class="badge-tech">GSAP</span>
+                                <span class="badge-tech">A-Frame</span>
+                                <span class="badge-tech">Web APIs</span>
+                            </div>
+                            
+                            <!-- Link al Proyecto -->
+                            <a href="https://alexfonse.github.io/Ecos_de_una_ciudad/" target="_blank" rel="noopener" class="btn btn-sm btn-outline-light" style="border-color: var(--color-primary); color: var(--color-primary); transition: all 0.3s;">
+                                <ion-icon name="open-outline" style="margin-right: 5px;"></ion-icon> Ver Demo Live
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <!-- CTA Ver Todos los Proyectos -->
+            <div class="text-center">
+                <a href="proyectos.html" class="btn btn-outline-light rounded-pill px-5 py-3" style="border-width: 2px; border-color: var(--color-primary); color: var(--color-primary); font-size: 1.15rem; font-weight: 600; transition: all 0.3s ease;">
+                    <ion-icon name="briefcase-outline" style="vertical-align: middle; margin-right: 10px;"></ion-icon>
+                    Ver Todos los Proyectos
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================= -->
+    <!-- SECCIÓN 6: EXPLORA EL UNIVERSO (Creative Nexus) -->
+    <!-- ============================= -->
+    <section class="lazy-section section-creative" style="padding: 100px 20px 0;"> <!-- Padding bottom removed to merge with next -->
+        <div class="container">
+            <div class="row mb-5 text-center">
+                <div class="col-12">
+                     <h2 class="neon-text" style="font-size: clamp(2rem, 4vw, 2.5rem); margin-bottom: 20px;">
+                        Explora el <span class="text-gradient">Universo Visual</span>
+                     </h2>
+                     <div style="width: 80px; height: 3px; background: var(--color-primary); margin: 0 auto 20px; box-shadow: 0 0 10px var(--color-primary);"></div>
+                     <p style="color: var(--text-secondary); max-width: 600px; margin: 0 auto;">
+                        Más allá del código, la narrativa cobra vida a través de la imagen y el movimiento.
+                     </p>
+                </div>
+            </div>
+            
+            <div class="row g-4 justify-content-center">
+                 <!-- Card: Fotografía -->
+                 <div class="col-md-6 col-lg-5">
+                      <a href="fotos.html" class="glass-panel d-block text-decoration-none project-card" style="padding: 0; overflow: hidden; height: 320px; position: relative;">
+                          <!-- Background Image -->
+                          <div style="width: 100%; height: 100%; position: absolute; top: 0; left: 0;">
+                              <img src="assets/img/fotomontaje_1.jpg" alt="Galería Fotográfica" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease;" class="project-img">
+                              <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(0deg, #000 0%, transparent 100%); opacity: 0.8;"></div>
+                          </div>
+                          
+                          <!-- Content -->
+                          <div style="position: absolute; bottom: 0; left: 0; width: 100%; padding: 30px; z-index: 2;">
+                              <div style="display: flex; align-items: center; margin-bottom: 10px;">
+                                  <ion-icon name="camera-outline" style="font-size: 2rem; color: var(--color-accent); margin-right: 15px;"></ion-icon>
+                                  <h3 class="neon-text mb-0" style="font-size: 1.8rem;">Fotografía</h3>
+                              </div>
+                              <p style="color: #ccc; margin-bottom: 0; font-size: 0.95rem;">
+                                  Fotomontaje, Retrato y Paisaje Urbano.
+                              </p>
+                              <div style="margin-top: 15px; color: var(--color-primary); font-weight: 600; font-family: var(--font-body); letter-spacing: 1px;">
+                                  VER GALERÍA <ion-icon name="arrow-forward-outline" style="vertical-align: middle;"></ion-icon>
+                              </div>
+                          </div>
+                      </a>
+                 </div>
+
+                 <!-- Card: Video -->
+                 <div class="col-md-6 col-lg-5">
+                      <a href="videos.html" class="glass-panel d-block text-decoration-none project-card" style="padding: 0; overflow: hidden; height: 320px; position: relative;">
+                          <!-- Background Image -->
+                          <div style="width: 100%; height: 100%; position: absolute; top: 0; left: 0;">
+                              <img src="assets/img/Gasparin_Screenshot.png" alt="Producción de Video" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease;" class="project-img">
+                              <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(0deg, #000 0%, transparent 100%); opacity: 0.8;"></div>
+                          </div>
+                          
+                          <!-- Content -->
+                          <div style="position: absolute; bottom: 0; left: 0; width: 100%; padding: 30px; z-index: 2;">
+                              <div style="display: flex; align-items: center; margin-bottom: 10px;">
+                                  <ion-icon name="videocam-outline" style="font-size: 2rem; color: var(--color-secondary); margin-right: 15px;"></ion-icon>
+                                  <h3 class="neon-text mb-0" style="font-size: 1.8rem;">Video</h3>
+                              </div>
+                              <p style="color: #ccc; margin-bottom: 0; font-size: 0.95rem;">
+                                  Edición, Color Grading y Motion Graphics.
+                              </p>
+                              <div style="margin-top: 15px; color: var(--color-primary); font-weight: 600; font-family: var(--font-body); letter-spacing: 1px;">
+                                  VER REEL <ion-icon name="play-circle-outline" style="vertical-align: middle;"></ion-icon>
+                              </div>
+                          </div>
+                      </a>
+                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================= -->
+    <!-- SECCIÓN 5: CTA & REDES SOCIALES -->
+    <!-- ============================= -->
+    <section class="lazy-section" style="background: #000000; padding: 50px 20px 100px; position: relative; border-top: 1px solid #111;">
+        <div class="container text-center">
+            
+            <!-- Título CTA -->
+            <h2 class="neon-text mb-3" style="font-size: clamp(2.2rem, 5vw, 3.5rem);">
+                ¿Deseas que participe en tu proyecto?
+            </h2>
+            
+            <!-- Subtítulo -->
+            <p style="color: #10B981; font-size: clamp(1.1rem, 2.5vw, 1.3rem); max-width: 700px; margin: 0 auto 50px; line-height: 1.7; opacity: 0.95;">
+                Trabajemos juntos para crear experiencias digitales que <span class="text-gradient">destaquen y generen impacto</span>.
+            </p>
+            
+            <!-- Botones de Redes Sociales -->
+            <div class="d-flex flex-wrap justify-content-center gap-3 mb-4">
+                
+                <!-- LinkedIn -->
+                <a href="https://www.linkedin.com/in/jhon-fonseca-paradox" target="_blank" rel="noopener" class="btn btn-lg social-btn" style="background: linear-gradient(135deg, #0077B5, #005582); color: white; border: none; padding: 15px 35px; border-radius: 50px; font-weight: 600; transition: all 0.3s ease;" aria-label="Visitar perfil de LinkedIn">
+                    <ion-icon name="logo-linkedin" style="font-size: 1.5rem; vertical-align: middle; margin-right: 10px;"></ion-icon>
+                    LinkedIn
+                </a>
+                
+                <!-- GitHub -->
+                <a href="https://github.com/Alexfonse" target="_blank" rel="noopener" class="btn btn-lg social-btn" style="background: linear-gradient(135deg, #333, #000); color: white; border: none; padding: 15px 35px; border-radius: 50px; font-weight: 600; transition: all 0.3s ease;" aria-label="Visitar perfil de GitHub">
+                    <ion-icon name="logo-github" style="font-size: 1.5rem; vertical-align: middle; margin-right: 10px;"></ion-icon>
+                    GitHub
+                </a>
+                
+                <!-- Email -->
+                <a href="mailto:martinezharry2016@gmail.com" class="btn btn-lg social-btn" style="background: linear-gradient(135deg, var(--color-primary), #00B8A3); color: #000; border: none; padding: 15px 35px; border-radius: 50px; font-weight: 600; transition: all 0.3s ease;" aria-label="Enviar email">
+                    <ion-icon name="mail-outline" style="font-size: 1.5rem; vertical-align: middle; margin-right: 10px;"></ion-icon>
+                    Email
+                </a>
+                
+            </div>
+            
+            <!-- Ubicación y Disponibilidad -->
+            <p style="color: #999; font-size: 0.95rem; margin-top: 30px;">
+                <ion-icon name="location-outline" style="margin-right: 5px;"></ion-icon> Bogotá, Colombia
+                <span style="margin: 0 15px;">•</span>
+                <ion-icon name="briefcase-outline" style="margin-right: 5px;"></ion-icon> Disponible para trabajo Remoto / Híbrido
+            </p>
+            
+        </div>
+    </section>
+
+    <!-- ============================= -->
+    <!-- SCRIPTS -->
+    <!-- ============================= -->
+    
+    <!-- Core Scripts -->
+    <script src="js/script.js" defer></script>
+    
+    <!-- Arcane Systems -->
+    <script src="js/custom-cursor.js" defer></script>
+    <script src="js/floating-particles.js" defer></script>
+    
+    <!-- Bootstrap & Icons -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    
+    <!-- ⚡ Auto-play video after DOM load -->
+    <script defer>
+      document.addEventListener('DOMContentLoaded', () => {
+        const video = document.querySelector('.bgvideo');
+        if (video) {
+          // Attempt to play video regardless of screen size
+          // Browsers will strictly only allow this if muted (which it is)
+          video.play().catch(e => console.log('Autoplay prevented/paused:', e));
+        }
+      });
+    </script>
+
+    <!-- Inline Styles for Hover Effects -->
+    <style>
+        /* ===================================== */
+        /* UNIFIED GLASS PANEL SYSTEM */
+        /* ===================================== */
+        .glass-panel {
+            background: rgba(26, 32, 44, 0.7) !important;
+            backdrop-filter: blur(20px) !important;
+            -webkit-backdrop-filter: blur(20px) !important;
+            border: 1px solid rgba(0, 217, 255, 0.2) !important;
+            border-radius: 15px !important;
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+        
+        .glass-panel:hover {
+            transform: translateY(-10px);
+            box-shadow: 
+                0 20px 50px rgba(0, 217, 255, 0.3),
+                0 10px 30px rgba(0, 217, 255, 0.2);
+            border-color: rgba(0, 217, 255, 0.4);
+        }
+        
+        /* ===================================== */
+        /* PROJECT CARDS - ENHANCED HOVER */
+        /* ===================================== */
+        .project-card {
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+        
+        .project-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 
+                0 25px 60px rgba(0, 217, 255, 0.4),
+                0 15px 40px rgba(0, 217, 255, 0.2);
+        }
+        
+        .project-card:hover .project-img {
+            transform: scale(1.08);
+        }
+        
+        .project-card:hover .project-overlay {
+            opacity: 1;
+        }
+        
+        /* ===================================== */
+        /* SOCIAL BUTTONS - ARCANE GLOW */
+        /* ===================================== */
+        .social-btn {
+            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+        
+        .social-btn:hover {
+            transform: scale(1.08) translateY(-3px);
+            box-shadow: 
+                0 10px 40px rgba(0, 217, 255, 0.5),
+                0 5px 20px rgba(0, 217, 255, 0.3);
+        }
+        
+        /* ===================================== */
+        /* CTA BUTTONS - CONSISTENT HOVER */
+        /* ===================================== */
+        .btn-outline-light {
+            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            border-width: 2px;
+        }
+        
+        .btn-outline-light:hover {
+            background: var(--color-primary);
+            color: #000 !important; /* Force black text to override inline styles */
+            border-color: var(--color-primary);
+            transform: translateY(-3px);
+            box-shadow: 
+                0 10px 30px rgba(0, 217, 255, 0.5),
+                0 5px 15px rgba(0, 217, 255, 0.3);
+        }
+        
+        /* ===================================== */
+        /* BADGE TECH - ARCANE STYLE */
+        /* ===================================== */
+        .badge-tech {
+            background: rgba(0, 217, 255, 0.12);
+            border: 1px solid var(--color-primary);
+            color: var(--color-primary);
+            padding: 6px 14px;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+        
+        .badge-tech:hover {
+            background: rgba(0, 217, 255, 0.2);
+            box-shadow: 0 0 15px rgba(0, 217, 255, 0.4);
+        }
+        
+        /* ===================================== */
+        /* TEXT EFFECTS - ARCANE THEME */
+        /* ===================================== */
+        .text-gradient {
+            background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 600;
+        }
+        
+        .neon-text {
+            color: var(--color-primary);
+            text-shadow: 
+                0 0 20px rgba(0, 217, 255, 0.6), 
+                0 0 40px rgba(0, 217, 255, 0.3),
+                0 0 60px rgba(0, 217, 255, 0.1);
+            font-family: var(--font-display);
+        }
+        
+        /* ===================================== */
+        /* SCROLL HINT ANIMATION */
+        /* ===================================== */
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(-10px); }
+        }
+        
+        .scroll-hint {
+            animation: bounce 2s infinite ease-in-out;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .scroll-hint.hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+        
+        /* ===================================== */
+        /* RESPONSIVE ADJUSTMENTS */
+        /* ===================================== */
+        @media (max-width: 768px) {
+            .glass-panel:hover {
+                transform: translateY(-5px); /* Reduced for mobile */
+            }
+            
+            .project-card:hover {
+                transform: translateY(-6px);
+            }
+        }
+        
+        /* ===================================== */
+        /* ACCESSIBILITY - REDUCED MOTION */
+        /* ===================================== */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+            
+            .scroll-hint {
+                animation: none;
+            }
+        }
+    </style>
+
+<!-- Code injected by live-server -->
+<script>
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script>
 </body>
 
 </html>
