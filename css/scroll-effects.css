@@ -1,0 +1,161 @@
+/* ========================================
+   MAGICAL SCROLL EFFECTS
+   Particles and runes on scroll
+   ======================================== */
+
+/* Scroll Particles */
+.scroll-particle {
+    position: fixed;
+    width: 4px;
+    height: 4px;
+    background: var(--arcane-emerald);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9997;
+    box-shadow: 0 0 10px var(--arcane-emerald);
+    animation: scrollFloat 1.5s ease-out forwards;
+}
+
+@keyframes scrollFloat {
+    0% {
+        opacity: 0.8;
+        transform: translateY(0) scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-120px) scale(0.3);
+    }
+}
+
+/* Runic Glyphs */
+.scroll-rune {
+    position: fixed;
+    font-size: 24px;
+    color: var(--arcane-gold);
+    pointer-events: none;
+    z-index: 9997;
+    opacity: 0;
+    text-shadow: 0 0 15px var(--arcane-gold);
+    animation: runeAppear 2s ease-out forwards;
+    font-family: 'Segoe UI Symbol', sans-serif;
+}
+
+@keyframes runeAppear {
+    0% {
+        opacity: 0;
+        transform: scale(0.5) rotate(0deg);
+    }
+    20% {
+        opacity: 0.7;
+    }
+    80% {
+        opacity: 0.7;
+        transform: scale(1.2) rotate(180deg);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0.8) rotate(360deg);
+    }
+}
+
+/* Scroll Trail Effect */
+.scroll-trail {
+    position: fixed;
+    width: 2px;
+    height: 40px;
+    background: linear-gradient(
+        to bottom,
+        transparent 0%,
+        var(--arcane-emerald) 50%,
+        transparent 100%
+    );
+    pointer-events: none;
+    z-index: 9996;
+    opacity: 0.6;
+    animation: trailFade 1s ease-out forwards;
+}
+
+@keyframes trailFade {
+    to {
+        opacity: 0;
+        transform: translateY(-60px);
+    }
+}
+
+/* ❌ DISABLED - User feedback: looks ugly */
+.scroll-progress {
+    display: none !important;
+}
+
+.scroll-progress-bar {
+    display: none !important;
+}
+
+/* Parallax Magic Circles (Background) */
+.magic-circle-bg {
+    position: fixed;
+    border: 1px solid rgba(16, 185, 129, 0.1);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 1;
+    animation: rotateCircle 30s linear infinite;
+}
+
+.magic-circle-1 {
+    width: 300px;
+    height: 300px;
+    top: 20%;
+    left: 10%;
+}
+
+.magic-circle-2 {
+    width: 200px;
+    height: 200px;
+    top: 60%;
+    right: 15%;
+    animation-duration: 40s;
+    animation-direction: reverse;
+}
+
+.magic-circle-3 {
+    width: 150px;
+    height: 150px;
+    bottom: 20%;
+    left: 20%;
+    animation-duration: 25s;
+}
+
+@keyframes rotateCircle {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* Responsive - Reduce effects on mobile */
+@media (max-width: 768px) {
+    .scroll-particle,
+    .scroll-rune {
+        display: none; /* Too many particles can lag mobile */
+    }
+    
+    .scroll-progress {
+        height: 2px;
+    }
+    
+    .magic-circle-bg {
+        display: none;
+    }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+    .scroll-particle,
+    .scroll-rune, 
+    .scroll-trail,
+    .magic-circle-bg {
+        display: none !important;
+    }
+    
+    .scroll-progress-bar {
+        transition: none;
+    }
+}

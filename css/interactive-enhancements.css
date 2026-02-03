@@ -1,0 +1,185 @@
+/* ========================================
+   INTERACTIVE ENHANCEMENTS - Awwwards 2025
+   ======================================== */
+
+/* Enhanced Glassmorphism with Shimmer Effect */
+.glass-panel {
+    background: rgba(10, 10, 13, 0.7);
+    backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(0, 217, 255, 0.2);
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.37),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    transition: 
+        transform 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+        border-radius 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+        box-shadow 0.6s ease,
+        border-color 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Shimmer effect on glass panels */
+.glass-panel::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        45deg,
+        transparent 30%,
+        rgba(0, 255, 245, 0.05) 50%,
+        transparent 70%
+    );
+    transform: rotate(45deg);
+    opacity: 0;
+    transition: opacity 0.6s ease;
+    pointer-events: none;
+}
+
+.glass-panel:hover::before {
+    opacity: 1;
+    animation: shimmer 2s ease-in-out;
+}
+
+@keyframes shimmer {
+    0%, 100% { transform: translateX(-100%) rotate(45deg); }
+    50% { transform: translateX(100%) rotate(45deg); }
+}
+
+/* Morphing Card Hover */
+.glass-panel:hover {
+    transform: translateY(-10px) scale(1.02);
+    border-radius: 30px;
+    border-color: rgba(0, 255, 245, 0.5);
+    box-shadow: 
+        0 20px 60px rgba(0, 255, 245, 0.2),
+        0 0 40px rgba(157, 78, 221, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+/* Content shift on hover */
+.glass-panel:hover .card-content,
+.glass-panel:hover .p-4,
+.glass-panel:hover .p-5 {
+    transform: translateY(-5px);
+    transition: transform 0.4s ease;
+}
+
+/* Button Enhancements */
+.btn, button, .btn-outline-light {
+    position: relative;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    overflow: hidden;
+}
+
+/* Ripple effect on buttons */
+.btn::after, button::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    width: 100px;
+    height: 100px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    pointer-events: none;
+}
+
+.btn:active::after, button:active::after {
+    animation: ripple 0.6s ease-out;
+}
+
+@keyframes ripple {
+    0% {
+        transform: translate(-50%, -50%) scale(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(4);
+        opacity: 0;
+    }
+}
+
+/* Button Press Effect */
+.btn:active, button:active {
+    transform: scale(0.95);
+}
+
+/* Animated Gradient Text */
+.text-gradient-animated {
+    background: linear-gradient(90deg, #00FFF5, #9D4EDD, #FFD60A, #00FFF5);
+    background-size: 300% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradient-shift 6s linear infinite;
+}
+
+@keyframes gradient-shift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+/* Image Hover Zoom */
+.glass-panel img {
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-panel:hover img {
+    transform: scale(1.05);
+}
+
+/* Badge Glow on Hover */
+.badge {
+    transition: box-shadow 0.3s ease, transform 0.2s ease;
+}
+
+.badge:hover {
+    box-shadow: 0 0 15px currentColor;
+    transform: translateY(-2px);
+}
+
+/* Video Card Specific Enhancements */
+.video-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.video-card:hover {
+    transform: translateY(-10px) scale(1.05);
+    box-shadow: 0 20px 60px rgba(0,217,255,0.4);
+}
+
+/* Neon Text Pulsing */
+.neon-text {
+    animation: neon-pulse 2s ease-in-out infinite alternate;
+}
+
+@keyframes neon-pulse {
+    from {
+        text-shadow: 
+            0 0 10px rgba(0, 217, 255, 0.8),
+            0 0 20px rgba(0, 217, 255, 0.6),
+            0 0 30px rgba(0, 217, 255, 0.4);
+    }
+    to {
+        text-shadow: 
+            0 0 20px rgba(0, 217, 255, 1),
+            0 0 30px rgba(0, 217, 255, 0.8),
+            0 0 40px rgba(0, 217, 255, 0.6);
+    }
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}

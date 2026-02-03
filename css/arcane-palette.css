@@ -1,0 +1,172 @@
+/* ========================================
+   DARK ARCANE PALETTE
+   Colores místicos: verde, negro, dorado
+   ======================================== */
+
+:root {
+  /* === COLORES ARCANOS PRINCIPALES === */
+  
+  /* Verdes Místicos */
+  --arcane-green: #00FF88;        /* Verde neón brillante */
+  --arcane-emerald: #10B981;      /* Esmeralda profunda */
+  --arcane-jade: #059669;         /* Jade oscuro */
+  --arcane-forest: #047857;       /* Bosque místico */
+  
+  /* Dorados Místicos */
+  --arcane-gold: #FFD700;         /* Dorado puro */
+  --arcane-amber: #F59E0B;        /* Ámbar brillante */
+  --arcane-bronze: #CD7F32;       /* Bronce antiguo */
+  --arcane-brass: #B8860B;        /* Latón oscuro */
+  
+  /* Backgrounds Oscuros */
+  --bg-void: #000000;             /* Negro absoluto */
+  --bg-abyss: #0A0E0A;            /* Abismo verdoso */
+  --bg-shadow: #1A1F1A;           /* Sombra profunda */
+  --bg-mist: #2D332D;             /* Niebla oscura */
+  --bg-translucent: rgba(16, 185, 129, 0.05); /* Verde translúcido */
+  
+  /* Acentos Mágicos */
+  --accent-poison: #22C55E;       /* Verde veneno */
+  --accent-witch: #7C3AED;        /* Púrpura bruja */
+  --accent-blood: #DC2626;        /* Rojo sangre */
+  --accent-frost: #06B6D4;        /* Azul helado */
+  
+  /* === GRADIENTES ARCANOS === */
+  
+  --gradient-arcane: linear-gradient(
+    135deg, 
+    #00FF88 0%, 
+    #059669 50%, 
+    #FFD700 100%
+  );
+  
+  --gradient-witchcraft: linear-gradient(
+    45deg,
+    #10B981 0%,
+    #7C3AED 50%,
+    #DC2626 100%
+  );
+  
+  --gradient-shadow: linear-gradient(
+    180deg,
+    #000000 0%,
+    #1A1F1A 50%,
+    #0A0E0A 100%
+  );
+  
+  --gradient-emerald: linear-gradient(
+    135deg,
+    #00FF88 0%,
+    #10B981 100%
+  );
+  
+  --gradient-gold: linear-gradient(
+    90deg,
+    #FFD700 0%,
+    #CD7F32 100%
+  );
+  
+  /* === EFECTOS DE GLOW === */
+  
+  --glow-green: 
+    0 0 20px rgba(16, 185, 129, 0.6),
+    0 0 40px rgba(16, 185, 129, 0.3),
+    0 0 60px rgba(16, 185, 129, 0.1);
+  
+  --glow-gold: 
+    0 0 20px rgba(255, 215, 0, 0.6),
+    0 0 40px rgba(255, 215, 0, 0.3);
+  
+  --glow-poison: 
+    0 0 30px rgba(34, 197, 94, 0.8),
+    0 0 50px rgba(34, 197, 94, 0.4);
+  
+  --glow-witch: 
+    0 0 25px rgba(124, 58, 237, 0.7),
+    0 0 45px rgba(124, 58, 237, 0.3);
+  
+  /* === BORDERS === */
+  
+  --border-arcane: 2px solid var(--arcane-emerald);
+  --border-gold: 2px solid var(--arcane-gold);
+  --border-glow: 1px solid rgba(16, 185, 129, 0.5);
+  
+  /* === SHADOWS === */
+  
+  --shadow-arcane: 0 10px 40px rgba(0, 255, 136, 0.2);
+  --shadow-dark: 0 20px 60px rgba(0, 0, 0, 0.8);
+  --shadow-gold: 0 8px 32px rgba(255, 215, 0, 0.3);
+  
+  /* === OVERLAYS === */
+  
+  --overlay-dark: rgba(0, 0, 0, 0.85);
+  --overlay-green: rgba(16, 185, 129, 0.1);
+  --overlay-mist: rgba(26, 31, 26, 0.6);
+}
+
+/* === MODO CLARO (Opcional) === */
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg-void: #F5F5F5;
+    --bg-abyss: #E5E7E5;
+    --bg-shadow: #D4D6D4;
+    /* Mantener acentos vibrantes */
+  }
+}
+
+/* === APLICACIÓN GLOBAL === */
+
+body {
+  background: var(--bg-void);
+  color: var(--arcane-green);
+}
+
+h1, h2, h3 {
+  color: var(--arcane-gold);
+  text-shadow: var(--glow-gold);
+}
+
+a {
+  color: var(--arcane-emerald);
+  transition: all 0.3s ease;
+}
+
+a:hover {
+  color: var(--arcane-green);
+  text-shadow: var(--glow-green);
+}
+
+.btn-arcane {
+  background: var(--gradient-arcane);
+  border: var(--border-arcane);
+  color: var(--bg-void);
+  box-shadow: var(--shadow-arcane);
+}
+
+.btn-arcane:hover {
+  box-shadow: var(--glow-poison);
+  transform: translateY(-2px);
+}
+
+/* Glassmorphism Arcano */
+.glass-arcane {
+  background: rgba(16, 185, 129, 0.05);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  box-shadow: var(--shadow-arcane);
+}
+
+/* Card con efecto místico */
+.card-arcane {
+  background: var(--bg-shadow);
+  border: var(--border-glow);
+  border-radius: 20px;
+  padding: 30px;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-arcane:hover {
+  border-color: var(--arcane-green);
+  box-shadow: var(--glow-green);
+  transform: translateY(-10px);
+}

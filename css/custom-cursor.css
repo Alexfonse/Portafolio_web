@@ -1,0 +1,154 @@
+/* ========================================
+   CUSTOM SVG CURSOR
+   Cursor mágico personalizado
+   ======================================== */
+
+/* Ocultar cursor nativo (solo desktop) */
+@media (hover: hover) and (pointer: fine) {
+  body,
+  a,
+  button,
+  input,
+  textarea {
+    cursor: none !important;
+  }
+}
+
+/* Container del cursor custom */
+.custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 99999;
+  mix-blend-mode: difference;
+}
+
+.custom-cursor svg {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  transition: transform 0.1s ease-out;
+}
+
+/* Cursor principal (círculo arcano) */
+.cursor-main {
+  width: 20px;
+  height: 20px;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+/* Cursor hover (expande) */
+.cursor-hover .cursor-main {
+  transform: translate(-50%, -50%) scale(2);
+}
+
+/* Cursor  click (contrae) */
+.cursor-click .cursor-main {
+  transform: translate(-50%, -50%) scale(0.8);
+}
+
+/* === TRAIL PARTICLES === */
+.cursor-trail {
+  position: fixed;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--arcane-green);
+  pointer-events: none;
+  opacity: 0.6;
+  animation: particleFade 0.8s ease-out forwards;
+  box-shadow: 0 0 10px var(--arcane-green);
+}
+
+@keyframes particleFade {
+  to {
+    opacity: 0;
+    transform: scale(0);
+  }
+}
+
+/* === CLICK PARTICLES === */
+.click-particle {
+  position: fixed;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--arcane-gold);
+  pointer-events: none;
+  animation: clickExplosion 0.6s ease-out forwards;
+  box-shadow: 0 0 15px var(--arcane-gold);
+}
+
+@keyframes clickExplosion {
+  0% {
+    transform: translate(0, 0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(var(--tx), var(--ty)) scale(0);
+    opacity: 0;
+  }
+}
+
+/* === GLOW RING === */
+.cursor-glow {
+  position: fixed;
+  width: 40px;
+  height: 40px;
+  border: 2px solid var(--arcane-emerald);
+  border-radius: 50%;
+  pointer-events: none;
+  transition: transform 0.15s ease-out, opacity 0.3s ease;
+  box-shadow: 0 0 20px var(--arcane-emerald);
+  opacity: 0.5;
+}
+
+.cursor-hover .cursor-glow {
+  transform: translate(-50%, -50%) scale(1.5);
+  opacity: 1;
+}
+
+/* === ESTADOS === */
+
+/* Hovering sobre link/botón */
+.cursor-link .cursor-main circle {
+  fill: var(--arcane-gold);
+}
+
+.cursor-link .cursor-glow {
+  border-color: var(--arcane-gold);
+  box-shadow: 0 0 30px var(--arcane-gold);
+}
+
+/* Hovering sobre imagen */
+.cursor-image .cursor-main {
+  transform: translate(-50%, -50%) scale(1.5);
+}
+
+/* === RESPONSIVE === */
+/* Desactivar en móvil/tablet */
+@media (max-width: 1024px) or (hover: none) {
+  .custom-cursor,
+  .cursor-trail,
+  .click-particle,
+  .cursor-glow {
+    display: none !important;
+  }
+  
+  body,
+  a,
+  button,
+  input,
+  textarea {
+    cursor: auto !important;
+  }
+}
+
+/* === ACCESSIBILITY === */
+@media (prefers-reduced-motion: reduce) {
+  .cursor-trail,
+  .click-particle {
+    animation: none;
+    display: none;
+  }
+}

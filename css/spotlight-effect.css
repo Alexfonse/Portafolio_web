@@ -1,0 +1,188 @@
+/* ========================================
+   SPOTLIGHT EFFECT - Efecto Linterna
+   Galería oscura iluminada por el mouse
+   ======================================== */
+
+/* === GALERÍA CON SPOTLIGHT === */
+.gallery-spotlight {
+  position: relative;
+  background: var(--bg-void);
+  padding: 40px 20px;
+}
+
+/* Capa oscura superpuesta */
+.gallery-spotlight::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    circle 150px at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    transparent 0%,
+    rgba(0, 0, 0, 0.95) 100%
+  );
+  pointer-events: none;
+  z-index: 2;
+  transition: opacity 0.3s ease;
+}
+
+/* Modo normal (sin spotlight) */
+.gallery-spotlight.spotlight-off::before {
+  opacity: 0;
+}
+
+/* === TOGGLE BUTTON === */
+.spotlight-toggle {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 1000;
+  background: var(--gradient-arcane);
+  border: 2px solid var(--arcane-emerald);
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: var(--glow-green);
+}
+
+.spotlight-toggle:hover {
+  transform: scale(1.1) rotate(15deg);
+  box-shadow: var(--glow-poison);
+}
+
+.spotlight-toggle ion-icon {
+  font-size: 2rem;
+  color: var(--bg-void);
+}
+
+/* === IMÁGENES EN SPOTLIGHT === */
+.gallery-spotlight .gallery-item,
+.gallery-spotlight .foto {
+  position: relative;
+  z-index: 1;
+  transition: all 0.3s ease;
+}
+
+/* Brillo extra en área del spotlight */
+.gallery-spotlight .gallery-item:hover,
+.gallery-spotlight .foto:hover {
+  transform: scale(1.02);
+  filter: brightness(1.2) contrast(1.1);
+}
+
+/* === EFECTO DE LUZ ADICIONAL (Opcional) === */
+.spotlight-beam {
+  position: fixed;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(16, 185, 129, 0.3) 0%,
+    rgba(16, 185, 129, 0.1) 40%,
+    transparent 70%
+  );
+  pointer-events: none;
+  z-index: 3;
+  transform: translate(-50%, -50%);
+  mix-blend-mode: screen;
+  transition: opacity 0.3s ease;
+}
+
+.spotlight-off .spotlight-beam {
+  opacity: 0;
+}
+
+/* Partículas flotantes en el haz de luz */
+.light-particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: var(--arcane-green);
+  border-radius: 50%;
+  opacity: 0.6;
+  animation: float-particle 3s ease-in-out infinite;
+  box-shadow: 0 0 10px var(--arcane-green);
+}
+
+@keyframes float-particle {
+  0%, 100% {
+    transform: translateY(0) translateX(0);
+    opacity: 0;
+  }
+  50% {
+    transform: translateY(-20px) translateX(10px);
+    opacity: 0.8;
+  }
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 768px) {
+  .gallery-spotlight::before {
+    background: radial-gradient(
+      circle 100px at var(--mouse-x, 50%) var(--mouse-y, 50%),
+      transparent 0%,
+      rgba(0, 0, 0, 0.95) 100%
+    );
+  }
+  
+  .spotlight-beam {
+    width: 200px;
+    height: 200px;
+  }
+  
+  .spotlight-toggle {
+    width: 50px;
+    height: 50px;
+    bottom: 20px;
+    right: 20px;
+  }
+  
+  .spotlight-toggle ion-icon {
+    font-size: 1.5rem;
+  }
+}
+
+/* === ACCESSIBILITY === */
+@media (prefers-reduced-motion: reduce) {
+  .gallery-spotlight::before {
+    transition: none;
+  }
+  
+  .spotlight-beam,
+  .light-particle {
+    animation: none;
+  }
+}
+
+/* === HINT TEXT === */
+.spotlight-hint {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(16, 185, 129, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--arcane-emerald);
+  border-radius: 10px;
+  padding: 10px 20px;
+  color: var(--arcane-green);
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  z-index: 999;
+  opacity: 0;
+  animation: hintFade 4s ease-in-out;
+  pointer-events: none;
+}
+
+@keyframes hintFade {
+  0%, 100% { opacity: 0; }
+  10%, 90% { opacity: 1; }
+}

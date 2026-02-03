@@ -1,0 +1,113 @@
+/* ========================================
+   PARALLAX SCROLLING EFFECTS
+   Depth layers for index and profile
+   ======================================== */
+
+/* Parallax container */
+.parallax-section {
+    position: relative;
+    overflow: hidden;
+    min-height: 100vh;
+}
+
+/* Background layer (slowest) */
+.parallax-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 120%;
+    z-index: 0;
+    will-change: transform;
+}
+
+/* Mid layer */
+.parallax-mid {
+    position: relative;
+    z-index: 1;
+    will-change: transform;
+}
+
+/* Foreground layer (fastest) */
+.parallax-front {
+    position: relative;
+    z-index: 2;
+    will-change: transform;
+}
+
+/* Floating elements */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+.floating-element {
+    animation: float 6s ease-in-out infinite;
+}
+
+.floating-element:nth-child(2) {
+    animation-delay: 1s;
+}
+
+.floating-element:nth-child(3) {
+    animation-delay: 2s;
+}
+
+/* Lazy animation states */
+[data-lazy-animate] {
+    opacity: 0;
+    transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+[data-lazy-animate].lazy-animated {
+    opacity: 1;
+}
+
+/* Specific animation types */
+[data-lazy-animate="fade-up"].lazy-animated {
+    transform: translateY(0);
+}
+
+[data-lazy-animate="fade-left"].lazy-animated {
+    transform: translateX(0);
+}
+
+[data-lazy-animate="scale"].lazy-animated {
+    transform: scale(1);
+}
+
+/* Stagger delay classes */
+.stagger-delay-1 { transition-delay: 0.1s; }
+.stagger-delay-2 { transition-delay: 0.2s; }
+.stagger-delay-3 { transition-delay: 0.3s; }
+.stagger-delay-4 { transition-delay: 0.4s; }
+.stagger-delay-5 { transition-delay: 0.5s; }
+
+/* Performance optimization */
+.parallax-bg,
+.parallax-mid,
+.parallax-front {
+    backface-visibility: hidden;
+    perspective: 1000px;
+}
+
+/* Reduce motion */
+@media (prefers-reduced-motion: reduce) {
+    .parallax-bg,
+    .parallax-mid,
+    .parallax-front,
+    .floating-element {
+        animation: none !important;
+        transform: none !important;
+        transition: none !important;
+    }
+    
+    [data-lazy-animate] {
+        opacity: 1 !important;
+        transform: none !important;
+    }
+}

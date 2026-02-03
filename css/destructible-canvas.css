@@ -1,0 +1,400 @@
+/* ========================================
+   SPACE SHOOTER v4.0 - FINAL UI
+   Health bar, victory/gameover screens, mobile optimized
+   ======================================== */
+
+#space-shooter-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9998;
+  background: #000000;
+  cursor: crosshair;
+  pointer-events: auto;
+}
+
+#space-shooter-ui {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  pointer-events: none;
+}
+
+#space-shooter-ui * {
+  pointer-events: none;
+}
+
+/* Game HUD */
+.game-hud {
+  position: absolute;
+  top: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: nowrap;
+}
+
+.health-display {
+  background: rgba(10, 14, 10, 0.9);
+  border: 2px solid var(--arcane-emerald);
+  border-radius: 10px;
+  padding: 6px 12px;
+  box-shadow: 0 0 18px rgba(16, 185, 129, 0.4);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.health-bar-container {
+  width: 120px;
+  height: 18px;
+  background: rgba(0, 0, 0, 0.7);
+  border: 2px solid var(--arcane-gold);
+  border-radius: 9px;
+  overflow: hidden;
+}
+
+.health-bar {
+  height: 100%;
+  background: #00FF88;
+  transition: width 0.3s ease, background 0.3s ease;
+  box-shadow: 0 0 10px rgba(0, 255, 136, 0.6);
+}
+
+.health-value {
+  color: var(--arcane-emerald);
+  font-family: var(--font-heading);
+  font-size: clamp(0.9rem, 1.8vw, 1.1rem);
+  font-weight: bold;
+  text-shadow: var(--glow-green);
+  min-width: 30px;
+  text-align: right;
+}
+
+.score-display {
+  background: rgba(10, 14, 10, 0.9);
+  border: 2px solid var(--arcane-gold);
+  border-radius: 10px;
+  padding: 6px 14px;
+  box-shadow: 0 0 18px rgba(255, 215, 0, 0.4);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.score-label {
+  color: var(--arcane-gold);
+  font-family: var(--font-heading);
+  font-size: clamp(0.7rem, 1.4vw, 0.85rem);
+  text-shadow: var(--glow-gold);
+  font-weight: bold;
+}
+
+.score-value {
+  color: var(--arcane-emerald);
+  font-family: var(--font-heading);
+  font-size: clamp(0.95rem, 1.9vw, 1.2rem);
+  font-weight: bold;
+  text-shadow: var(--glow-green);
+  min-width: 40px;
+  text-align: right;
+}
+
+/* Victory Screen */
+.victory-screen,
+.gameover-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 10003;
+  background: rgba(0, 0, 0, 0.85);
+  animation: fadeIn 0.5s ease;
+}
+
+.victory-content,
+.gameover-content {
+  background: rgba(10, 14, 10, 0.95);
+  border: 4px solid var(--arcane-gold);
+  border-radius: 20px;
+  padding: 40px 60px;
+  text-align: center;
+  box-shadow: 0 0 50px rgba(255, 215, 0, 0.6);
+  animation: scaleIn 0.5s ease;
+}
+
+.victory-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 8vw, 4.5rem);
+  color: var(--arcane-gold);
+  text-shadow: 0 0 30px rgba(255, 215, 0, 0.8);
+  margin: 0 0 20px 0;
+  animation: pulse 1.5s ease infinite;
+}
+
+.gameover-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 7vw, 4rem);
+  color: #FF0066;
+  text-shadow: 0 0 30px rgba(255, 0, 102, 0.8);
+  margin: 0 0 20px 0;
+}
+
+.victory-score,
+.gameover-score {
+  font-family: var(--font-heading);
+  font-size: clamp(1.2rem, 3vw, 1.8rem);
+  color: var(--arcane-emerald);
+  text-shadow: var(--glow-green);
+  margin: 15px 0;
+}
+
+.victory-message {
+  font-family: var(--font-body);
+  font-size: clamp(1rem, 2.5vw, 1.3rem);
+  color: var(--arcane-green);
+  margin: 10px 0 0 0;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scaleIn {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+/* Controls hint */
+.controls-hint {
+  position: absolute;
+  bottom: 75px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(10, 14, 10, 0.8);
+  border: 2px solid var(--arcane-emerald);
+  border-radius: 8px;
+  padding: 6px 14px;
+  box-shadow: 0 0 12px rgba(16, 185, 129, 0.3);
+  color: var(--arcane-green);
+  font-family: var(--font-body);
+  font-size: clamp(0.65rem, 1.3vw, 0.8rem);
+  text-shadow: var(--glow-green);
+  white-space: nowrap;
+}
+
+/* Progress bar */
+.progress-container {
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: clamp(260px, 65vw, 420px);
+  height: 32px;
+  background: rgba(10, 14, 10, 0.9);
+  border: 2px solid var(--arcane-emerald);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 
+    0 0 16px rgba(16, 185, 129, 0.4),
+    inset 0 0 6px rgba(0, 0, 0, 0.5);
+}
+
+.progress-bar {
+  height: 100%;
+  background: var(--gradient-arcane);
+  width: 0%;
+  transition: width 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #000;
+  font-weight: bold;
+  font-family: var(--font-heading);
+  font-size: clamp(0.8rem, 1.6vw, 1rem);
+  text-shadow: 0 1px 2px rgba(0,0,0,0.8);
+  position: relative;
+  overflow: hidden;
+}
+
+.progress-bar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.22),
+    transparent
+  );
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  100% { left: 100%; }
+}
+
+/* Main content hide - DESACTIVADO: Juego Space Shooter deshabilitado */
+/* 
+#main-content {
+  display: none;
+  opacity: 0;
+}
+*/
+
+/* Tablet */
+@media (max-width: 768px) {
+  .game-hud {
+    top: 10px;
+    gap: 12px;
+  }
+  
+  .health-bar-container {
+    width: 100px;
+    height: 16px;
+  }
+  
+  .health-display,
+  .score-display {
+    padding: 5px 10px;
+  }
+  
+  .score-label {
+    font-size: 0.65rem;
+  }
+  
+  .health-value,
+  .score-value {
+    font-size: 0.9rem;
+    min-width: 28px;
+  }
+  
+  .victory-content,
+  .gameover-content {
+    padding: 30px 40px;
+  }
+  
+  .controls-hint {
+    bottom: 70px;
+    padding: 5px 12px;
+    font-size: 0.6rem;
+  }
+  
+  .progress-container {
+    height: 28px;
+    bottom: 10px;
+  }
+}
+
+/* Mobile pequeño */
+@media (max-width: 480px) {
+  .game-hud {
+    top: 8px;
+    gap: 8px;
+  }
+  
+  .health-bar-container {
+    width: 80px;
+    height: 14px;
+  }
+  
+  .health-display,
+  .score-display {
+    padding: 4px 8px;
+  }
+  
+  .score-label {
+    display: none; /* Solo mostrar valor */
+  }
+  
+  .health-value,
+  .score-value {
+    font-size: 0.8rem;
+    min-width: 25px;
+  }
+  
+  .victory-content,
+  .gameover-content {
+    padding: 25px 30px;
+    max-width: 90vw;
+  }
+  
+  .controls-hint {
+    bottom: 65px;
+    padding: 4px 10px;
+    font-size: 0.55rem;
+  }
+  
+  .progress-container {
+    height: 26px;
+    width: 80vw;
+    bottom: 8px;
+  }
+  
+  #space-shooter-canvas {
+    cursor: default;
+  }
+}
+
+/* Landscape mobile */
+@media (max-height: 500px) and (orientation: landscape) {
+  .game-hud {
+    top: 6px;
+    gap: 10px;
+  }
+  
+  .controls-hint {
+    display: none;
+  }
+  
+  .progress-container {
+    height: 24px;
+    bottom: 6px;
+  }
+  
+  .health-display,
+  .score-display {
+    padding: 3px 8px;
+  }
+  
+  .victory-content,
+  .gameover-content {
+    padding: 20px 30px;
+  }
+}
+
+/* Touch */
+@media (hover: none) {
+  #space-shooter-canvas:active {
+    cursor: grabbing;
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .progress-bar::before,
+  .victory-title {
+    animation: none;
+  }
+}
