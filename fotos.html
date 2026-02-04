@@ -6,134 +6,347 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Fotografías</title>
     <link rel="icon" href="assets/img/flowers.png" type="image/x-icon" />
-    <link rel="stylesheet" href="css/style.css">
+    <!-- Base Styles -->
+    <link rel="stylesheet" href="css/imports.css">
+
+    <link rel="stylesheet" href="css/style.base.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/header-navbar.css">
+    <link rel="stylesheet" href="css/hamburger-menu.css">
+    <link rel="stylesheet" href="css/overflow-fix.css">
+    
+    <!-- Dark Arcane Identity -->
+    <link rel="stylesheet" href="css/arcane-palette.css">
+    <link rel="stylesheet" href="css/magical-typography.css">
+    <link rel="stylesheet" href="css/glitch-effects.css">
+    <link rel="stylesheet" href="css/custom-cursor.css">
+    <link rel="stylesheet" href="css/spotlight-effect.css">
+    
+    <!-- Interactive Systems -->
+    <link rel="stylesheet" href="css/custom-scrollbar.css">
+    <link rel="stylesheet" href="css/interactive-enhancements.css">
+    <link rel="stylesheet" href="css/magic-orb-menu.css">
+    <link rel="stylesheet" href="css/gallery-enhancements.css">
+    <link rel="stylesheet" href="css/masonry-grid.css">
+    <link rel="stylesheet" href="css/floating-particles.css">
+    
+    <!-- Framework -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Fonts managed by style.css -->
 </head>
 
 <body>
 
-    <div class="contenedor_1">
+    <!-- Menú Fixed (Fuera del flujo normal) -->
+    <!-- Menú Fixed (Fuera del flujo normal) -->
+    <nav class="menu-container">
+        <ul class="menu fixed-menu">
+            <div class="toggle">
+                <ion-icon name="add-outline"></ion-icon>
+            </div>
+            <li style="--i:0">
+                <a href="index.html" data-label="Inicio">
+                    <ion-icon class="icon" name="home-outline"></ion-icon>
+                    <span class="label">Inicio</span>
+                </a>
+            </li>
+            <li style="--i:1" class="active">
+                <a href="fotos.html" data-label="Fotos">
+                    <ion-icon class="icon" name="camera-outline"></ion-icon>
+                    <span class="label">Fotos</span>
+                </a>
+            </li>
+            <li style="--i:2">
+                <a href="videos.html" data-label="Videos">
+                    <ion-icon class="icon" name="videocam-outline"></ion-icon>
+                    <span class="label">Videos</span>
+                </a>
+            </li>
+            <li style="--i:3">
+                <a href="proyectos.html" data-label="Proyectos">
+                    <ion-icon class="icon" name="briefcase-outline"></ion-icon>
+                    <span class="label">Proyectos</span>
+                </a>
+            </li>
+            <li style="--i:4">
+                <a href="perfil.html" data-label="Perfil">
+                    <ion-icon class="icon" name="person-outline"></ion-icon>
+                    <span class="label">Perfil</span>
+                </a>
+            </li>
+            <li style="--i:5">
+                <a href="flower.html" data-label="Flores">
+                    <ion-icon class="icon" name="flower-outline"></ion-icon>
+                    <span class="label">Flores</span>
+                </a>
+            </li>
+            <li style="--i:6">
+                <a href="contacto.html" data-label="Contacto">
+                    <ion-icon class="icon" name="mail-outline"></ion-icon>
+                    <span class="label">Contacto</span>
+                </a>
+            </li>
+            
+            <!-- Indicator dentro del ul para que funcione el selector ~ -->
+            <div class="indicator"></div>
+        </ul>
+    </nav>
+
+
+    <!-- Hero Section Reducido -->
+    <div class="contenedor_1 hero-internal">
         <!--video-->
         <div class="banner">
             <video autoplay muted loop class="bgvideo">
                 <source src="assets/video/fondo_1.webm" type="video/webm">
             </video>
+            <div class="overlay-gradient"></div> <!-- Nuevo overlay para legibilidad -->
         </div>
+
         <!--header-->
         <header>
             <div class="logo">
                 <img src="assets/img/logo_blanco.svg" alt="Logo Marca de Agua">
             </div>
         </header>
-        <!--Menu-->
-        <ul class="menu">
-            <div class="toggle">
-                <ion-icon name="add-outline"></ion-icon>
+
+        <div class="contenedor_6">
+            <div class="titulo_1">
+                <h4 class="elementor-heading-title elementor-size-default">Portafolio Visual</h4>
+                <h1 class="elementor-heading-title elementor-size-default glitch-title" data-text="Fotografía">Fotografía</h1>
             </div>
-            <li style="--i:0" class="active">
-                <a href="index.html" data-label="Inicio">
-                    <ion-icon class="icon" name="home-outline"></ion-icon>
-                    <span class="label">Inicio</span>
-                </a>
-            </li>
-            <li style="--i:1">
-                <a href="perfil.html" data-label="Perfil">
-                    <ion-icon class="icon" name="person-outline"></ion-icon>
-                    <span class="label">Perfil</span>
-                </a>
-            </li>
-            <li style="--i:2">
-                <a href="contacto.html" data-label="Contacto">
-                    <ion-icon class="icon" name="mail-outline"></ion-icon>
-                    <span class="label">Sobre</span>
-                </a>
-            </li>
-            <li style="--i:3">
-                <a href="videos.html" data-label="Videos">
-                    <ion-icon class="icon" name="videocam-outline"></ion-icon>
-                    <span class="label">Videos</span>
-                </a>
-            </li>
-            <li style="--i:4">
-                <a href="fotos.html" data-label="Fotos">
-                    <ion-icon class="icon" name="camera-outline"></ion-icon>
-                    <span class="label">Fotos</span>
-                </a>
-            </li>
-            <li style="--i:5">
-                <a href="blog.html" data-label="Blog">
-                    <ion-icon class="icon" name="reader-outline"></ion-icon>
-                    <span class="label">Blog</span>
-                </a>
-            </li>
-            <li style="--i:6">
-                <a href="flower.html" data-label="Flores">
-                    <ion-icon class="icon" name="flower-outline"></ion-icon>
-                    <span class="label">Flores</span>
-                </a>
-            </li>
-            <li style="--i:7">
-                <a href="precios.html" data-label="Precios">
-                    <ion-icon class="icon" name="cash-outline"></ion-icon>
-                    <span class="label">Precios</span>
-                </a>
-            </li>
-            <!-- total numero de intems de la lista = 8-->
-    </div>
-    
-    <div class="contenedor_6">
-        <div class="titulo_1">
-            <h4 class="elementor-heading-title elementor-size-default">Edición</h4>
-            <h1 class="elementor-heading-title elementor-size-default ">Fotografias</h1>
         </div>
     </div>        
 
-    <div class="contenedor_4" id="fotografias">
-        <div class="list">
-            <img src="assets/img/cuervo_1.jpg">
-            <img src="assets/img/cuervo_2.jpg">
-            <img src="assets/img/cuervo_3.jpg">
-            <img src="assets/img/cuervo_4.jpg">
-            <img src="assets/img/fotomontaje_1.jpg">
-            <img src="assets/img/poster_1.jpg">
-            <img src="assets/img/fotomontaje_2.jpg">
-            <img src="assets/img/fotomontaje_3.jpg">
-            <img src="assets/img/fotomontaje_4.jpg">
-            <img src="assets/img/fotomontaje_5.jpg">
-            <img src="assets/img/fotomontaje_6.jpg">
-            <img src="assets/img/fotomontaje_7.jpg">
-            <img src="assets/img/fotomontaje_8.jpg">
-            <img src="assets/img/fotomontaje_9.jpg">
-            <img src="assets/img/fotomontaje_10.jpg">
-            <img src="assets/img/fotomontaje_11.jpg">
-            <img src="assets/img/fotomontaje_12.jpg">
-            <img src="assets/img/fotomontaje_13.jpg">
-            <img src="assets/img/fotomontaje_14.jpg">
-            <img src="assets/img/fotomontaje_15.jpg">
-            <img src="assets/img/fotomontaje_16.jpg">
-            <img src="assets/img/fotomontaje_17.jpg">
-            <img src="assets/img/fotomontaje_18.jpg">
-            <img src="assets/img/fotomontaje_19.jpg">
-            <img src="assets/img/fotomontaje_20.jpg">
-            <img src="assets/img/fotomontaje_23.jpg">
-            <img src="assets/img/fotomontaje_24.jpg">
-            <img src="assets/img/fotomontaje_25.jpg">
-            <img src="assets/img/cuarto_isometrico.png">
+    <!-- Galería Principal -->
+    <div class="contenedor_4 gallery-section" id="fotografias">
+        
+        <!-- Filtros de Categoría -->
+        <div class="gallery-filters">
+            <button class="filter-btn active" data-filter="all">Todas</button>
+            <button class="filter-btn" data-filter="retrato">Retrato</button>
+            <button class="filter-btn" data-filter="editorial">Editorial</button>
+            <button class="filter-btn" data-filter="montaje">Fotomontaje</button>
+            <button class="filter-btn" data-filter="evento">Eventos</button>
         </div>
+
+        <!-- Grid de Imágenes con Masonry -->
+        <div class="list gallery-container masonry-grid">
+            <!-- Asignando categorías, títulos y descripciones -->
+            <div class="masonry-item" data-category="retrato" data-title="Retrato Místico 1" data-description="Fotografía de retrato con atmósfera oscura">
+                <img src="assets/img/cuervo_1.jpg" loading="lazy" alt="Retrato Cuervo 1">
+                <div class="masonry-overlay">
+                    <h3>Retrato Místico 1</h3>
+                    <p>Atmósfera oscura</p>
+                </div>
+                <span class="masonry-category">Retrato</span>
+            </div>
+            <div class="masonry-item" data-category="retrato" data-title="Retrato Místico 2" data-description="Serie de retratos conceptuales">
+                <img src="assets/img/cuervo_2.jpg" loading="lazy" alt="Retrato Cuervo 2">
+                <div class="masonry-overlay">
+                    <h3>Retrato Místico 2</h3>
+                    <p>Serie conceptual</p>
+                </div>
+                <span class="masonry-category">Retrato</span>
+            </div>
+            <div class="masonry-item" data-category="editorial" data-title="Editorial Dark" data-description="Fotografía editorial con iluminación dramática">
+                <img src="assets/img/cuervo_3.jpg" loading="lazy" alt="Editorial Cuervo">
+                <div class="masonry-overlay">
+                    <h3>Editorial Dark</h3>
+                    <p>Iluminación dramática</p>
+                </div>
+                <span class="masonry-category">Editorial</span>
+            </div>
+            <div class="masonry-item" data-category="editorial" data-title="Narrativa Visual" data-description="Editorial storytelling">
+                <img src="assets/img/cuervo_4.jpg" loading="lazy" alt="Editorial Dark">
+                <div class="masonry-overlay">
+                    <h3>Narrativa Visual</h3>
+                    <p>Editorial storytelling</p>
+                </div>
+                <span class="masonry-category">Editorial</span>
+            </div>
+            
+            <div class="masonry-item" data-category="montaje" data-title="Arte Digital 1" data-description="Fotomontaje conceptual">
+                <img src="assets/img/fotomontaje_1.jpg" loading="lazy" alt="Arte Digital 1">
+                <div class="masonry-overlay">
+                    <h3>Arte Digital 1</h3>
+                    <p>Fotomontaje conceptual</p>
+                </div>
+                <span class="masonry-category">Montaje</span>
+            </div>
+            <div class="masonry-item" data-category="evento" data-title="Poster Evento" data-description="Diseño para evento especial">
+                <img src="assets/img/poster_1.jpg" loading="lazy" alt="Poster Evento">
+                <div class="masonry-overlay">
+                    <h3>Poster Evento</h3>
+                    <p>Diseño especial</p>
+                </div>
+                <span class="masonry-category">Evento</span>
+            </div>
+            
+            <div class="masonry-item" data-category="montaje" data-title="Composición Arcana 2">
+                <img src="assets/img/fotomontaje_2.jpg" loading="lazy">
+                <div class="masonry-overlay">
+                    <h3>Composición Arcana 2</h3>
+                </div>
+                <span class="masonry-category">Montaje</span>
+            </div>
+            <div class="masonry-item" data-category="montaje" data-title="Composición Arcana 3">
+                <img src="assets/img/fotomontaje_3.jpg" loading="lazy">
+                <div class="masonry-overlay">
+                    <h3>Composición Arcana 3</h3>
+                </div>
+                <span class="masonry-category">Montaje</span>
+            </div>
+            <div class="masonry-item" data-category="montaje" data-title="Arte Conceptual 4">
+                <img src="assets/img/fotomontaje_4.jpg" loading="lazy">
+                <div class="masonry-overlay">
+                    <h3>Arte Conceptual 4</h3>
+                </div>
+                <span class="masonry-category">Montaje</span>
+            </div>
+            <div class="masonry-item" data-category="montaje" data-title="Diseño Digital 5">
+                <img src="assets/img/fotomontaje_5.jpg" loading="lazy">
+                <div class="masonry-overlay">
+                    <h3>Diseño Digital 5</h3>
+                </div>
+                <span class="masonry-category">Montaje</span>
+            </div>
+            <div class="masonry-item" data-category="retrato" data-title="Retrato Artístico">
+                <img src="assets/img/fotomontaje_6.jpg" loading="lazy">
+                <div class="masonry-overlay">
+                    <h3>Retrato Artístico</h3>
+                </div>
+                <span class="masonry-category">Retrato</span>
+            </div>
+            <div class="masonry-item" data-category="editorial" data-title="Editorial Fashion">
+                <img src="assets/img/fotomontaje_7.jpg" loading="lazy">
+                <div class="masonry-overlay">
+                    <h3>Editorial Fashion</h3>
+                </div>
+                <span class="masonry-category">Editorial</span>
+            </div>
+            <div class="masonry-item" data-category="montaje" data-title="Collage Místico">
+                <img src="assets/img/fotomontaje_8.jpg" loading="lazy">
+                <div class="masonry-overlay">
+                    <h3>Collage Místico</h3>
+                </div>
+                <span class="masonry-category">Montaje</span>
+            </div>
+            <div class="masonry-item" data-category="montaje" data-title="Diseño Experimental">
+                <img src="assets/img/fotomontaje_9.jpg" loading="lazy">
+                <div class="masonry-overlay">
+                    <h3>Diseño Experimental</h3>
+                </div>
+                <span class="masonry-category">Montaje</span>
+            </div>
+            <div class="masonry-item" data-category="montaje" data-title="Arte Surrealista">
+                <img src="assets/img/fotomontaje_10.jpg" loading="lazy">
+                <div class="masonry-overlay">
+                    <h3>Arte Surrealista</h3>
+                </div>
+                <span class="masonry-category">Montaje</span>
+            </div>
+            <div class="masonry-item" data-category="montaje" data-title="Composición Abstracta">
+                <img src="assets/img/fotomontaje_11.jpg" loading="lazy">
+                <div class="masonry-overlay">
+                    <h3>Composición Abstracta</h3>
+                </div>
+                <span class="masonry-category">Montaje</span>
+            </div>
+            <div class="masonry-item" data-category="montaje" data-title="Digital Art">
+                <img src="assets/img/fotomontaje_12.jpg" loading="lazy">
+                <div class="masonry-overlay">
+                    <h3>Digital Art</h3>
+                </div>
+                <span class="masonry-category">Montaje</span>
+            </div>
+            <div class="masonry-item" data-category="montaje" data-title="Fotomontaje Conceptual">
+                <img src="assets/img/fotomontaje_13.jpg" loading="lazy">
+                <div class="masonry-overlay">
+                    <h3>Fotomontaje Conceptual</h3>
+                </div>
+                <span class="masonry-category">Montaje</span>
+            </div>
+            <div class="masonry-item" data-category="montaje" data-title="Diseño Gráfico">
+                <img src="assets/img/fotomontaje_14.jpg" loading="lazy">
+                <div class="masonry-overlay">
+                    <h3>Diseño Gráfico</h3>
+                </div>
+                <span class="masonry-category">Montaje</span>
+            </div>
+            <div class="masonry-item" data-category="montaje" data-title="Arte Compuesto">
+                <img src="assets/img/fotomontaje_15.jpg" loading="lazy">
+                <div class="masonry-overlay">
+                    <h3>Arte Compuesto</h3>
+                </div>
+                <span class="masonry-category">Montaje</span>
+            </div>
+            <div class="masonry-item" data-category="montaje" data-title="Manipulación Digital">
+                <img src="assets/img/fotomontaje_16.jpg" loading="lazy">
+                <div class="masonry-overlay">
+                    <h3>Manipulación Digital</h3>
+                </div>
+                <span class="masonry-category">Montaje</span>
+            </div>
+            <div class="masonry-item" data-category="montaje" data-title="Visión Artística">
+                <img src="assets/img/fotomontaje_17.jpg" loading="lazy">
+                <div class="masonry-overlay">
+                    <h3>Visión Artística</h3>
+                </div>
+                <span class="masonry-category">Montaje</span>
+            </div>
+            <div class="masonry-item" data-category="montaje" data-title="Creación Digital">
+                <img src="assets/img/fotomontaje_18.jpg" loading="lazy">
+                <div class="masonry-overlay">
+                    <h3>Creación Digital</h3>
+                </div>
+                <span class="masonry-category">Montaje</span>
+            </div>
+            <div class="gallery-item" data-category="montaje">
+                <img src="assets/img/fotomontaje_19.jpg" loading="lazy">
+            </div>
+            <div class="gallery-item" data-category="montaje">
+                <img src="assets/img/fotomontaje_20.jpg" loading="lazy">
+            </div>
+            <div class="gallery-item" data-category="montaje">
+                <img src="assets/img/fotomontaje_23.jpg" loading="lazy">
+            </div>
+            <div class="gallery-item" data-category="montaje">
+                <img src="assets/img/fotomontaje_24.jpg" loading="lazy">
+            </div>
+            <div class="gallery-item" data-category="montaje">
+                <img src="assets/img/fotomontaje_25.jpg" loading="lazy">
+            </div>
+            <div class="gallery-item" data-category="montaje">
+                <img src="assets/img/cuarto_isometrico.png" loading="lazy">
+            </div>
+        </div>
+
         <div id="myModal" class="modal">
             <span class="close">&times;</span>
-            <button class="nav-btn prev-btn">&larr;</button>
-            <button class="nav-btn next-btn">&rarr;</button>
+            <a class="modal-prev">&#10094;</a>
+            <a class="modal-next">&#10095;</a>
             <img class="modal-content" id="modalImg">
+            <div class="modal-caption"></div> <!-- Espacio para metadatos -->
         </div>
     </div>
 
 
+    <!-- Core Scripts -->
     <script src="js/script.js"></script>
-    <script src="./js/bootstrap.min.js"> </script>
-    <script type="module" src=" https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js "> </script>
-    <script nomodule src=" https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js "> </script>
+    
+    <!-- Arcane Systems -->
+    <script src="js/custom-cursor.js"></script>
+    <script src="js/custom-scrollbar.js"></script>
+    <script src="js/enhanced-gallery.js"></script>
+    <script src="js/spotlight-gallery.js"></script>
+    <script src="js/masonry-grid.js"></script>
+    <script src="js/floating-particles.js"></script>
+    
+    <!-- Bootstrap & Icons -->
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>

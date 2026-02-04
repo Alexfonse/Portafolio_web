@@ -1,0 +1,60 @@
+JHON ALEXANDER FONSECA MARTÍNEZ
+Desarrollador Web y Creativo Multimedia
+Bogotá, Colombia | 319-733-4697 | martinezharry2016@gmail.com
+LinkedIn: linkedin.com/in/jhon-fonseca | GitHub: github.com/Alexfonse
+________________________________________
+PERFIL PROFESIONAL
+Tecnólogo en Producción Multimedia con perfil híbrido en desarrollo web y audiovisual. Experiencia en frontend, automatización low-code (Power Platform) y Prompt Engineering aplicado a la resolución ágil de problemas.________________________________________
+HABILIDADES TÉCNICAS
+-	Desarrollo Web: HTML5, CSS3, JavaScript ES6+, Responsive Design, Bootstrap, Git/GitHub, REST APIs, GSAP, A-Frame, Web Speech API, View Transitions API
+-	Fotografía Digital: Configuración manual de exposición (ISO, Obturación, WB), Composición fotográfica y Retoque digital avanzado (Photoshop).
+-	Postproducción & Motion (Adobe): Edición no lineal en Premiere Pro, Color Grading con Lumetri (Capas de ajuste), Animación híbrida en Animate (Bone Tool + Cuadro a cuadro), Integración de video.
+-	Producción 3D & VFX (Blender): Renderizado con motor Cycles, texturizado procedural basado en Nodos (Shader Editor), Animación 3D por keyframes.
+-	Low-Code: Power Apps, Power Automate, SharePoint Online, API Integration, Microsoft 365, Workflow Automation
+________________________________________
+EXPERIENCIA LABORAL
+Aprendiz de Producción Multimedia | Aviatur
+Bogotá | Julio 2025 – Enero 2026
+Desarrollé un Prototipo de Sistema de Gestión Documental (Power Platform)
+-	 Diseñé arquitectura completa de aplicación low-code para trazabilidad documental: estructura de datos, listas SharePoint, relaciones y lógica de permisos
+-	 Desarrollé lógica funcional de 6 pantallas en Power Apps (colaboración con diseñadora en UI): gestión de pendientes, búsqueda por filtros, manual, panel admin, control de estados y carga con validación
+-	 Implementé 3 flujos en Power Automate: carga masiva con validación de formatos, clasificación automática, notificaciones escalonadas, creación de carpetas vía API HTTP
+-	Producción de Contenido: 5 banners y 2 materiales de capacitación
+Stack: Power Apps, Power Automate, SharePoint Online, Microsoft Graph API, Canva
+________________________________________
+PROYECTOS DESTACADOS
+
+Ecos de una Ciudad | Experiencia Web Inmersiva | 2024-2025
+Desarrollador Frontend | Proyecto Final SENA (Equipo)
+Demo: alexfonse.github.io/Ecos_de_una_ciudad | GitHub: github.com/Alexfonse/Ecos_de_una_ciudad
+-	 Proyecto narrativo sobre patrimonio cultural bogotano con 6 secciones interactivas
+-	 Implementación técnica completa: JavaScript vanilla, optimización de código con IA
+-	 View Transitions API para navegación SPA sin frameworks
+-	 Chatbot "Don Gaitaloma" con JSON + Web Speech API sincronizado
+-	 Modelo 3D (A-Frame), galería GSAP, comparador de imágenes, filtrado en tiempo real
+Stack: JavaScript ES6+, HTML5, CSS3, GSAP, A-Frame, Web Speech API, Git
+
+Producción Audiovisual | Freelance / Independiente | 2024-2026
+Camarógrafo, Editor, Animador
+-	Búscame (Cortometraje): Editor
+-	Grauus (3D): Texturizado, iluminación, animación, VFX (Blender)
+-	Quédate (Animación 2D): Animación + edición (Adobe Animate/Premiere)
+-	Gasparin (Documental): Camarógrafo, fotógrafo de set, editor
+-	Mamá (Cortometraje): Camarógrafo y editor
+-	Portafolio Fotográfico: Captura en modo manual (control de ISO/Obturación) y edición de postproducción para narrativa visual y documental.
+Stack: Blender (Cycles/Nodes), Adobe Premiere Pro, Adobe Animate, Photoshop, Cámara DSLR.
+________________________________________
+FORMACIÓN
+Tecnólogo en Producción Multimedia | SENA-CENIGRAF | 2024-2026 (Certificación en trámite)
+Técnico en Diseño e Integración de Multimedia | SENA | 2023
+________________________________________
+Certificaciones:
+-	Fotomontajes en Adobe Photoshop | SENA-CENIGRAF | 2024
+-	Anatomía para Diseño de Personajes | SENA-CENIGRAF | 2024
+________________________________________
+REFERENCIAS LABORALES
+-	Hilder Fabian Rios Castiblanco | Coordinador de Calidad y Procesos | Aviatur SAS
+Teléfono: +57 304 677 8799
+-	Eduar Orlando Sánchez Saavedra | Profesional de Calidad y Procesos | Aviatur SAS
+Tel: +57 311 531 7729
+________________________________________

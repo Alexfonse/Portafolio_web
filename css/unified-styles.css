@@ -46,7 +46,9 @@ html {
   overflow-x: hidden;
   overflow-y: auto; /* Force single viewport scrollbar */
   height: 100%;
-  scrollbar-gutter: stable; /* Fix: Prevents layout shift when scrollbar appears/disappears */
+  scrollbar-gutter: stable;
+  scrollbar-width: thin; /* Firefox */
+  scrollbar-color: var(--arcane-emerald) var(--bg-darker); /* Firefox */
 }
 
 body {
@@ -96,9 +98,9 @@ body {
 /* --------------------------------------------------------------------------
    CUSTOM SCROLLBAR - ARCANE THEME
    -------------------------------------------------------------------------- */
-::-webkit-scrollbar {
-    width: 8px; /* Slim width */
-    height: 8px; /* Slim height for horizontal */
+ ::-webkit-scrollbar {
+    width: 10px; /* Slightly wider for better visibility */
+    height: 10px;
 }
 
 ::-webkit-scrollbar-track {

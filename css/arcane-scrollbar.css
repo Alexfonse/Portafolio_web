@@ -1,0 +1,96 @@
+/* ==========================================================================
+   ARCANE SCROLLBAR SYSTEM (Safe Mode)
+   ========================================================================== */
+
+/* 1. FORCE GLOBAL SCROLL (The "God Mode" Fix) */
+html {
+    overflow-y: scroll !important; /* Always show scrollbar */
+    overflow-x: hidden !important;
+    height: auto !important; /* Unlock height */
+    scroll-behavior: smooth;
+    overscroll-behavior-y: none; /* Prevent bounce effects that feel like lag */
+}
+
+body {
+    overflow-y: visible !important;
+    overflow-x: hidden !important;
+    height: auto !important;
+    min-height: 100vh;
+    position: relative !important; /* Ensure generic relative positioning */
+}
+
+/* 2. KILL ALL NESTED SCROLLBARS (The "Trap" Fix) */
+.contenedor_1, .contenedor_2, .contenedor_3, 
+.contenedor_4, .contenedor_5, .contenedor_6,
+section, div {
+    /* Only allow scrolling if explicitly designed (like a code block or modal) */
+    /* Otherwise, inherit from body */
+}
+
+/* Exception: Modals or strict scroll areas */
+.modal-content {
+    overflow-y: auto;
+}
+
+/* ===================================== */
+/* ARCANE STYLE */
+/* ===================================== */
+
+/* 1. Core Scrollbar - Firefox */
+html {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-primary) var(--bg-darker);
+    scroll-behavior: smooth;
+}
+
+/* 2. Webkit Scrollbar (Chrome, Edge, Safari, Opera) */
+::-webkit-scrollbar {
+    width: 6px; /* Sleek and thin */
+    height: 6px; /* Horizontal scrollbar height */
+}
+
+/* Track (El fondo de la barra) */
+::-webkit-scrollbar-track {
+    background: rgba(5, 8, 22, 0.5); /* Transparent/Dark */
+    backdrop-filter: blur(4px);
+    border-radius: 0;
+}
+
+/* Thumb (La barra movible) */
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(
+        180deg, 
+        #00D9FF 0%,   /* Cyan */
+        #FFD60A 100%  /* Gold */
+    );
+    border-radius: 3px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 0 5px rgba(0, 217, 255, 0.3); /* Subtle internal idle glow */
+    transition: all 0.3s ease;
+}
+
+/* Hover State - Glow Intensifies */
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(
+        180deg, 
+        #00D9FF 0%, 
+        #10B981 50%, /* Emerald transition */
+        #FFD60A 100%
+    );
+    box-shadow: 0 0 15px rgba(0, 217, 255, 0.8); /* Stronger glow */
+}
+
+/* Active State (Clicking) */
+::-webkit-scrollbar-thumb:active {
+    background: #FFD60A; /* Solid Gold */
+}
+
+/* 3. Helper Classes (Optional) */
+body::-webkit-scrollbar-track-piece:start {
+    background: transparent;
+}
+
+body::-webkit-scrollbar-track-piece:end {
+    background: transparent;
+}

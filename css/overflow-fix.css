@@ -1,0 +1,13 @@
+/* ========================================
+   GLOBAL OVERFLOW FIX
+   Prevent horizontal scrollbar
+   ======================================== */
+
+html, body {
+    overflow-x: hidden;
+    max-width: 100%;
+}
+
+body {
+    position: relative;
+}
