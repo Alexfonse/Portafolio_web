@@ -5,11 +5,7 @@
 
 /* Ocultar cursor nativo (solo desktop) */
 @media (hover: hover) and (pointer: fine) {
-  body,
-  a,
-  button,
-  input,
-  textarea {
+  * {
     cursor: none !important;
   }
 }
@@ -20,7 +16,7 @@
   top: 0;
   left: 0;
   pointer-events: none;
-  z-index: 99999;
+  z-index: 2147483647; /* Absolute Top (Max Int) */
   mix-blend-mode: difference;
 }
 
@@ -58,6 +54,7 @@
   opacity: 0.6;
   animation: particleFade 0.8s ease-out forwards;
   box-shadow: 0 0 10px var(--arcane-green);
+  z-index: 99998;
 }
 
 @keyframes particleFade {
@@ -75,6 +72,7 @@
   border-radius: 50%;
   background: var(--arcane-gold);
   pointer-events: none;
+  z-index: 2147483647; /* Force on top of everything */
   animation: clickExplosion 0.6s ease-out forwards;
   box-shadow: 0 0 15px var(--arcane-gold);
 }

@@ -1,42 +1,70 @@
 // ========================================
-// SPOTLIGHT GALLERY EFFECT
-// Efecto de linterna en galería
+// SPOTLIGHT V2: MAGICAL INTERACTIVITY
+// Gyroscope, Physics & Flash Effects
 // ========================================
 
 class SpotlightGallery {
-    constructor(gallerySelector = '.gallery-container') {
+    constructor(gallerySelector = '.masonry-grid') {
         this.gallery = document.querySelector(gallerySelector);
         if (!this.gallery) return;
         
+        // State
         this.isActive = false;
-        this.mouseX = 0;
-        this.mouseY = 0;
-        this.spotlightBeam = null;
+        this.isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent) || window.innerWidth < 768;
+        
+        // Physics
+        this.targetX = window.innerWidth / 2;
+        this.targetY = window.innerHeight / 2;
+        this.currentX = this.targetX;
+        this.currentY = this.targetY;
+        
+        // Gyroscope State
+        this.tiltX = 0;
+        this.tiltY = 0;
         
         this.init();
     }
     
     init() {
-        // Agregar clase para spotlight
-        this.gallery.classList.add('gallery-spotlight', 'spotlight-off');
-        
-        // Crear toggle button
+        // Initialize DOM Elements
+        this.createSpotlightElements();
         this.createToggleButton();
         
-        // Crear haz de luz
-        this.createSpotlightBeam();
-        
-        // Crear hint inicial
-        this.showHint();
-        
-        // Bind events
+        // Bind Events
         this.bindEvents();
+        
+        // Start Render Loop
+        this.render();
+    }
+    
+    createSpotlightElements() {
+        // Beam Container
+        this.spotlightBeam = document.createElement('div');
+        this.spotlightBeam.className = 'spotlight-beam';
+        
+        // Core Light (The glowing orb)
+        this.flashCore = document.createElement('div');
+        this.flashCore.className = 'flash-core';
+        this.spotlightBeam.appendChild(this.flashCore);
+        
+        // Mobile Flashlight Icon Cursor
+        if (this.isMobile) {
+            this.flashlightCursor = document.createElement('div');
+            this.flashlightCursor.className = 'flashlight-cursor';
+            this.flashlightCursor.innerHTML = '🔦'; // Emoji fallback
+            document.body.appendChild(this.flashlightCursor);
+        }
+        
+        document.body.appendChild(this.spotlightBeam);
     }
     
     createToggleButton() {
+        // Check if button already exists (to prevent duplicates)
+        if (document.querySelector('.spotlight-toggle')) return;
+
         const button = document.createElement('button');
         button.className = 'spotlight-toggle';
-        button.setAttribute('aria-label', 'Toggle spotlight mode');
+        button.setAttribute('aria-label', 'Toggle magic flashlight');
         button.innerHTML = '<ion-icon name="flashlight-outline"></ion-icon>';
         
         button.addEventListener('click', () => this.toggle());
@@ -45,110 +73,149 @@ class SpotlightGallery {
         this.toggleButton = button;
     }
     
-    createSpotlightBeam() {
-        this.spotlightBeam = document.createElement('div');
-        this.spotlightBeam.className = 'spotlight-beam';
-        document.body.appendChild(this.spotlightBeam);
-        
-        // Crear partículas en el haz
-        for (let i = 0; i < 10; i++) {
-            const particle = document.createElement('div');
-            particle.className = 'light-particle';
-            particle.style.left = Math.random() * 100 + '%';
-            particle.style.top = Math.random() * 100 + '%';
-            particle.style.animationDelay = Math.random() * 3 + 's';
-            this.spotlightBeam.appendChild(particle);
-        }
-    }
-    
-    showHint() {
-        const hint = document.createElement('div');
-        hint.className = 'spotlight-hint';
-        hint.textContent = '💡 Activa el modo linterna para explorar las fotos';
-        document.body.appendChild(hint);
-        
-        setTimeout(() => hint.remove(), 4000);
-    }
-    
     bindEvents() {
-        // Seguir el mouse
+        // Desktop / Basic Mouse
         document.addEventListener('mousemove', (e) => {
-            this.mouseX = e.clientX;
-            this.mouseY = e.clientY;
-            this.updateSpotlight();
-        });
-        
-        // También en móvil con touch
-        document.addEventListener('touchmove', (e) => {
-            if (e.touches.length > 0) {
-                this.mouseX = e.touches[0].clientX;
-                this.mouseY = e.touches[0].clientY;
-                this.updateSpotlight();
+            if (!this.isActive) return;
+            this.targetX = e.clientX;
+            this.targetY = e.clientY;
+            
+            // Spawn fireflies occasionally
+            if (this.isActive && Math.random() > 0.9) {
+                this.spawnFirefly(e.clientX, e.clientY);
             }
         });
+        
+        // Touch Move (Manual Drag)
+        document.addEventListener('touchmove', (e) => {
+            if (!this.isActive || !e.touches[0]) return;
+            e.preventDefault(); // Prevent scrolling while using flashlight
+            this.targetX = e.touches[0].clientX;
+            this.targetY = e.touches[0].clientY;
+        }, { passive: false });
+        
+        // Gyroscope (Mobile Magic)
+        if (window.DeviceOrientationEvent && this.isMobile) {
+            window.addEventListener('deviceorientation', (e) => this.handleGyroscope(e));
+        }
     }
     
-    updateSpotlight() {
+    handleGyroscope(e) {
         if (!this.isActive) return;
         
-        // Actualizar posición de la variable CSS
-        const galleryRect = this.gallery.getBoundingClientRect();
-        const percentX = ((this.mouseX - galleryRect.left) / galleryRect.width) * 100;
-        const percentY = ((this.mouseY - galleryRect.top) / galleryRect.height) * 100;
+        const beta = e.beta || 0; // Tilt Front/Back
+        const gamma = e.gamma || 0; // Tilt Left/Right
         
-        this.gallery.style.setProperty('--mouse-x', percentX + '%');
-        this.gallery.style.setProperty('--mouse-y', percentY + '%');
+        // Calibrate center (approximate holding angle)
+        const centerX = window.innerWidth / 2;
+        const centerY = window.innerHeight / 2;
         
-        // Mover el haz de luz
-        if (this.spotlightBeam) {
-            this.spotlightBeam.style.left = this.mouseX + 'px';
-            this.spotlightBeam.style.top = this.mouseY + 'px';
+        // Sensitivity multiplier
+        const sensitivity = 15;
+        
+        this.targetX = centerX + (gamma * sensitivity);
+        this.targetY = centerY + ((beta - 45) * sensitivity);
+    }
+    
+    triggerFlash(x, y) {
+        // Visual flash effect on the core
+        this.flashCore.style.transform = 'translate(-50%, -50%) scale(1.5)';
+        this.flashCore.style.filter = 'brightness(2)';
+        
+        // Spawn burst of fireflies
+        for(let i=0; i<5; i++) this.spawnFirefly(x, y);
+        
+        setTimeout(() => {
+            this.flashCore.style.transform = '';
+            this.flashCore.style.filter = '';
+        }, 150);
+    }
+    
+    spawnFirefly(x, y) {
+        if (!this.spotlightBeam) return;
+        
+        const p = document.createElement('div');
+        p.className = 'magic-particle';
+        
+        // Random properties for Firefly behavior
+        const offsetX = (Math.random() - 0.5) * 100;
+        const offsetY = (Math.random() - 0.5) * 100;
+        
+        p.style.setProperty('--x', (x + offsetX) + 'px');
+        p.style.setProperty('--y', (y + offsetY) + 'px');
+        
+        // Drift direction
+        const tx = (Math.random() - 0.5) * 50;
+        const ty = (Math.random() - 0.5) * 50 - 20; // Slight upward drift
+        
+        p.style.setProperty('--tx', tx + 'px');
+        p.style.setProperty('--ty', ty + 'px');
+        
+        // Firefly Colors (Yellow/Green/Gold)
+        const colors = ['#fcd34d', '#bef264', '#10b981']; 
+        p.style.setProperty('--color', colors[Math.floor(Math.random() * colors.length)]);
+        p.style.setProperty('--size', (Math.random() * 3 + 2) + 'px');
+        p.style.setProperty('--duration', (Math.random() * 1 + 1) + 's');
+        
+        this.spotlightBeam.appendChild(p);
+        
+        // Cleanup
+        setTimeout(() => p.remove(), 2000);
+    }
+    
+    render() {
+        if (this.isActive) {
+            // Smooth LERP movement
+            this.currentX += (this.targetX - this.currentX) * 0.1;
+            this.currentY += (this.targetY - this.currentY) * 0.1;
+            
+            // Update Spotlight Position CSS
+            this.gallery.style.setProperty('--spotlight-x', `${this.currentX}px`);
+            this.gallery.style.setProperty('--spotlight-y', `${this.currentY}px`);
+            
+            // Update Mobile Cursor Icon Position
+            if (this.flashlightCursor) {
+                this.flashlightCursor.style.left = `${this.currentX}px`;
+                this.flashlightCursor.style.top = `${this.currentY}px`;
+                
+                // Rotate based on movement (simulated angling)
+                const rotate = -45 + (this.targetX - this.currentX) * 0.2;
+                this.flashlightCursor.style.transform = `translate(-50%, -50%) rotate(${rotate}deg)`;
+            }
         }
+        
+        requestAnimationFrame(() => this.render());
     }
     
     toggle() {
         this.isActive = !this.isActive;
         
+        this.gallery.classList.toggle('spotlight-off', !this.isActive);
+        
+        if (this.toggleButton) {
+            this.toggleButton.classList.toggle('active', this.isActive);
+            const icon = this.toggleButton.querySelector('ion-icon');
+            if (icon) icon.name = this.isActive ? 'flashlight' : 'flashlight-outline';
+        }
+
+        if (this.flashlightCursor) {
+            this.flashlightCursor.classList.toggle('active', this.isActive);
+        }
+        
         if (this.isActive) {
-            this.activate();
-        } else {
-            this.deactivate();
+            // Request Gyroscope Permission (iOS 13+)
+            if (typeof DeviceOrientationEvent !== 'undefined' && 
+                typeof DeviceOrientationEvent.requestPermission === 'function') {
+                    DeviceOrientationEvent.requestPermission().catch(console.error);
+            }
+            this.triggerFlash(this.currentX, this.currentY);
         }
     }
-    
-    activate() {
-        this.gallery.classList.remove('spotlight-off');
-        this.toggleButton.innerHTML = '<ion-icon name="flashlight"></ion-icon>';
-        
-        // Cambiar color del botón
-        this.toggleButton.style.background = 'var(--gradient-gold)';
-        
-        // Actualizar posición inicial
-        this.updateSpotlight();
-    }
-    
-    deactivate() {
-        this.gallery.classList.add('spotlight-off');
-        this.toggleButton.innerHTML = '<ion-icon name="flashlight-outline"></ion-icon>';
-        
-        // Restaurar color del botón
-        this.toggleButton.style.background = 'var(--gradient-arcane)';
-    }
 }
 
-// Inicializar spotlight en galería
+// Initialize safely
 if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', () => {
-        new SpotlightGallery('.gallery-container');
-    });
+    document.addEventListener('DOMContentLoaded', () => new SpotlightGallery());
 } else {
-    new SpotlightGallery('.gallery-container');
+    new SpotlightGallery();
 }
-
-// También aplicar a otras galerías si existen
-window.addEventListener('load', () => {
-    const galleries = document.querySelectorAll('[data-spotlight="true"]');
-    galleries.forEach(gallery => {
-        new SpotlightGallery(`#${gallery.id}`);
-    });
-});

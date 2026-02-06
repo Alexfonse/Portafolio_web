@@ -82,12 +82,19 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             
             // Hide/show scroll hint
-            if (scrollHint) {
-                if (isActive) {
-                    scrollHint.classList.add('hidden');
-                } else {
-                    scrollHint.classList.remove('hidden');
-                }
+            
+            // Hide/show scroll hint AND Hero Title (Arcane UX)
+            const heroTitle = document.querySelector('.hero-title-container');
+            
+            if (isActive) {
+                scrollHint?.classList.add('hidden');
+                heroTitle?.style.setProperty('opacity', '0');
+                heroTitle?.style.setProperty('transition', 'opacity 0.3s ease');
+                heroTitle?.style.setProperty('pointer-events', 'none');
+            } else {
+                scrollHint?.classList.remove('hidden');
+                heroTitle?.style.setProperty('opacity', '1');
+                heroTitle?.style.setProperty('pointer-events', 'auto');
             }
         });
     }

@@ -1,0 +1,119 @@
+/* ========================================
+   🔦 INDEX SPOTLIGHT STYLES (Soft/Tech Version)
+   ======================================== */
+
+/* 1. The Soft Overlay (Mask Layer) */
+.index-darkness {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 9990;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.8s ease;
+    
+    /* Soft styling: Only dims slightly, doesn't hide everything */
+    background: rgba(5, 8, 22, 0.4); 
+    backdrop-filter: grayscale(30%) brightness(60%); /* Less aggressive than fotos.html */
+    -webkit-backdrop-filter: grayscale(30%) brightness(60%);
+    
+    /* The Reveal Hole */
+    mask-image: radial-gradient(
+        circle var(--light-radius, 300px) at var(--cursor-x, 50%) var(--cursor-y, 50%),
+        transparent 0%,    
+        rgba(0,0,0,0.2) 50%,
+        black 100%
+    );
+    -webkit-mask-image: radial-gradient(
+        circle var(--light-radius, 300px) at var(--cursor-x, 50%) var(--cursor-y, 50%),
+        transparent 0%,
+        rgba(0,0,0,0.2) 50%,
+        black 100%
+    );
+}
+
+body.flashlight-on .index-darkness {
+    opacity: 1;
+}
+
+/* 2. The Tech Cursor (Floating Orb) */
+.tech-orb-cursor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9995;
+    pointer-events: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--color-primary);
+    box-shadow: 
+        0 0 20px var(--color-primary),
+        0 0 60px var(--color-primary);
+    opacity: 0;
+    transform: translate(-50%, -50%);
+    transition: opacity 0.3s ease;
+    mix-blend-mode: screen;
+}
+
+body.flashlight-on .tech-orb-cursor {
+    opacity: 0.8;
+}
+
+/* 3. Tech Particles */
+.tech-particle {
+    position: fixed;
+    width: 4px;
+    height: 4px;
+    background: #fff;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9992;
+    opacity: 0;
+    animation: tech-float 1s ease-out forwards;
+}
+
+.tech-particle.gold { background: var(--arcane-gold); box-shadow: 0 0 5px var(--arcane-gold); }
+.tech-particle.cyan { background: var(--arcane-cyan); box-shadow: 0 0 5px var(--arcane-cyan); }
+
+@keyframes tech-float {
+    0% { transform: translate(0, 0) scale(0); opacity: 0; }
+    20% { opacity: 1; transform: translate(0, 0) scale(1); }
+    100% { transform: translate(var(--dx), var(--dy)) scale(0); opacity: 0; }
+}
+
+/* 4. Toggle Button (Distinct from fotos) */
+.index-light-toggle {
+    position: fixed;
+    bottom: 30px;
+    left: 30px; /* Left side to balance menu */
+    z-index: 10000;
+    background: rgba(5, 8, 22, 0.8);
+    border: 1px solid var(--text-color);
+    color: var(--text-color);
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1.2rem;
+}
+
+.index-light-toggle:hover {
+    background: var(--color-primary);
+    border-color: var(--color-primary);
+    box-shadow: 0 0 15px var(--color-primary);
+    color: #000;
+}
+
+.index-light-toggle.active {
+    background: var(--arcane-gold);
+    border-color: var(--arcane-gold);
+    color: #000;
+    box-shadow: 0 0 20px var(--arcane-gold);
+}

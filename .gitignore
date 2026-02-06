@@ -1,0 +1,25 @@
+# Heavy Media (Originals)
+*.jpg
+*.jpeg
+*.png
+*.JPG
+*.JPEG
+*.PNG
+
+# Allow WebP (Optimized)
+!*.webp
+# Allow SVG (Vectors)
+!*.svg
+
+# System / IDE
+.agent/
+brain/
+docs/
+.vscode/
+__pycache__/
+*.pyc
+node_modules/
+.DS_Store
+
+# Scripts / Instruments
+convert_to_webp.py

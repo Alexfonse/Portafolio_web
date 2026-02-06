@@ -1,0 +1,46 @@
+/* Blur Text Effect Styles */
+.blur-text-container {
+    overflow: hidden; /* Prevent vertical scroll during animation if needed */
+    display: inline-block; /* Or block depending on usage */
+}
+
+/* TEXT ANIMATION (Splits into words) */
+.blur-word {
+    display: inline-block;
+    opacity: 0;
+    filter: blur(10px);
+    transform: translateY(-20px); /* Default direction: top (comes from above) */
+    transition: opacity 0.6s cubic-bezier(0.2, 0.65, 0.3, 0.9),
+                filter 0.6s cubic-bezier(0.2, 0.65, 0.3, 0.9),
+                transform 0.6s cubic-bezier(0.2, 0.65, 0.3, 0.9);
+    margin-right: 0.25em; /* Space between words */
+    will-change: opacity, filter, transform;
+}
+
+.blur-word.visible {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0);
+}
+
+/* COMPONENT/IMAGE ANIMATION (No split) */
+.blur-load {
+    opacity: 0;
+    filter: blur(10px);
+    transform: translateY(30px); /* Rise from bottom */
+    transition: opacity 0.8s cubic-bezier(0.2, 0.65, 0.3, 0.9),
+                filter 0.8s cubic-bezier(0.2, 0.65, 0.3, 0.9),
+                transform 0.8s cubic-bezier(0.2, 0.65, 0.3, 0.9);
+    will-change: opacity, filter, transform;
+}
+
+.blur-load.visible {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0);
+}
+
+/* Optional directions */
+.blur-word.from-bottom {
+    transform: translateY(20px);
+}

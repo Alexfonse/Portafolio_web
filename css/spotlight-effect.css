@@ -1,188 +1,267 @@
 /* ========================================
-   SPOTLIGHT EFFECT - Efecto Linterna
-   Galería oscura iluminada por el mouse
+   🔦 RUINS EXPLORER STYLES
    ======================================== */
 
-/* === GALERÍA CON SPOTLIGHT === */
-.gallery-spotlight {
-  position: relative;
-  background: var(--bg-void);
-  padding: 40px 20px;
-}
-
-/* Capa oscura superpuesta */
-.gallery-spotlight::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: radial-gradient(
-    circle 150px at var(--mouse-x, 50%) var(--mouse-y, 50%),
-    transparent 0%,
-    rgba(0, 0, 0, 0.95) 100%
-  );
-  pointer-events: none;
-  z-index: 2;
-  transition: opacity 0.3s ease;
-}
-
-/* Modo normal (sin spotlight) */
-.gallery-spotlight.spotlight-off::before {
-  opacity: 0;
-}
-
-/* === TOGGLE BUTTON === */
-.spotlight-toggle {
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
-  z-index: 1000;
-  background: var(--gradient-arcane);
-  border: 2px solid var(--arcane-emerald);
-  border-radius: 50%;
-  width: 60px;
-  height: 60px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: var(--glow-green);
-}
-
-.spotlight-toggle:hover {
-  transform: scale(1.1) rotate(15deg);
-  box-shadow: var(--glow-poison);
-}
-
-.spotlight-toggle ion-icon {
-  font-size: 2rem;
-  color: var(--bg-void);
-}
-
-/* === IMÁGENES EN SPOTLIGHT === */
-.gallery-spotlight .gallery-item,
-.gallery-spotlight .foto {
-  position: relative;
-  z-index: 1;
-  transition: all 0.3s ease;
-}
-
-/* Brillo extra en área del spotlight */
-.gallery-spotlight .gallery-item:hover,
-.gallery-spotlight .foto:hover {
-  transform: scale(1.02);
-  filter: brightness(1.2) contrast(1.1);
-}
-
-/* === EFECTO DE LUZ ADICIONAL (Opcional) === */
-.spotlight-beam {
-  position: fixed;
-  width: 300px;
-  height: 300px;
-  border-radius: 50%;
-  background: radial-gradient(
-    circle,
-    rgba(16, 185, 129, 0.3) 0%,
-    rgba(16, 185, 129, 0.1) 40%,
-    transparent 70%
-  );
-  pointer-events: none;
-  z-index: 3;
-  transform: translate(-50%, -50%);
-  mix-blend-mode: screen;
-  transition: opacity 0.3s ease;
-}
-
-.spotlight-off .spotlight-beam {
-  opacity: 0;
-}
-
-/* Partículas flotantes en el haz de luz */
-.light-particle {
-  position: absolute;
-  width: 4px;
-  height: 4px;
-  background: var(--arcane-green);
-  border-radius: 50%;
-  opacity: 0.6;
-  animation: float-particle 3s ease-in-out infinite;
-  box-shadow: 0 0 10px var(--arcane-green);
-}
-
-@keyframes float-particle {
-  0%, 100% {
-    transform: translateY(0) translateX(0);
+/* 1. The Darkness Overlay (Mask Layer) */
+.arcane-darkness {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 9990; /* High but below Modal (10000) and Toggle(9999) */
+    pointer-events: none; /* Allows clicking through to elements below! */
     opacity: 0;
-  }
-  50% {
-    transform: translateY(-20px) translateX(10px);
-    opacity: 0.8;
-  }
+    transition: opacity 0.5s ease;
+    
+    /* The Magic: Backdrop Filter creates the grayscale/dark ruins look */
+    backdrop-filter: grayscale(100%) brightness(15%) contrast(120%);
+    -webkit-backdrop-filter: grayscale(100%) brightness(15%) contrast(120%);
+    
+    /* The Reveal: Mask Image punches a hole */
+    /* Transparent = Hole (Shows underlying color website)
+       Black = Mask (Applies backdrop filter) */
+    mask-image: radial-gradient(
+        circle var(--light-radius, 200px) at var(--cursor-x, 50%) var(--cursor-y, 50%),
+        transparent 10%,    /* Center is clear (True Color) */
+        rgba(0,0,0,0.5) 40%, /* Soft transition */
+        black 100%          /* Outside is dark (Filtered) */
+    );
+    -webkit-mask-image: radial-gradient(
+        circle var(--light-radius, 200px) at var(--cursor-x, 50%) var(--cursor-y, 50%),
+        transparent 10%,
+        rgba(0,0,0,0.5) 40%,
+        black 100%
+    );
+}
+
+body.lantern-mode .arcane-darkness {
+    opacity: 1;
+    pointer-events: auto; /* Capture clicks if we want to block interaction outside light? No, better allow interaction. */
+    pointer-events: none; /* Keep click-through */
+}
+
+/* Hide default cursor in lantern mode (but not aggressively on *) */
+body.lantern-mode {
+    cursor: none !important;
+}
+
+/* Ensure pointer shows on interactive elements */
+body.lantern-mode a,
+body.lantern-mode button,
+body.lantern-mode .clickable,
+body.lantern-mode .masonry-item,
+body.lantern-mode .lantern-toggle,
+body.lantern-mode label,
+body.lantern-mode input,
+body.lantern-mode select,
+body.lantern-mode textarea {
+    cursor: pointer !important;
+    pointer-events: auto !important;
+}
+
+/* Specific exemption for menu items just in case */
+body.lantern-mode .circular-menu a,
+body.lantern-mode .header-navbar a {
+    cursor: pointer !important;
+}
+
+body.lantern-mode .custom-cursor,
+body.lantern-mode .cursor-glow,
+body.lantern-mode .cursor-trail,
+body.lantern-mode .cursor-main {
+    opacity: 0 !important;
+    pointer-events: none !important;
+    display: none !important;
+}
+
+/* 2. The Vintage Lantern Cursor */
+.vintage-lantern {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9995;
+    pointer-events: none;
+    width: 60px;
+    height: 90px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    /* Center the lantern on the mouse coordinates */
+    margin-left: -30px; 
+    margin-top: -20px; /* Offset so the "light" comes from the bulb */
+    filter: drop-shadow(0 0 15px rgba(252, 211, 77, 0.4));
+}
+
+
+
+body.lantern-mode .vintage-lantern {
+    opacity: 1;
+}
+
+/* Inner Glow of Lantern */
+.lantern-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 200px;
+    height: 200px;
+    transform: translate(-50%, -50%);
+    background: radial-gradient(circle, rgba(252, 211, 77, 0.2) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    mix-blend-mode: screen;
+}
+
+/* 3. The Toggle Button */
+.lantern-toggle {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 100000; /* Max Z-Index */
+    background: rgba(10, 10, 10, 0.8);
+    border: 1px solid var(--color-primary, #00ff88);
+    color: var(--color-primary, #00ff88);
+    padding: 10px; /* Reduced padding for circle/compact look */
+    border-radius: 50px; /* Fully rounded */
+    backdrop-filter: blur(5px);
+    font-family: 'Cinzel', serif;
+    font-size: 0.9rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Center icon */
+    gap: 0; /* No gap needed if hiding text or compacting */
+    width: 50px; /* Fixed width for circle */
+    height: 50px; /* Fixed height for circle */
+    box-shadow: 0 0 15px rgba(0, 255, 136, 0.1);
+    transition: all 0.3s ease;
+}
+
+/* Hide text to make it compact? Or just style better. 
+   User said "button is too long", implies maybe just icon is better 
+   or text is taking too much space. Let's try icon only or compact. */
+.lantern-toggle .toggle-text {
+    display: none; /* Hide text for cleaner look */
+}
+
+/* Show text on hover for desktop? */
+.lantern-toggle:hover {
+    background: var(--color-primary, #00ff88);
+    color: #000;
+    box-shadow: 0 0 25px rgba(0, 255, 136, 0.4);
+    transform: scale(1.1);
+}
+
+
+
+.lantern-toggle.active {
+    background: #fcd34d; /* Amber for "On" */
+    border-color: #fcd34d;
+    color: #000;
+    box-shadow: 0 0 30px rgba(252, 211, 77, 0.5);
+}
+
+/* 4. Magical Fireflies */
+.lantern-firefly {
+    position: fixed;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9992;
+    opacity: 0;
+    animation: firefly-float 1.5s ease-out forwards;
+    box-shadow: 0 0 8px currentColor;
+}
+
+@keyframes firefly-float {
+    0% { transform: scale(0) translate(0, 0); opacity: 0; }
+    20% { opacity: 1; transform: scale(1) translate(0, 0); }
+    100% { transform: scale(0) translate(var(--drift-x, 0px), var(--drift-y, -30px)); opacity: 0; }
+}
+
+/* === ONBOARDING HINT === */
+.flashlight-hint {
+    position: fixed;
+    bottom: 90px; /* Above the toggle button (30px bottom + 50px height + 10px gap) */
+    right: 30px;
+    z-index: 100000;
+    
+    background: rgba(5, 8, 22, 0.9);
+    border: 1px solid var(--arcane-gold);
+    padding: 12px 20px;
+    border-radius: 12px;
+    
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    
+    box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+    backdrop-filter: blur(8px);
+    pointer-events: none; /* Let clicks pass through */
+    
+    animation: hintFadeIn 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards, hintBounce 2s infinite ease-in-out;
+}
+
+/* Arrow pointing down */
+.flashlight-hint::after {
+    content: '';
+    position: absolute;
+    bottom: -6px;
+    right: 20px; /* Align near center of button (which is right: 30px + width/2) */
+    width: 12px;
+    height: 12px;
+    background: rgba(5, 8, 22, 0.9);
+    border-right: 1px solid var(--arcane-gold);
+    border-bottom: 1px solid var(--arcane-gold);
+    transform: rotate(45deg);
+}
+
+.flashlight-hint.fade-out {
+    animation: hintFadeOut 0.5s ease-in forwards;
+}
+
+.flashlight-hint .hint-icon {
+    font-size: 1.2rem;
+    animation: pulse-light 2s infinite;
+}
+
+.flashlight-hint .hint-text {
+    color: #fff;
+    font-family: 'Cinzel', serif;
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+}
+
+@keyframes hintFadeIn {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes hintFadeOut {
+    0% { opacity: 1; transform: translateY(0); }
+    100% { opacity: 0; transform: translateY(-10px); }
+}
+
+@keyframes hintBounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
 }
 
 /* === RESPONSIVE === */
 @media (max-width: 768px) {
-  .gallery-spotlight::before {
-    background: radial-gradient(
-      circle 100px at var(--mouse-x, 50%) var(--mouse-y, 50%),
-      transparent 0%,
-      rgba(0, 0, 0, 0.95) 100%
-    );
-  }
-  
-  .spotlight-beam {
-    width: 200px;
-    height: 200px;
-  }
-  
-  .spotlight-toggle {
-    width: 50px;
-    height: 50px;
-    bottom: 20px;
-    right: 20px;
-  }
-  
-  .spotlight-toggle ion-icon {
-    font-size: 1.5rem;
-  }
-}
-
-/* === ACCESSIBILITY === */
-@media (prefers-reduced-motion: reduce) {
-  .gallery-spotlight::before {
-    transition: none;
-  }
-  
-  .spotlight-beam,
-  .light-particle {
-    animation: none;
-  }
-}
-
-/* === HINT TEXT === */
-.spotlight-hint {
-  position: fixed;
-  top: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: rgba(16, 185, 129, 0.1);
-  backdrop-filter: blur(10px);
-  border: 1px solid var(--arcane-emerald);
-  border-radius: 10px;
-  padding: 10px 20px;
-  color: var(--arcane-green);
-  font-family: var(--font-body);
-  font-size: var(--text-sm);
-  z-index: 999;
-  opacity: 0;
-  animation: hintFade 4s ease-in-out;
-  pointer-events: none;
-}
-
-@keyframes hintFade {
-  0%, 100% { opacity: 0; }
-  10%, 90% { opacity: 1; }
+    .flashlight-hint {
+        bottom: 90px;
+        right: 50%;
+        transform: translateX(50%); /* Correct center alignment logic needs override */
+        left: auto;
+        /* Actually simpler to just position responsive */
+        width: max-content;
+        max-width: 90vw;
+        right: 20px; /* Align right on mobile too, cleaner near button */
+    }
+    
+    .flashlight-hint .hint-text {
+        font-size: 0.8rem;
+    }
 }

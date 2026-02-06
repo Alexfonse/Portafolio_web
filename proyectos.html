@@ -2,249 +2,614 @@
 <html lang="es">
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Proyectos</title>
-  <link rel="icon" href="assets/img/flowers.png" type="image/x-icon" />
-  <link rel="stylesheet" href="css/imports.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Proyectos | Estudio Paradox</title>
+    <meta name="description" content="Casos de estudio y proyectos destacados de Jhon Fonseca: Desarrollo Web, Automatización y Producción Multimedia.">
+    <meta name="icon" href="assets/img/flowers.png" type="image/x-icon" />
+    
+    <!-- ⚡ Resource Hints for Performance -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
-  <link rel="stylesheet" href="css/style.base.css">
-  <link rel="stylesheet" href="css/main.css">
-  <link rel="stylesheet" href="css/header-navbar.css">
-  <link rel="stylesheet" href="css/hamburger-menu.css">
-  <link rel="stylesheet" href="css/overflow-fix.css">
-  <link rel="stylesheet" href="css/interactive-enhancements.css">
-  <link rel="stylesheet" href="css/magic-orb-menu.css">
-  <link rel="stylesheet" href="css/modal-system.css">
-  <link rel="stylesheet" href="css/bootstrap.min.css">
-    <!-- Fonts managed by style.css -->
+    <link rel="preconnect" href="https://unpkg.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- ⚡ CRITICAL CSS (Inline for First Paint) -->
+    <!-- Async CSS Loading for Menu (Critical Fix) -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- ⚡ LEGACY CSS RESTORED (Matched to Index.html for parity) -->
+    <link rel="stylesheet" href="css/imports.css">
+    <link rel="stylesheet" href="css/style.base.css">
+    <link rel="stylesheet" href="css/main.css">
+
+    <!-- ⚡ UNIFIED STYLES (New Arcane Theme) -->
+    <link rel="stylesheet" href="css/unified-styles.css">
+    <link rel="stylesheet" href="css/arcane-flow.css">
+    
+    <!-- Components -->
+    <link rel="stylesheet" href="css/hamburger-menu.css">
+    <link rel="stylesheet" href="css/arcane-loader.css">
+    <link rel="stylesheet" href="css/modal-system.css">
+    <link rel="stylesheet" href="css/gallery-enhancements.css">
+    <link rel="stylesheet" href="css/masonry-grid.css">
+    <link rel="stylesheet" href="css/floating-particles.css">
+    <link rel="stylesheet" href="css/scroll-effects.css">
+    <link rel="stylesheet" href="css/custom-cursor.css">
+    <link rel="stylesheet" href="css/magical-typography.css">
+    <link rel="stylesheet" href="css/arcane-palette.css">
+    <link rel="stylesheet" href="css/blur-text.css"> <!-- NEW BLUR EFFECT -->
+
+    <style>
+        /* ARCANE THEME OVERRIDES - Background Synchronization */
+        body {
+            background-color: #02040a; /* Deep Bio-Void */
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(16, 185, 129, 0.05) 0%, transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(0, 217, 255, 0.05) 0%, transparent 25%);
+            background-attachment: fixed; /* Parallax feel */
+        }
+        
+        /* FIX: Remove harsh gradient cuts between sections */
+        .gallery-section, 
+        .section-creative, 
+        .contenedor_4,
+        .contenedor_5 {
+            background: transparent !important; /* Let body bg show through */
+            box-shadow: none !important;
+        }
+
+        /* Update glass panel to ensure readability against dynamic background */
+        .glass-panel {
+            background: rgba(8, 12, 20, 0.75);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+    </style>
+    
+    <!-- ⚡ FAILSAFE: Force Loader Hide -->
+    <script>
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                const loader = document.querySelector('.arcane-loader');
+                if (loader) loader.style.display = 'none';
+            }, 3000); // 3s fallback
+        });
+    </script>
 </head>
 
 <body>
 
-  <div class="contenedor_1">
-    <!--video-->
-    <div class="banner">
-      <video autoplay muted loop class="bgvideo">
-        <source src="assets/video/fondo_1.webm" type="video/webm">
-      </video>
+    <!-- ⚡ ARCANE PAGE LOADER -->
+    <div class="arcane-loader">
+        <div class="loader-logo">
+            <img src="assets/img/logo_blanco.svg" alt="Logo Jhon Fonseca">
+        </div>
+        <div class="rune-circle">
+            <svg viewBox="0 0 200 200">
+                <circle cx="100" cy="100" r="90" />
+            </svg>
+            <div class="inner-glow"></div>
+        </div>
+        <div class="loading-text">CARGANDO PROYECTOS...</div>
+        <div class="progress-rune"></div>
     </div>
-    <!--header-->
-    <header>
-      <div class="logo">
-        <img src="assets/img/logo_blanco.svg" alt="Logo Marca de Agua">
-      </div>
+
+    <!-- HEADER NAVBAR (Shows on scroll) -->
+    <header class="header-navbar hidden">
+        <div class="header-container">
+            <div class="header-content">
+                <a href="index.html" class="header-logo logo-link">
+                    <img src="assets/img/logo_blanco.svg" alt="Estudio Paradox">
+                </a>
+                
+                <button class="mobile-menu-toggle" aria-label="Abrir Menú">
+                    <span>MENÚ</span>
+                    <ion-icon name="menu-outline"></ion-icon>
+                </button>
+
+                <nav class="header-nav main-nav">
+                    <a href="index.html" class="nav-link nav-item">Inicio</a>
+                    <a href="proyectos.html" class="nav-link nav-item active">Proyectos</a>
+                    <a href="fotos.html" class="nav-link nav-item">Fotografías</a>
+                    <a href="videos.html" class="nav-link nav-item">Videos</a>
+                </nav>
+            </div>
+        </div>
     </header>
-    <!--Menu-->
-    <!--Menu-->
-    <nav class="menu-container">
-        <ul class="menu fixed-menu">
-            <div class="toggle">
+
+    <!-- HERO SECTION -->
+    <!-- ============================= -->
+    <!-- Updated: Overflow visible to allow menu expansion, increased height for breathing room -->
+    <!-- Updated: Standardized Hero Structure to match Index.html -->
+    <div class="contenedor_1 hero-internal" style="height: 85vh; min-height: 600px;">
+        <!-- Banner Video -->
+        <div class="banner">
+            <video autoplay muted loop playsinline class="bgvideo" style="width: 100%; height: 100%; object-fit: cover;">
+                <source src="assets/video/fondo_1.webm" type="video/webm">
+            </video>
+            <div class="overlay-gradient" style="background: linear-gradient(180deg, rgba(5,8,22,0.3) 0%, rgba(5,8,22,0.6) 60%, var(--bg-void) 100%);"></div>
+        </div>
+        
+        <!-- Arcane Circular Menu (Standardized - Absolute Center) -->
+        <nav class="circular-menu" style="top: 60%;">
+            <button class="menu-toggle" aria-label="Toggle Menu">
                 <ion-icon name="add-outline"></ion-icon>
-            </div>
-            <li style="--i:0">
-                <a href="index.html" data-label="Inicio">
-                    <ion-icon class="icon" name="home-outline"></ion-icon>
-                    <span class="label">Inicio</span>
-                </a>
-            </li>
-            <li style="--i:1">
-                <a href="fotos.html" data-label="Fotos">
-                    <ion-icon class="icon" name="camera-outline"></ion-icon>
-                    <span class="label">Fotos</span>
-                </a>
-            </li>
-            <li style="--i:2">
-                <a href="videos.html" data-label="Videos">
-                    <ion-icon class="icon" name="videocam-outline"></ion-icon>
-                    <span class="label">Videos</span>
-                </a>
-            </li>
-            <li style="--i:3" class="active">
-                <a href="proyectos.html" data-label="Proyectos">
-                    <ion-icon class="icon" name="briefcase-outline"></ion-icon>
-                    <span class="label">Proyectos</span>
-                </a>
-            </li>
-            <li style="--i:4">
-                <a href="perfil.html" data-label="Perfil">
-                    <ion-icon class="icon" name="person-outline"></ion-icon>
-                    <span class="label">Perfil</span>
-                </a>
-            </li>
-            <li style="--i:5">
-                <a href="flower.html" data-label="Flores">
-                    <ion-icon class="icon" name="flower-outline"></ion-icon>
-                    <span class="label">Flores</span>
-                </a>
-            </li>
-            <li style="--i:6">
-                <a href="contacto.html" data-label="Contacto">
-                    <ion-icon class="icon" name="mail-outline"></ion-icon>
-                    <span class="label">Contacto</span>
-                </a>
-            </li>
+            </button>
+            <div class="menu-text-label">MENÚ</div>
             
-            <!-- Indicator -->
-            <div class="indicator"></div>
-        </ul>
-    </nav>
+            <ul class="menu-items">
+                <li class="menu_item" style="--angle: 270deg;">
+                    <a href="index.html" aria-label="Inicio">
+                        <ion-icon name="home-outline"></ion-icon>
+                        <span class="menu-label">Inicio</span>
+                    </a>
+                </li>
+                <li class="menu_item" style="--angle: 0deg;">
+                    <a href="proyectos.html" aria-label="Proyectos">
+                        <ion-icon name="briefcase-outline"></ion-icon>
+                        <span class="menu-label">Proyectos</span>
+                    </a>
+                </li>
+                <li class="menu_item" style="--angle: 90deg;">
+                    <a href="fotos.html" aria-label="Fotografías">
+                        <ion-icon name="camera-outline"></ion-icon>
+                        <span class="menu-label">Fotos</span>
+                    </a>
+                </li>
+                <li class="menu_item" style="--angle: 180deg;">
+                    <a href="videos.html" aria-label="Videos">
+                        <ion-icon name="videocam-outline"></ion-icon>
+                        <span class="menu-label">Videos</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
 
-
-    <div class="contenedor_6">
-      <div class="titulo_1">
-        <h4 class="elementor-heading-title elementor-size-default">Casos de Estudio</h4>
-        <h1 class="elementor-heading-title elementor-size-default ">Proyectos Destacados</h1>
-      </div>
-    </div>
-  </div>
-
-  <div class="contenedor_7" style="background: transparent; position: relative; z-index: 10; padding: 50px 0;">
-    <div class="row">
-        <div class="col-12 text-center mb-5">
-            <h2 class="neon-text mb-3">Nuestra Galería de Éxitos</h2>
-            <p style="color: #ccc; font-size: 1.1em;">Explora cómo transformamos ideas en experiencias visuales.</p>
+        <!-- Hero Title (Restored above menu) -->
+        <!-- Hero Title (Restored above menu) -->
+        <div class="container text-center hero-title-container" style="position: absolute; top: 12% !important; left: 0; right: 0; z-index: 5; pointer-events: none; transition: opacity 0.3s ease;">
+            <h4 class="text-gradient mb-2 blur-text" data-delay="30" style="letter-spacing: 4px; font-size: 1.2rem;">PORTAFOLIO</h4>
+            <h1 class="neon-text" style="font-size: clamp(3rem, 6vw, 5rem);">Proyectos <span class="text-gradient">Destacados</span></h1>
+            <div style="width: 80px; height: 1px; background: var(--color-primary); margin: 20px auto; box-shadow: 0 0 10px var(--color-primary);"></div>
+        </div>
+        
+        <!-- Scroll Hint -->
+        <div class="scroll-hint" style="position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%); z-index: 10; animation: bounce 2s infinite;">
+            <ion-icon name="chevron-down-outline" style="font-size: 2rem; color: var(--color-primary);"></ion-icon>
         </div>
     </div>
+
+    <!-- ============================= -->
+    <!-- GALERÍA DE PROYECTOS -->
+    <!-- ============================= -->
+    <section class="lazy-section gallery-section" style="padding: 80px 20px;">
+        <div class="container">
+            <!-- TITULO PRINCIPAL (Moved back to Hero) -->
+
+            <div class="row mb-5 text-center">
+                <div class="col-12">
+                     <h2 class="neon-text blur-text" data-delay="50" style="font-size: 2.5rem; margin-bottom: 20px;">Nuestra Galería de Éxitos</h2>
+                     <p class="blur-text" data-delay="20" style="color: var(--text-secondary); max-width: 600px; margin: 0 auto; font-size: 1.1em;">
+                        Explora cómo transformamos ideas en experiencias visuales y funcionales.
+                     </p>
+                </div>
+            </div>
+            
+            <div class="row g-5"> <!-- Increased gap for breathing room -->
+                
+                <!-- PROYECTO 1: ECOS DE UNA CIUDAD (Feature Layout - Priority #1) -->
+                <div class="col-12">
+                     <div class="glass-panel p-0 overflow-hidden" style="border: 1px solid var(--arcane-emerald); box-shadow: 0 0 30px rgba(16, 185, 129, 0.15);">
+                        <div class="row g-0">
+                            <!-- Visual Column (60% - Left for alternating flow) -->
+                            <div class="col-lg-7 p-0" style="background: rgba(5, 8, 22, 0.6); position: relative; min-height: 400px;">
+                                <!-- Background Video/Image Container -->
+                                <div style="width: 100%; height: 100%; overflow: hidden; position: relative;">
+                                    <img src="assets/img/Macbook-Air-alexfonse.github.io.webp" alt="Ecos de una Ciudad 3D" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.7s ease;">
+                                    <div class="project-overlay" style="background: linear-gradient(90deg, rgba(5,8,22,0.2) 0%, rgba(5,8,22,1) 100%);"></div>
+                                </div>
+                                <div style="position: absolute; bottom: 30px; left: 30px; z-index: 2;">
+                                    <span class="badge-tech" style="background: rgba(0,0,0,0.7); border: 1px solid var(--color-primary); color: var(--color-primary);">Three.js</span>
+                                    <span class="badge-tech" style="background: rgba(0,0,0,0.7); border: 1px solid #fff; color: #fff;">WebGL</span>
+                                </div>
+                            </div>
+
+                            <!-- Info Column (40% - Right) -->
+                            <div class="col-lg-5 p-5 d-flex flex-column justify-content-center" style="background: rgba(10, 14, 10, 0.9);">
+                                <div class="mb-3">
+                                    <span class="badge-tech" style="background: var(--arcane-gold); color: #000; font-weight: bold;">SHOWCASE</span>
+                                </div>
+                                
+                                <h3 class="text-gradient mb-3 text-balance" style="font-size: clamp(2rem, 3.5vw, 2.5rem); line-height: 1.1;">
+                                    Ecos de una Ciudad
+                                </h3>
+                                <p style="color: var(--arcane-emerald); font-weight: 500; font-size: 1.1rem; margin-bottom: 1.5rem;">
+                                    Historia Interactiva & Experiencia 3D Web
+                                </p>
+                                
+                                <div class="mb-4">
+                                    <h5 class="neon-text mb-2" style="font-size: 1rem; font-weight: 600;">El Desafío</h5>
+                                    <p style="font-size: 0.95rem; line-height: 1.7; color: var(--text-secondary);">
+                                        Narrar la historia de Bogotá no a través de libros, sino de una vivencia. El reto fue optimizar un entorno 3D pesado para que corriera fluido en navegadores web sin sacrificar calidad visual.
+                                    </p>
+                                </div>
+                                
+                                <div class="mt-auto">
+                                    <a href="https://github.com/Alexfonse/Ecos_de_una_ciudad" target="_blank" class="btn btn-outline-light rounded-pill px-4 py-2 me-3 group-hover-btn">
+                                        <ion-icon name="logo-github" class="me-2"></ion-icon> Código
+                                    </a>
+                                    <a href="#" class="btn btn-primary rounded-pill px-4 py-2" style="background: var(--color-primary); border: none; color: #000; font-weight: 600;">
+                                        <ion-icon name="play-circle-outline" class="me-2"></ion-icon> Ver Demo
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PROYECTO 2: AVIATUR (Feature Layout - Priority #2) -->
+                <div class="col-12">
+                    <div class="glass-panel p-0 overflow-hidden" style="border: 1px solid var(--color-primary); box-shadow: 0 0 30px rgba(16, 185, 129, 0.1);">
+                        <div class="row g-0"> 
+                            <!-- Info Column (Full Width - Text & Logic Tree) -->
+                            <div class="col-12 p-5 d-flex flex-column justify-content-center" style="background: rgba(10, 14, 10, 0.8);">
+                                <div class="mb-3 text-center">
+                                    <span class="badge-tech" style="background: var(--color-primary); color: #000; font-weight: bold;">SISTEMA DE GESTIÓN</span>
+                                </div>
+                                
+                                <h3 class="text-gradient mb-4 text-center" style="font-size: clamp(1.8rem, 3vw, 2.2rem); line-height: 1.2;">
+                                    Gestión Documental & Automatización
+                                </h3>
+                                
+                                <div class="row">
+                                    <!-- Left: Context & Problem -->
+                                    <div class="col-lg-6 mb-4">
+                                        <h5 class="neon-text mb-2" style="font-size: 1rem; font-weight: 600;">La Problemática (Brecha de Trazabilidad)</h5>
+                                        <p style="font-size: 0.95rem; line-height: 1.7; color: var(--text-secondary);">
+                                            Pese a contar con control de versiones, el sistema anterior fallaba en detectar <strong>nuevos ingresos o cambios de cargo</strong>. Esto rompía la cadena de información, obligando a procesos manuales sin trazabilidad para asegurar que cada usuario tuviera el documento correcto.
+                                        </p>
+                                    </div>
+                                    
+                                    <!-- Right: Solution Summary -->
+                                    <div class="col-lg-6 mb-4">
+                                        <h5 class="neon-text mb-2" style="font-size: 1rem; font-weight: 600;">La Solución: Lógica Viva</h5>
+                                        <p style="font-size: 0.95rem; line-height: 1.7; color: var(--text-secondary);">
+                                            Automatización inteligente que sincroniza Power Apps y SharePoint para gestionar el ciclo de vida completo. Detecta cambios en el directorio activo y notifica automáticamente.
+                                        </p>
+                                    </div>
+                                </div>
+                                    
+                                    <!-- ZOOM WRAPPER & CONTROLS -->
+                                    <div class="flow-viewport-wrapper" style="position: relative; height: 600px; padding: 0; overflow: hidden; background: rgba(5, 8, 22, 0.4); border-radius: 12px; border: 1px solid rgba(255,255,255,0.1);">
+                                        
+                                        <!-- Controls -->
+                                        <div class="flow-controls" style="position: absolute; bottom: 20px; right: 20px; z-index: 100; display: flex; gap: 10px;">
+                                            <button onclick="flowZoom(-0.1)" class="btn-flow-control" title="Zoom Out"><ion-icon name="remove-outline"></ion-icon></button>
+                                            <button onclick="flowReset()" class="btn-flow-control" title="Reset View"><ion-icon name="scan-outline"></ion-icon></button>
+                                            <button onclick="flowZoom(0.1)" class="btn-flow-control" title="Zoom In"><ion-icon name="add-outline"></ion-icon></button>
+                                        </div>
+
+                                        <!-- Pan/Zoom Content Area -->
+                                        <div id="arcane-flow-content" class="arcane-flow-container" style="transform-origin: top center; transition: transform 0.1s linear; cursor: grab;">
+                                            
+                                            <!-- PHASE 1: INICIO Y CONFIGURACIÓN -->
+                                            <div class="phase-group">
+                                                <div class="phase-label">1. Inicio & Configuración</div>
+                                                
+                                                <div class="flow-node node-start">
+                                                    <strong>Subida</strong><br>
+                                                    <span style="font-size:0.9em; font-weight:400;">Usuario sube archivo (Power Apps)</span>
+                                                </div>
+                                                
+                                                <div class="flow-node node-process">Clasificación Automática</div>
+                                                
+                                                <div class="flow-node node-process">
+                                                    Asignación de Roles
+                                                    <div style="font-size:0.7em; color:#888; margin-top:4px;">(Verificador & Aprobador)</div>
+                                                </div>
+                                                
+                                                <div class="flow-node node-process">Definición de Distribución</div>
+                                                
+                                                <div class="flow-node node-process" style="position:relative;">
+                                                    Autocorrección
+                                                    <div style="font-size:0.7em; color:#888; margin-top:4px;">(Usuario revisa info)</div>
+                                                </div>
+                                                
+                                                <div class="flow-node node-decision">
+                                                    <span>¿Info Correcta?</span>
+                                                    
+                                                    <!-- Decision Buttons -->
+                                                    <div class="decision-buttons">
+                                                        <button class="btn-decision btn-yes" data-next="phase-2">
+                                                            <ion-icon name="checkmark-circle"></ion-icon> SÍ
+                                                        </button>
+                                                        <button class="btn-decision btn-no" data-loop="true">
+                                                            <ion-icon name="refresh-circle"></ion-icon> Corregir
+                                                        </button>
+                                                    </div>
+                                                    
+                                                    <!-- Visual Loop Back Arrow -->
+                                                    <div class="flow-loop-indicator">
+                                                        <span>CORREGIR</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <!-- PHASE 2: PROCESAMIENTO SISTEMA -->
+                                            <div class="phase-group">
+                                                <div class="phase-label">2. Procesamiento Sistema</div>
+
+                                                <div class="flow-node node-process">
+                                                    <strong>Carga</strong><br>
+                                                    <span style="font-size:0.9em; font-weight:400;">Validación Técnica</span>
+                                                </div>
+                                                
+                                                <div class="flow-node node-process">
+                                                    <strong>Estructura</strong><br>
+                                                    <span style="font-size:0.9em; font-weight:400;">Creación Carpetas SharePoint</span>
+                                                </div>
+                                                
+                                                <div class="flow-node node-process">
+                                                    <strong>Estado</strong><br>
+                                                    <span style="font-size:0.9em; font-weight:400;">Asignación "En Revisión"</span>
+                                                </div>
+                                                
+                                                <!-- Auto-Advance Trigger Button -->
+                                                <button class="btn-flow-next" onclick="activateNextPhase(this)">
+                                                    <span>Proceso Completado</span>
+                                                    <ion-icon name="arrow-down-circle"></ion-icon>
+                                                </button>
+
+                                            </div>
+
+                                            <!-- PHASE 3: CICLO APROBACIONES -->
+                                            <div class="phase-group">
+                                                <div class="phase-label">3. Ciclo Aprobaciones (Teams)</div>
+
+                                                <div class="flow-node node-process">
+                                                    <strong>Paso 1: Verificación</strong><br>
+                                                    <span style="font-size:0.9em; font-weight:400;">(Tarjeta en Teams)</span>
+                                                </div>
+                                                
+                                                <div class="flow-node node-decision">
+                                                    <span>¿Verificador Aprueba?</span>
+                                                    
+                                                    <!-- Decision Buttons -->
+                                                    <div class="decision-buttons">
+                                                        <button class="btn-decision btn-yes" data-branch="verifier-yes">
+                                                            <ion-icon name="checkmark-circle"></ion-icon> SÍ
+                                                        </button>
+                                                        <button class="btn-decision btn-no" data-branch="verifier-no">
+                                                            <ion-icon name="close-circle"></ion-icon> NO
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="flow-branch-row">
+                                                    <!-- SÍ: Va al Aprobador -->
+                                                    <div class="branch-column">
+                                                        <div class="flow-label label-yes">SÍ</div>
+                                                        
+                                                        <div class="flow-node node-process" style="margin-top: 20px;">
+                                                            <strong>Paso 2: Aprobación</strong><br>
+                                                            <span style="font-size:0.9em; font-weight:400;">(Aprobador Final)</span>
+                                                        </div>
+
+                                                        <div class="flow-node node-decision">
+                                                            <span>¿Aprobador Autoriza?</span>
+                                                            
+                                                            <!-- Decision Buttons -->
+                                                            <div class="decision-buttons">
+                                                                <button class="btn-decision btn-yes" data-branch="approver-yes">
+                                                                    <ion-icon name="checkmark-circle"></ion-icon> SÍ
+                                                                </button>
+                                                                <button class="btn-decision btn-no" data-branch="approver-no">
+                                                                    <ion-icon name="close-circle"></ion-icon> NO
+                                                                </button>
+                                                            </div>
+                                                        </div>
+
+                                                        <!-- Nested Branch for Approver -->
+                                                        <div class="flow-branch-row" style="margin-top:0;">
+                                                            <div class="branch-column">
+                                                                <div class="flow-label label-yes">SÍ</div>
+                                                                <div class="flow-node node-process" style="border-style:dashed; opacity:0.8;">
+                                                                    Aprobado Oficialmente
+                                                                </div>
+                                                            </div>
+                                                            <div class="branch-column">
+                                                                <div class="flow-label label-no">NO</div>
+                                                                <div class="flow-node node-rejection" style="font-size:0.8rem;">Rechazo</div>
+                                                                <div class="node-stop"><ion-icon name="close-outline"></ion-icon></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    <!-- NO: Verificador Rechaza -->
+                                                    <div class="branch-column">
+                                                        <div class="flow-label label-no">NO</div>
+                                                        <div class="flow-node node-rejection">Ruta de Rechazo</div>
+                                                        <div style="font-size:0.7rem; color:#ef4444; max-width:150px; text-align:center; margin-top:5px;">Notificación & Fin</div>
+                                                        <div class="node-stop" title="Fin del Proceso">
+                                                            <ion-icon name="close-outline"></ion-icon>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <!-- PHASE 5: CONVERSIÓN Y PUBLICACIÓN -->
+                                            <div class="phase-group">
+                                                <div class="phase-label">5. Conversión y Publicación</div>
+
+                                                <div class="flow-node node-process">
+                                                    <strong>Validación Formato</strong>
+                                                </div>
+
+                                                <div class="flow-node node-decision">
+                                                    <span>¿Es Word?</span>
+                                                </div>
+                                                
+                                                <div class="flow-branch-row">
+                                                    <div class="branch-column">
+                                                        <div class="flow-label label-yes">SÍ</div>
+                                                        <div class="flow-node node-process">
+                                                            <ion-icon name="document-text-outline" class="pdf-icon"></ion-icon>
+                                                            Convertir a PDF
+                                                        </div>
+                                                    </div>
+                                                    <div class="branch-column">
+                                                        <div class="flow-label label-no">NO</div>
+                                                        <div class="flow-node node-process">
+                                                            <ion-icon name="document-outline" class="word-icon"></ion-icon>
+                                                            Mantener Original
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="flow-node node-process" style="margin-top:30px;">
+                                                    Copia a Biblioteca Consulta
+                                                </div>
+                                                
+                                                <div class="flow-node node-end">
+                                                    <ion-icon name="checkmark-done-circle-outline" style="font-size:1.2rem; margin-right:5px; vertical-align:middle;"></ion-icon>
+                                                    Estado Final: Listo
+                                                </div>
+                                            </div>
+                                            
+                                        </div> <!-- End flow container -->
+                                    </div> <!-- End viewport wrapper -->
+                                    
+                                    <div style="text-align: center; font-size: 0.8rem; color: #666; margin-top: 10px;">
+                                        <ion-icon name="move-outline"></ion-icon>
+                                        Arrastra para mover • Scroll para zoom
+                                    </div>
+                                
+                                <div class="mt-4 text-center">
+                                    <div class="d-flex flex-wrap gap-2 justify-content-center">
+                                        <span class="badge-tech">Power Apps</span>
+                                        <span class="badge-tech">Power Automate</span>
+                                        <span class="badge-tech">SharePoint</span>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+
+                <!-- PROYECTO 3: SENARTE -->
+                <div class="col-md-6">
+                    <div class="glass-panel h-100 p-0 overflow-hidden project-card d-flex flex-column">
+                        <div class="project-thumbnail" style="height: 300px; overflow: hidden; position: relative;">
+                            <img src="assets/img/fotomontaje_9.webp" alt="Proyecto Senarte" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s;">
+                            <div class="project-overlay d-flex align-items-end p-4">
+                                <span class="badge-tech">Campaña Visual</span>
+                            </div>
+                        </div>
+                        <div class="p-4 d-flex flex-column flex-grow-1">
+                            <h3 class="text-gradient mb-2">Fotografiándome - Senarte</h3>
+                            <p style="color: var(--color-accent); font-weight: 500; font-size: 0.9rem; margin-bottom: 1rem;">Ganador Concurso Regional 2024</p>
+                            
+                            <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6; flex-grow: 1;">
+                                Campaña visual enfocada en celebrar la diversidad cultural. Dirección de arte y posproducción digital para crear una narrativa visual impactante que resonó con la audiencia y el jurado.
+                            </p>
+                            
+                            <div class="d-flex flex-wrap gap-2 mb-4">
+                                <span class="badge-tech">Fotografía</span>
+                                <span class="badge-tech">Visual Storytelling</span>
+                                <span class="badge-tech">Edición Avanzada</span>
+                            </div>
+                            
+                            <a href="fotos.html" class="btn btn-outline-light w-100 rounded-pill">
+                                <ion-icon name="images-outline" class="me-2"></ion-icon> Ver Galería Completa
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================= -->
+    <!-- CTA SECTION -->
+    <!-- ============================= -->
+    <section class="lazy-section section-creative" style="padding: 100px 20px 100px; position: relative;">
+        <div class="container text-center">
+            
+            <!-- Título CTA -->
+            <h2 class="neon-text mb-3" style="font-size: clamp(2.2rem, 5vw, 3.5rem);">
+                ¿Deseas que participe en tu proyecto?
+            </h2>
+            
+            <!-- Subtítulo -->
+            <p style="color: #10B981; font-size: clamp(1.1rem, 2.5vw, 1.3rem); max-width: 700px; margin: 0 auto 50px; line-height: 1.7; opacity: 0.95;">
+                Trabajemos juntos para crear experiencias digitales que <span class="text-gradient">destaquen y generen impacto</span>.
+            </p>
+            
+            <!-- Botones de Redes Sociales -->
+            <div class="d-flex flex-wrap justify-content-center gap-3 mb-4">
+                
+                <!-- LinkedIn -->
+                <a href="https://www.linkedin.com/in/jhon-fonseca-paradox" target="_blank" rel="noopener" class="btn btn-lg social-btn" style="background: linear-gradient(135deg, #0077B5, #005582); color: white; border: none; padding: 15px 35px; border-radius: 50px; font-weight: 600; transition: all 0.3s ease;" aria-label="Visitar perfil de LinkedIn">
+                    <ion-icon name="logo-linkedin" style="font-size: 1.5rem; vertical-align: middle; margin-right: 10px;"></ion-icon>
+                    LinkedIn
+                </a>
+                
+                <!-- GitHub -->
+                <a href="https://github.com/Alexfonse" target="_blank" rel="noopener" class="btn btn-lg social-btn" style="background: linear-gradient(135deg, #333, #000); color: white; border: none; padding: 15px 35px; border-radius: 50px; font-weight: 600; transition: all 0.3s ease;" aria-label="Visitar perfil de GitHub">
+                    <ion-icon name="logo-github" style="font-size: 1.5rem; vertical-align: middle; margin-right: 10px;"></ion-icon>
+                    GitHub
+                </a>
+                
+                <!-- Email -->
+                <a href="mailto:martinezharry2016@gmail.com" class="btn btn-lg social-btn" style="background: linear-gradient(135deg, var(--color-primary), #00B8A3); color: #000; border: none; padding: 15px 35px; border-radius: 50px; font-weight: 600; transition: all 0.3s ease;" aria-label="Enviar email">
+                    <ion-icon name="mail-outline" style="font-size: 1.5rem; vertical-align: middle; margin-right: 10px;"></ion-icon>
+                    Email
+                </a>
+                
+            </div>
+            
+            <!-- Ubicación y Disponibilidad -->
+            <p style="color: #999; font-size: 0.95rem; margin-top: 30px;">
+                <ion-icon name="location-outline" style="margin-right: 5px;"></ion-icon> Bogotá, Colombia
+                <span style="margin: 0 15px;">•</span>
+                <ion-icon name="briefcase-outline" style="margin-right: 5px;"></ion-icon> Disponible para trabajo Remoto / Híbrido
+            </p>
+            
+        </div>
+    </section>
+
+    <!-- ============================= -->
+    <!-- SCRIPTS -->
+    <!-- ============================= -->
     
-    <div class="container">
-        <div class="row g-4">
-            <!-- Proyecto 1: Aviatur (FLAGSHIP) - Estructura 40/60 -->
-            <div class="col-12 mb-5">
-                <div class="glass-panel p-0 overflow-hidden" style="border: 2px solid var(--color-primary);">
-                    <div class="row g-0">
-                        <!-- COLUMNA IZQUI ERDA: EXPLICACIÓN (40%) -->
-                        <div class="col-lg-5 p-5" style="background: rgba(10, 14, 10, 0.6);">
-                            <div class="mb-3">
-                                <span class="badge" style="background: var(--color-primary); color: var(--bg-dark); font-weight: bold; font-size: 0.85rem;">PROYECTO PRINCIPAL</span>
-                            </div>
-                            
-                            <h3 class="text-gradient mb-4" style="font-size: clamp(1.8rem, 3vw, 2.2rem); line-height: 1.2;">
-                                Sistema de Gestión Documental - Aviatur
-                            </h3>
-                            
-                            <!-- PÁRRAFO 1: CONTEXTO -->
-                            <div class="mb-4">
-                                <h5 class="neon-text mb-2" style="font-size: 1rem; font-weight: 600;">Contexto</h5>
-                                <p style="font-size: 1rem; line-height: 1.7; color: #CCCCCC;">
-                                    Aviatur, una de las agencias de viajes más grandes de Colombia, enfrentaba un desafío crítico: gestionar más de <strong style="color: var(--color-primary);">10,000 documentos anuales</strong> con trazabilidad de 30 años para cumplir con regulaciones de la industria. El proceso manual generaba retrasos operativos y riesgos de compliance.
-                                </p>
-                            </div>
-                            
-                            <!-- PÁRRAFO 2: QUÉ HICE -->
-                            <div class="mb-4">
-                                <h5 class="neon-text mb-2" style="font-size: 1rem; font-weight: 600;">Qué Hice</h5>
-                                <p style="font-size: 1rem; line-height: 1.7; color: #CCCCCC;">
-                                    Diseñé e implementé un sistema de gestión documental Low-Code usando <strong style="color: var(--color-secondary);">Power Platform</strong>. Desarrollé una arquitectura con fragmentación dinámica de listas, acceso seguro mediante proxy reverso, y auditoría inmutable. Integré aprobaciones automatizadas vía Microsoft Teams y conversión automática a PDF para garantizar integridad documental.
-                                </p>
-                            </div>
-                            
-                            <!-- PÁRRAFO 3: IMPACTO -->
-                            <div class="mb-4">
-                                <h5 class="neon-text mb-2" style="font-size: 1rem; font-weight: 600;">Impacto</h5>
-                                <p style="font-size: 1rem; line-height: 1.7; color: #CCCCCC;">
-                                    El sistema ahora gestiona documentos de <strong style="color: var(--arcane-emerald);">+3,000 usuarios</strong> con un <strong style="color: var(--arcane-emerald);">95% de reducción</strong> en tiempo de búsqueda. Logramos <strong style="color: var(--arcane-emerald);">100% de compliance</strong> normativo y un ahorro anual estimado de <strong style="color: var(--arcane-gold);">$50,000 USD</strong> en costos operativos. El proyecto fue reconocido como caso de éxito interno en Aviatur.
-                                </p>
-                            </div>
-                            
-                            <!-- Stack Tecnológico -->
-                            <div class="mb-3">
-                                <h6 class="text-gradient mb-2" style="font-size: 0.9rem;">Stack Tecnológico</h6>
-                                <div>
-                                    <span class="badge me-2 mb-2" style="background: var(--accent-dark); border: 1px solid var(--color-primary); font-size: 0.85rem;">Power Apps</span>
-                                    <span class="badge me-2 mb-2" style="background: var(--accent-dark); border: 1px solid var(--color-primary); font-size: 0.85rem;">Power Automate</span>
-                                    <span class="badge me-2 mb-2" style="background: var(--accent-dark); border: 1px solid var(--color-secondary); font-size: 0.85rem;">SharePoint</span>
-                                    <span class="badge me-2 mb-2" style="background: var(--accent-dark); border: 1px solid var(--color-accent); font-size: 0.85rem;">Microsoft Teams</span>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- COLUMNA DERECHA: VISUAL (60%) -->
-                        <div class="col-lg-7 p-5" style="background: rgba(20, 25, 20, 0.4); display: flex; flex-direction: column; justify-content: center;">
-                            <!-- Placeholder para screenshots (actualizar después con imágenes reales) -->
-                            <div class="mb-4 text-center" style="background: rgba(139, 92, 246, 0.05); border: 2px dashed var(--color-primary); border-radius: 10px; padding: 60px 20px;">
-                                <ion-icon name="image-outline" style="font-size: 4rem; color: var(--color-primary); opacity: 0.5;"></ion-icon>
-                                <p style="color: #888; margin-top: 15px; font-size: 0.9rem;">Dashboard Principal<br/><small>(Pendiente screenshot)</small></p>
-                            </div>
-                            
-                            <!-- Métricas de Impacto Destacadas -->
-                            <div class="row g-3">
-                                <div class="col-6">
-                                    <div class="text-center p-3" style="background: rgba(16, 185, 129, 0.1); border-radius: 8px; border: 1px solid var(--arcane-emerald);">
-                                        <div style="font-size: 2rem; font-weight: bold; color: var(--arcane-emerald);">3,000+</div>
-                                        <div style="font-size: 0.85rem; color: #CCCCCC;">Usuarios Activos</div>
-                                    </div>
-                                </div>
-                                <div class="col-6">
-                                    <div class="text-center p-3" style="background: rgba(16, 185, 129, 0.1); border-radius: 8px; border: 1px solid var(--arcane-emerald);">
-                                        <div style="font-size: 2rem; font-weight: bold; color: var(--arcane-emerald);">95%</div>
-                                        <div style="font-size: 0.85rem; color: #CCCCCC;">Reducción en Búsqueda</div>
-                                    </div>
-                                </div>
-                                <div class="col-6">
-                                    <div class="text-center p-3" style="background: rgba(16, 185, 129, 0.1); border-radius: 8px; border: 1px solid var(--arcane-emerald);">
-                                        <div style="font-size: 2rem; font-weight: bold; color: var(--arcane-emerald);">100%</div>
-                                        <div style="font-size: 0.85rem; color: #CCCCCC;">Compliance Normativo</div>
-                                    </div>
-                                </div>
-                                <div class="col-6">
-                                    <div class="text-center p-3" style="background: rgba(255, 215, 0, 0.1); border-radius: 8px; border: 1px solid var(--arcane-gold);">
-                                        <div style="font-size: 2rem; font-weight: bold; color: var(--arcane-gold);">$50k+</div>
-                                        <div style="font-size: 0.85rem; color: #CCCCCC;">Ahorro Anual</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Tarjeta Proyecto 2: Senarte -->
-            <div class="col-md-6">
-                <div class="glass-panel h-100 p-0 overflow-hidden">
-                    <img src="assets/img/fotomontaje_9.jpg" alt="Proyecto Senarte" style="width: 100%; height: 250px; object-fit: cover;">
-                    <div class="p-4">
-                        <h3 class="text-gradient mb-2">Fotografiándome - Senarte</h3>
-                        <p class="mb-3">Ganador del concurso regional en Bogotá 2024. Campaña visual enfocada en celebrar la diversidad.</p>
-                        <div class="mb-4">
-                            <span class="badge" style="background: var(--accent-dark); border: 1px solid var(--color-accent);">Fotografía</span>
-                            <span class="badge" style="background: var(--accent-dark); border: 1px solid var(--color-primary);">Edición</span>
-                            <span class="badge" style="background: var(--accent-dark); border: 1px solid var(--color-accent);">Dirección de Arte</span>
-                        </div>
-                        <a href="fotos.html" class="btn btn-outline-light w-100 rounded-pill">Ver Galería Completa</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Tarjeta Proyecto 3: Ecos de una Ciudad -->
-            <div class="col-md-6">
-                <div class="glass-panel h-100 p-0 overflow-hidden">
-                    <img src="assets/img/cuarto_isometrico.png" alt="Ecos de una Ciudad" style="width: 100%; height: 250px; object-fit: cover;">
-                    <div class="p-4">
-                        <h3 class="text-gradient mb-2">Ecos de una Ciudad</h3>
-                        <p class="mb-3">Proyecto web sobre la historia de Bogotá con galería 3D interactiva navegable (Three.js). Reconocido como uno de los mejores proyectos técnicos en SENA.</p>
-                        <div class="mb-4">
-                            <span class="badge" style="background: var(--accent-dark); border: 1px solid var(--color-primary);">Three.js</span>
-                            <span class="badge" style="background: var(--accent-dark); border: 1px solid var(--color-secondary);">Web Dev</span>
-                            <span class="badge" style="background: var(--accent-dark); border: 1px solid var(--color-accent);">Modelado 3D</span>
-                        </div>
-                        <a href="https://github.com/Alexfonse/Ecos_de_una_ciudad" target="_blank" class="btn btn-outline-light w-100 rounded-pill">
-                            <ion-icon name="logo-github"></ion-icon> Ver en GitHub
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-  </div>
-
-  <script src="js/script.js"></script>
-
-  <script type="module" src=" https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js "> </script>
-  <script nomodule src=" https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js "> </script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-    crossorigin="anonymous"></script>
+    <!-- Core Scripts -->
+    <script src="js/script.js" defer></script>
+    
+    <!-- Arcane Systems -->
+    <script src="js/custom-cursor.js" defer></script>
+    <script src="js/floating-particles.js" defer></script>
+    <script src="js/flowchart-zoom.js" defer></script>
+    <script src="js/flowchart-interactive.js" defer></script>
+    
+    <!-- Bootstrap & Icons -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    
+    <!-- Inline Styles for this page specific overrides -->
+    <style>
+        .banner video {
+            filter: brightness(0.6) contrast(1.1);
+        }
+        
+        .project-thumbnail:hover img {
+            transform: scale(1.1);
+        }
+    </style>
+    
+    <!-- ⚡ BLUR TEXT ANIMATION -->
+    <script src="js/blur-text.js"></script>
 </body>
-
 </html>

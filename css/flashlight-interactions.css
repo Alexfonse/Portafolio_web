@@ -1,0 +1,54 @@
+/* ========================================
+   FLASHLIGHT MODE INTERACTION RULES
+   ======================================== */
+
+body.lantern-mode {
+    cursor: none !important;
+}
+
+/* Disable interaction for everything by default in lantern mode */
+/* Disable interaction for everything by default in lantern mode */
+html.lantern-mode,
+html.lantern-mode *,
+body.lantern-mode,
+body.lantern-mode * {
+    cursor: none !important;
+}
+
+/* Explicitly disable photos to prevent hover effects */
+body.lantern-mode .masonry-item,
+body.lantern-mode .masonry-item *,
+body.lantern-mode .masonry-overlay {
+    pointer-events: none !important;
+    cursor: none !important;
+}
+
+body.lantern-mode * {
+    pointer-events: none !important;
+}
+
+/* Re-enable interaction ONLY for specific controls */
+body.lantern-mode .lantern-toggle, 
+body.lantern-mode .lantern-toggle *,
+body.lantern-mode .circular-menu,
+body.lantern-mode .circular-menu *,
+body.lantern-mode .header-nav,
+body.lantern-mode .header-nav *,
+body.lantern-mode .nav-link,
+body.lantern-mode .menu-toggle {
+    pointer-events: auto !important;
+    cursor: none !important; /* DOUBLE CHECK: Ensure hand never appears */
+}
+
+/* Ensure visual cues for interactive elements are visible (optional) */
+body.lantern-mode .circular-menu:hover,
+body.lantern-mode .lantern-toggle:hover {
+    filter: brightness(1.2);
+}
+
+/* FIX: Ensure Menu is ABOVE the darkness overlay (z-index 9999 usually) */
+body.lantern-mode .circular-menu,
+body.lantern-mode .header-nav {
+    z-index: 10001 !important; /* Above arcane-darkness */
+    position: fixed !important; /* Ensure it stays on screen */
+}

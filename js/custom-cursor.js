@@ -13,8 +13,8 @@ class CustomCursor {
         this.trails = [];
         this.maxTrails = 10;
         
-        // Solo inicializar en desktop
-        if (window.innerWidth > 1024 && window.matchMedia('(hover: hover)').matches) {
+        // Initialize on all devices that support hover (relaxed check)
+        if (window.matchMedia('(hover: hover)').matches) {
             this.init();
         }
     }
@@ -88,25 +88,29 @@ class CustomCursor {
         });
         
         // Hover states
-        document.querySelectorAll('a, button, [role="button"], .clickable').forEach(el => {
-            el.addEventListener('mouseenter', () => {
+        // Hover states using DELEGATION (Fixes dynamic elements issues)
+        document.addEventListener('mouseover', (e) => {
+            const target = e.target.closest('a, button, [role="button"], .clickable, .lantern-toggle, .masonry-item, .masonry-overlay');
+            if (target) {
                 this.cursorEl.classList.add('cursor-hover', 'cursor-link');
-            });
+            }
             
-            el.addEventListener('mouseleave', () => {
-                this.cursorEl.classList.remove('cursor-hover', 'cursor-link');
-            });
+            const imgTarget = e.target.closest('img, .gallery-item, .foto, .masonry-item, .masonry-overlay');
+            if (imgTarget) {
+                this.cursorEl.classList.add('cursor-image');
+            }
         });
         
-        // Image hover
-        document.querySelectorAll('img, .gallery-item, .foto').forEach(el => {
-            el.addEventListener('mouseenter', () => {
-                this.cursorEl.classList.add('cursor-image');
-            });
+        document.addEventListener('mouseout', (e) => {
+            const target = e.target.closest('a, button, [role="button"], .clickable, .lantern-toggle, .masonry-item, .masonry-overlay');
+            if (target) {
+                this.cursorEl.classList.remove('cursor-hover', 'cursor-link');
+            }
             
-            el.addEventListener('mouseleave', () => {
+            const imgTarget = e.target.closest('img, .gallery-item, .foto, .masonry-item, .masonry-overlay');
+            if (imgTarget) {
                 this.cursorEl.classList.remove('cursor-image');
-            });
+            }
         });
     }
     

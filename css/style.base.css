@@ -302,7 +302,7 @@ html {
 /* Menu Container - Centered above scroll arrow */
 .circular-menu {
   position: fixed;
-  bottom: 440px;
+  bottom: 550px;
   left: calc(50% + 7.6px);
   transform: translateX(-50%);
   width: 80px;
@@ -545,6 +545,13 @@ html {
     min-height: 50vh !important; /* Force smaller height */
     height: 50vh;
     padding-top: 50px; /* Space for content */
+}
+
+/* Index Hero - Taller */
+.hero-index {
+    min-height: 85vh !important;
+    height: 85vh;
+    padding-top: 0;
 }
 .hero-internal .titulo_1 {
     top: 50%; /* Center in the reduced header */

@@ -1,0 +1,65 @@
+/* ========================================
+   ✨ TEXT PARTICLE INTERACTIVITY (ALWAYS ON)
+   ======================================== */
+
+/* 1. Base Interactive Text Class */
+.interactive-text {
+    position: relative;
+    /* Use drop-shadow filter to glow WITHOUT breaking gradients */
+    /* The color #00d9ff is the Cyan/Blue used in the theme */
+    filter: drop-shadow(0 0 8px rgba(0, 217, 255, 0.5));
+    animation: text-breathe 3s ease-in-out infinite alternate;
+}
+
+/* Breathing Glow Animation */
+@keyframes text-breathe {
+    0% {
+        filter: drop-shadow(0 0 8px rgba(0, 217, 255, 0.4));
+    }
+    100% {
+        filter: drop-shadow(0 0 15px rgba(0, 217, 255, 0.8)) 
+                drop-shadow(0 0 30px rgba(0, 217, 255, 0.2));
+    }
+}
+
+/* 2. The Particle Styling */
+.text-particle {
+    position: fixed; /* Fixed to viewport */
+    width: 3px;
+    height: 3px;
+    background: #fff;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0;
+    will-change: transform, opacity;
+    animation: text-particle-rise 1.5s ease-out forwards;
+}
+
+/* Particle Colors */
+.text-particle.gold { 
+    background: #FFD60A; /* Gold */
+    box-shadow: 0 0 4px #FFD60A;
+}
+
+.text-particle.cyan { 
+    background: #00D9FF; /* Cyan */
+    box-shadow: 0 0 4px #00D9FF;
+}
+
+/* 3. Particle Animation (Rise Up) */
+@keyframes text-particle-rise {
+    0% {
+        opacity: 0;
+        transform: translate(0, 0) scale(0);
+    }
+    10% {
+        opacity: 1;
+        transform: translate(0, 0) scale(1);
+    }
+    100% {
+        opacity: 0;
+        /* Drift Randomly (Set by JS) and Up */
+        transform: translate(var(--tx, 0), -40px) scale(0);
+    }
+}

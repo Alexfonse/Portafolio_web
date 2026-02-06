@@ -4,243 +4,394 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Videos</title>
-    <link rel="icon" href="assets/img/flowers.png" type="image/x-icon" />
-    <link rel="stylesheet" href="css/imports.css">
+    <title>Videos | Estudio Paradox</title>
+    <meta name="description" content="Portafolio audiovisual de Jhon Fonseca: Edición, Producción, VFX y Narrativa Visual.">
+    <meta name="icon" href="assets/img/flowers.png" type="image/x-icon" />
+    
+    <!-- ⚡ Resource Hints for Performance -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
+    <link rel="preconnect" href="https://unpkg.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- ⚡ LEGACY CSS RESTORED -->
+    <link rel="stylesheet" href="css/imports.css">
     <link rel="stylesheet" href="css/style.base.css">
     <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/header-navbar.css">
+    
+    <!-- ⚡ UNIFIED STYLES (New Arcane Theme) -->
+    <link rel="stylesheet" href="css/unified-styles.css">
+    <link rel="stylesheet" href="css/arcane-flow.css">
+    
+    <!-- Components -->
     <link rel="stylesheet" href="css/hamburger-menu.css">
-    <link rel="stylesheet" href="css/interactive-enhancements.css">
-    <link rel="stylesheet" href="css/magic-orb-menu.css">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <!-- Fonts managed by style.css -->
+    <link rel="stylesheet" href="css/arcane-loader.css">
+    <link rel="stylesheet" href="css/modal-system.css">
+    <link rel="stylesheet" href="css/gallery-enhancements.css">
+    <link rel="stylesheet" href="css/masonry-grid.css">
+    <link rel="stylesheet" href="css/floating-particles.css">
+    <link rel="stylesheet" href="css/scroll-effects.css">
+    <link rel="stylesheet" href="css/custom-cursor.css">
+    <link rel="stylesheet" href="css/magical-typography.css">
+    <link rel="stylesheet" href="css/arcane-palette.css">
+    <link rel="stylesheet" href="css/blur-text.css"> <!-- NEW BLUR EFFECT -->
+
+    <style>
+        /* ARCANE THEME OVERRIDES - Background Synchronization */
+        body {
+            background-color: #02040a; /* Deep Bio-Void */
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(16, 185, 129, 0.05) 0%, transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(0, 217, 255, 0.05) 0%, transparent 25%);
+            background-attachment: fixed; /* Parallax feel */
+        }
+        
+        /* ⚡ AESTHETIC REFINEMENT (User Request: "Sobresaturado") */
+        /* Cleaner, more elegant title styles */
+        /* Cleaner, more elegant title styles moved to unified-styles.css */
+        
+        /* ⚡ LAYOUT FIX: Prevent overlap with menu */
+
+        /* ⚡ LAYOUT FIX: Prevent overlap with menu */
+        .hero-title-container {
+            top: 12% !important; /* Move title UP */
+        }
+
+        .circular-menu {
+            top: 65% !important; /* Move menu DOWN */
+        }
+    </style>
+    
+    <!-- ⚡ FAILSAFE: Force Loader Hide -->
+    <script>
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                const loader = document.querySelector('.arcane-loader');
+                if (loader) loader.style.display = 'none';
+            }, 3000); // 3s fallback
+        });
+    </script>
 </head>
 
 <body>
 
-  <div class="contenedor_1">
-    <!--video-->
-    <div class="banner">
-        <video autoplay muted loop class="bgvideo">
-            <source src="assets/video/fondo_1.webm" type="video/webm">
-        </video>
+    <!-- ⚡ ARCANE PAGE LOADER -->
+    <div class="arcane-loader">
+        <div class="loader-logo">
+            <img src="assets/img/logo_blanco.svg" alt="Logo Jhon Fonseca">
+        </div>
+        <div class="rune-circle">
+            <svg viewBox="0 0 200 200">
+                <circle cx="100" cy="100" r="90" />
+            </svg>
+            <div class="inner-glow"></div>
+        </div>
+        <div class="loading-text">CARGANDO VIDEOS...</div>
+        <div class="progress-rune"></div>
+        
+        <!-- Floating Runes -->
+        <div class="floating-rune">⟐</div>
+        <div class="floating-rune">◉</div>
+        <div class="floating-rune">⬢</div>
+        <div class="floating-rune">◈</div>
     </div>
-    <!--header-->
-    <header>
-        <div class="logo">
-            <img src="assets/img/logo_blanco.svg" alt="Logo Marca de Agua">
+
+    <!-- HEADER NAVBAR (Shows on scroll) -->
+    <header class="header-navbar hidden">
+        <div class="header-container">
+            <div class="header-content">
+                <a href="index.html" class="header-logo logo-link">
+                    <img src="assets/img/logo_blanco.svg" alt="Estudio Paradox">
+                </a>
+                
+                <button class="mobile-menu-toggle" aria-label="Abrir Menú">
+                    <span>MENÚ</span>
+                    <ion-icon name="menu-outline"></ion-icon>
+                </button>
+
+                <nav class="header-nav main-nav">
+                    <a href="index.html" class="nav-link nav-item">Inicio</a>
+                    <a href="proyectos.html" class="nav-link nav-item">Proyectos</a>
+                    <a href="fotos.html" class="nav-link nav-item">Fotografías</a>
+                    <a href="videos.html" class="nav-link nav-item active">Videos</a>
+                </nav>
+            </div>
         </div>
     </header>
-    <!--Menu-->
-    <!--Menu-->
-    <nav class="menu-container">
-        <ul class="menu fixed-menu">
-            <div class="toggle">
-                <ion-icon name="add-outline"></ion-icon>
-            </div>
-            <li style="--i:0">
-                <a href="index.html" data-label="Inicio">
-                    <ion-icon class="icon" name="home-outline"></ion-icon>
-                    <span class="label">Inicio</span>
-                </a>
-            </li>
-            <li style="--i:1">
-                <a href="fotos.html" data-label="Fotos">
-                    <ion-icon class="icon" name="camera-outline"></ion-icon>
-                    <span class="label">Fotos</span>
-                </a>
-            </li>
-            <li style="--i:2" class="active">
-                <a href="videos.html" data-label="Videos">
-                    <ion-icon class="icon" name="videocam-outline"></ion-icon>
-                    <span class="label">Videos</span>
-                </a>
-            </li>
-            <li style="--i:3">
-                <a href="proyectos.html" data-label="Proyectos">
-                    <ion-icon class="icon" name="briefcase-outline"></ion-icon>
-                    <span class="label">Proyectos</span>
-                </a>
-            </li>
-            <li style="--i:4">
-                <a href="perfil.html" data-label="Perfil">
-                    <ion-icon class="icon" name="person-outline"></ion-icon>
-                    <span class="label">Perfil</span>
-                </a>
-            </li>
-            <li style="--i:5">
-                <a href="flower.html" data-label="Flores">
-                    <ion-icon class="icon" name="flower-outline"></ion-icon>
-                    <span class="label">Flores</span>
-                </a>
-            </li>
-            <li style="--i:6">
-                <a href="contacto.html" data-label="Contacto">
-                    <ion-icon class="icon" name="mail-outline"></ion-icon>
-                    <span class="label">Contacto</span>
-                </a>
-            </li>
-            
-            <!-- Indicator -->
-            <div class="indicator"></div>
-        </ul>
-    </nav>
 
-    <div class="contenedor_6">
-      <div class="titulo_1">
-        <h4 class="elementor-heading-title elementor-size-default">Proyectos</h4>
-        <h1 class="elementor-heading-title elementor-size-default ">Audiovisuales</h1>
-      </div>
+    <!-- HERO SECTION -->
+    <div class="contenedor_1 hero-internal" style="height: 85vh; min-height: 600px;">
+        <!-- Banner Video -->
+        <div class="banner">
+            <video autoplay muted loop playsinline class="bgvideo" style="width: 100%; height: 100%; object-fit: cover;">
+                <source src="assets/video/fondo_1.webm" type="video/webm">
+            </video>
+            <div class="overlay-gradient" style="background: linear-gradient(180deg, rgba(5,8,22,0.3) 0%, rgba(5,8,22,0.6) 60%, var(--bg-void) 100%);"></div>
+        </div>
+        
+        <!-- Arcane Circular Menu (Standardized) -->
+        <nav class="circular-menu" style="top: 60%;">
+            <button class="menu-toggle" aria-label="Toggle Menu">
+                <ion-icon name="add-outline"></ion-icon>
+            </button>
+            <div class="menu-text-label">MENÚ</div>
+            
+            <ul class="menu-items">
+                <li class="menu_item" style="--angle: 270deg;">
+                    <a href="index.html" aria-label="Inicio">
+                        <ion-icon name="home-outline"></ion-icon>
+                        <span class="menu-label">Inicio</span>
+                    </a>
+                </li>
+                <li class="menu_item" style="--angle: 0deg;">
+                    <a href="proyectos.html" aria-label="Proyectos">
+                        <ion-icon name="briefcase-outline"></ion-icon>
+                        <span class="menu-label">Proyectos</span>
+                    </a>
+                </li>
+                <li class="menu_item" style="--angle: 90deg;">
+                    <a href="fotos.html" aria-label="Fotografías">
+                        <ion-icon name="camera-outline"></ion-icon>
+                        <span class="menu-label">Fotos</span>
+                    </a>
+                </li>
+                <li class="menu_item" style="--angle: 180deg;">
+                    <a href="videos.html" aria-label="Videos">
+                        <ion-icon name="videocam-outline"></ion-icon>
+                        <span class="menu-label">Videos</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Hero Title -->
+        <div class="container text-center hero-title-container" style="position: absolute; top: 15%; left: 0; right: 0; z-index: 5; pointer-events: none; transition: opacity 0.3s ease;">
+            <h4 class="text-gradient mb-2 blur-text" data-delay="30" style="letter-spacing: 4px; font-size: 1.2rem;">PORTAFOLIO</h4>
+            <h1 class="neon-text" style="font-size: clamp(3rem, 6vw, 5rem);">Producción <span class="text-gradient">Audiovisual</span></h1>
+            <div style="width: 80px; height: 1px; background: var(--color-secondary); margin: 20px auto; box-shadow: 0 0 10px var(--color-secondary);"></div>
+        </div>
+        
+        <!-- Scroll Hint -->
+        <div class="scroll-hint" style="position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%); z-index: 10; animation: bounce 2s infinite;">
+            <ion-icon name="chevron-down-outline" style="font-size: 2rem; color: var(--color-secondary);"></ion-icon>
+        </div>
     </div>
 
-</div>
+    <!-- MAIN CONTENT -->
+    <section class="lazy-section gallery-section" style="padding: 80px 20px;">
+        <div class="container">
+            <div class="row mb-5 text-center">
+                <div class="col-12">
+                     <p class="blur-text" data-delay="20" style="color: var(--text-secondary); max-width: 600px; margin: 0 auto; font-size: 1.1em;">
+                        De la idea al montaje final. Una colección de narrativa visual, efectos y montaje.
+                     </p>
+                </div>
+            </div>
 
+            <div class="row g-4">
+                <!-- Video 1: Búscame -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="glass-panel h-100 p-0 overflow-hidden video-card" style="border: 1px solid var(--color-primary);">
+                        <div class="ratio ratio-16x9">
+                            <iframe src="https://www.youtube.com/embed/alxCWv8ruFI" 
+                                    frameborder="0" loading="lazy"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                    allowfullscreen></iframe>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="text-gradient mb-2">Búscame</h3>
+                            <p class="mb-3" style="font-size: 0.95em; color: var(--text-secondary);">Cortometraje donde participé como actor y editor, llevando el proyecto desde la escena hasta el montaje final.</p>
+                            <div class="mb-3">
+                                <span class="badge-tech">Actuación</span>
+                                <span class="badge-tech">Edición</span>
+                            </div>
+                            <small style="color: #aaa;"><ion-icon name="film-outline"></ion-icon> Premiere Pro / CapCut</small>
+                        </div>
+                    </div>
+                </div>
 
-<div class="contenedor_5" style="background: transparent; padding: 80px 20px; position: relative; z-index: 10;">
-  <div class="container">
-      <div class="row mb-5">
-          <div class="col-12 text-center">
-              <h2 class="neon-text mb-3">Proyectos Audiovisuales</h2>
-              <p style="color: #ccc; font-size: 1.1em;">De la idea al montaje final</p>
-          </div>
-      </div>
+                <!-- Video 2: Grauus -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="glass-panel h-100 p-0 overflow-hidden video-card" style="border: 1px solid var(--color-accent);">
+                        <div class="ratio ratio-16x9">
+                            <iframe src="https://www.youtube.com/embed/jO1lkm-Yv7U" 
+                                    frameborder="0" loading="lazy"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                    allowfullscreen></iframe>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="text-gradient mb-2">Trailer Final - Grauus</h3>
+                            <p class="mb-3" style="font-size: 0.95em; color: var(--text-secondary);">Proyecto 3D completo: texturizado, iluminación, animación, VFX y postproducción.</p>
+                            <div class="mb-3">
+                                <span class="badge-tech" style="border-color: var(--color-secondary); color: var(--color-secondary);">Blender 3D</span>
+                                <span class="badge-tech" style="border-color: var(--color-accent); color: var(--color-accent);">VFX</span>
+                            </div>
+                            <small style="color: #aaa;"><ion-icon name="cube-outline"></ion-icon> Blender + Premiere Pro</small>
+                        </div>
+                    </div>
+                </div>
 
-      <div class="row g-4">
-          <!-- Video 1: Búscame -->
-          <div class="col-md-6 col-lg-4">
-              <div class="glass-panel h-100 p-0 overflow-hidden video-card">
-                  <div class="ratio ratio-16x9">
-                      <iframe src="https://www.youtube.com/embed/alxCWv8ruFI" 
-                              frameborder="0" loading="lazy"
-                              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                              allowfullscreen></iframe>
-                  </div>
-                  <div class="p-4">
-                      <h3 class="text-gradient mb-2">Búscame</h3>
-                      <p class="mb-3" style="font-size: 0.95em;">Cortometraje donde participé como actor y editor, llevando el proyecto desde la escena hasta el montaje final.</p>
-                      <div class="mb-3">
-                          <span class="badge" style="background: var(--accent-dark); border: 1px solid var(--color-primary); margin-right: 5px;">Actuación</span>
-                          <span class="badge" style="background: var(--accent-dark); border: 1px solid var(--color-primary);">Edición</span>
-                      </div>
-                      <small style="color: #aaa;"><ion-icon name="film-outline"></ion-icon> Premiere Pro / CapCut</small>
-                  </div>
-              </div>
-          </div>
+                <!-- Video 3: Quédate -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="glass-panel h-100 p-0 overflow-hidden video-card" style="border: 1px solid var(--color-primary);">
+                        <div class="ratio ratio-16x9">
+                            <iframe src="https://www.youtube.com/embed/eadAQkf1e_g" 
+                                    frameborder="0" loading="lazy"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                    allowfullscreen></iframe>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="text-gradient mb-2">Quédate</h3>
+                            <p class="mb-3" style="font-size: 0.95em; color: var(--text-secondary);">Animación 2D creada con Animated, incluyendo edición completa del proyecto audiovisual.</p>
+                            <div class="mb-3">
+                                <span class="badge-tech">Animación 2D</span>
+                                <span class="badge-tech">Edición</span>
+                            </div>
+                            <small style="color: #aaa;"><ion-icon name="color-wand-outline"></ion-icon> Animated + Premiere Pro</small>
+                        </div>
+                    </div>
+                </div>
 
-          <!-- Video 2: Grauus -->
-          <div class="col-md-6 col-lg-4">
-              <div class="glass-panel h-100 p-0 overflow-hidden video-card">
-                  <div class="ratio ratio-16x9">
-                      <iframe src="https://www.youtube.com/embed/jO1lkm-Yv7U" 
-                              frameborder="0" loading="lazy"
-                              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                              allowfullscreen></iframe>
-                  </div>
-                  <div class="p-4">
-                      <h3 class="text-gradient mb-2">Trailer Final - Grauus</h3>
-                      <p class="mb-3" style="font-size: 0.95em;">Proyecto 3D completo: texturizado, iluminación, animación, VFX y postproducción.</p>
-                      <div class="mb-3">
-                          <span class="badge" style="background: var(--accent-dark); border: 1px solid var(--color-secondary); margin-right: 5px;">Blender 3D</span>
-                          <span class="badge" style="background: var(--accent-dark); border: 1px solid var(--color-accent);">VFX</span>
-                      </div>
-                      <small style="color: #aaa;"><ion-icon name="cube-outline"></ion-icon> Blender + Premiere Pro</small>
-                  </div>
-              </div>
-          </div>
+                <!-- Video 4: Gasaparin -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="glass-panel h-100 p-0 overflow-hidden video-card" style="border: 1px solid var(--color-accent);">
+                        <div class="ratio ratio-16x9">
+                            <iframe src="https://www.youtube.com/embed/jRDL8ItTTFA" 
+                                    frameborder="0" loading="lazy"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                    allowfullscreen></iframe>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="text-gradient mb-2">Gasaparin</h3>
+                            <p class="mb-3" style="font-size: 0.95em; color: var(--text-secondary);">Documental comedia: un fantasma pateado pone una denuncia. Camarógrafo, fotógrafo y editor.</p>
+                            <div class="mb-3">
+                                <span class="badge-tech">Comedia</span>
+                                <span class="badge-tech">Fotografía</span>
+                            </div>
+                            <small style="color: #aaa;"><ion-icon name="camera-outline"></ion-icon> Cámara + Premiere Pro</small>
+                        </div>
+                    </div>
+                </div>
 
-          <!-- Video 3: Quédate -->
-          <div class="col-md-6 col-lg-4">
-              <div class="glass-panel h-100 p-0 overflow-hidden video-card">
-                  <div class="ratio ratio-16x9">
-                      <iframe src="https://www.youtube.com/embed/eadAQkf1e_g" 
-                              frameborder="0" loading="lazy"
-                              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                              allowfullscreen></iframe>
-                  </div>
-                  <div class="p-4">
-                      <h3 class="text-gradient mb-2">Quédate</h3>
-                      <p class="mb-3" style="font-size: 0.95em;">Animación 2D creada con Animated, incluyendo edición completa del proyecto audiovisual.</p>
-                      <div class="mb-3">
-                          <span class="badge" style="background: var(--accent-dark); border: 1px solid var(--color-primary); margin-right: 5px;">Animación 2D</span>
-                          <span class="badge" style="background: var(--accent-dark); border: 1px solid var(--color-primary);">Edición</span>
-                      </div>
-                      <small style="color: #aaa;"><ion-icon name="color-wand-outline"></ion-icon> Animated + Premiere Pro</small>
-                  </div>
-              </div>
-          </div>
+                <!-- Video 5: Mamá -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="glass-panel h-100 p-0 overflow-hidden video-card" style="border: 1px solid var(--color-primary);">
+                        <div class="ratio ratio-16x9">
+                            <iframe src="https://www.youtube.com/embed/41gQ3zo3gLg" 
+                                    frameborder="0" loading="lazy"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                    allowfullscreen></iframe>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="text-gradient mb-2">Mamá</h3>
+                            <p class="mb-3" style="font-size: 0.95em; color: var(--text-secondary);">Cortometraje dramático. Camarógrafo y editor responsable del montaje final.</p>
+                            <div class="mb-3">
+                                <span class="badge-tech">Cortometraje</span>
+                                <span class="badge-tech">Edición</span>
+                            </div>
+                            <small style="color: #aaa;"><ion-icon name="videocam-outline"></ion-icon> Premiere Pro</small>
+                        </div>
+                    </div>
+                </div>
 
-          <!-- Video 4: Gasaparin -->
-          <div class="col-md-6 col-lg-4">
-              <div class="glass-panel h-100 p-0 overflow-hidden video-card">
-                  <div class="ratio ratio-16x9">
-                      <iframe src="https://www.youtube.com/embed/jRDL8ItTTFA" 
-                              frameborder="0" loading="lazy"
-                              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                              allowfullscreen></iframe>
-                  </div>
-                  <div class="p-4">
-                      <h3 class="text-gradient mb-2">Gasaparin</h3>
-                      <p class="mb-3" style="font-size: 0.95em;">Documental comedia: un fantasma pateado pone una denuncia. Camarógrafo, fotógrafo y editor.</p>
-                      <div class="mb-3">
-                          <span class="badge" style="background: var(--accent-dark); border: 1px solid var(--color-accent); margin-right: 5px;">Comedia</span>
-                          <span class="badge" style="background: var(--accent-dark); border: 1px solid var(--color-primary);">Fotografía</span>
-                      </div>
-                      <small style="color: #aaa;"><ion-icon name="camera-outline"></ion-icon> Cámara + Premiere Pro</small>
-                  </div>
-              </div>
-          </div>
+                <!-- Ecos de una Ciudad (Proyecto destacado) -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="glass-panel h-100 p-0 overflow-hidden video-card" style="border: 2px solid var(--color-accent); box-shadow: 0 0 20px rgba(16, 185, 129, 0.2);">
+                        <div class="p-4" style="background: linear-gradient(180deg, rgba(8,12,20,0.8) 0%, rgba(16,185,129,0.1) 100%);">
+                            <ion-icon name="construct-outline" style="font-size: 3rem; color: var(--color-accent); display: block; margin-bottom: 15px;"></ion-icon>
+                            <h3 class="text-gradient mb-2" style="background: linear-gradient(135deg, var(--color-accent), #fff); -webkit-background-clip: text;">Ecos de una Ciudad</h3>
+                            <p class="mb-3" style="font-size: 0.95em; color: var(--text-secondary);">Proyecto web interactivo. Historia, 3D y web development integrados.</p>
+                            <div class="mb-3">
+                                <span class="badge-tech" style="border-color: var(--color-accent); color: var(--color-accent);">Three.js</span>
+                                <span class="badge-tech">Web Dev</span>
+                            </div>
+                            <a href="https://github.com/Alexfonse/Ecos_de_una_ciudad" target="_blank" class="btn btn-outline-light w-100 rounded-pill" style="border-color: var(--color-accent); color: var(--color-accent);">
+                                <ion-icon name="logo-github"></ion-icon> Ver en GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-          <!-- Video 5: Mamá -->
-          <div class="col-md-6 col-lg-4">
-              <div class="glass-panel h-100 p-0 overflow-hidden video-card">
-                  <div class="ratio ratio-16x9">
-                      <iframe src="https://www.youtube.com/embed/41gQ3zo3gLg" 
-                              frameborder="0" loading="lazy"
-                              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                              allowfullscreen></iframe>
-                  </div>
-                  <div class="p-4">
-                      <h3 class="text-gradient mb-2">Mamá</h3>
-                      <p class="mb-3" style="font-size: 0.95em;">Cortometraje dramático. Camarógrafo y editor responsable del montaje final.</p>
-                      <div class="mb-3">
-                          <span class="badge" style="background: var(--accent-dark); border: 1px solid var(--color-primary); margin-right: 5px;">Cortometraje</span>
-                          <span class="badge" style="background: var(--accent-dark); border: 1px solid var(--color-primary);">Edición</span>
-                      </div>
-                      <small style="color: #aaa;"><ion-icon name="videocam-outline"></ion-icon> Premiere Pro</small>
-                  </div>
-              </div>
-          </div>
+    <!-- CTA SECTION -->
+    <section class="lazy-section section-creative" style="padding: 100px 20px 100px; position: relative;">
+        <div class="container text-center">
+            
+            <!-- Título CTA -->
+            <h2 class="neon-text mb-3" style="font-size: clamp(2.2rem, 5vw, 3.5rem);">
+                ¿Deseas que participe en tu proyecto?
+            </h2>
+            
+            <!-- Subtítulo -->
+            <p style="color: #10B981; font-size: clamp(1.1rem, 2.5vw, 1.3rem); max-width: 700px; margin: 0 auto 50px; line-height: 1.7; opacity: 0.95;">
+                Trabajemos juntos para crear experiencias digitales que <span class="text-gradient">destaquen y generen impacto</span>.
+            </p>
+            
+            <!-- Botones de Redes Sociales -->
+            <div class="d-flex flex-wrap justify-content-center gap-3 mb-4">
+                
+                <!-- LinkedIn -->
+                <a href="https://www.linkedin.com/in/jhon-fonseca-paradox" target="_blank" rel="noopener" class="btn btn-lg social-btn" style="background: linear-gradient(135deg, #0077B5, #005582); color: white; border: none; padding: 15px 35px; border-radius: 50px; font-weight: 600; transition: all 0.3s ease;" aria-label="Visitar perfil de LinkedIn">
+                    <ion-icon name="logo-linkedin" style="font-size: 1.5rem; vertical-align: middle; margin-right: 10px;"></ion-icon>
+                    LinkedIn
+                </a>
+                
+                <!-- GitHub -->
+                <a href="https://github.com/Alexfonse" target="_blank" rel="noopener" class="btn btn-lg social-btn" style="background: linear-gradient(135deg, #333, #000); color: white; border: none; padding: 15px 35px; border-radius: 50px; font-weight: 600; transition: all 0.3s ease;" aria-label="Visitar perfil de GitHub">
+                    <ion-icon name="logo-github" style="font-size: 1.5rem; vertical-align: middle; margin-right: 10px;"></ion-icon>
+                    GitHub
+                </a>
+                
+                <!-- Email -->
+                <a href="mailto:martinezharry2016@gmail.com" class="btn btn-lg social-btn" style="background: linear-gradient(135deg, var(--color-primary), #00B8A3); color: #000; border: none; padding: 15px 35px; border-radius: 50px; font-weight: 600; transition: all 0.3s ease;" aria-label="Enviar email">
+                    <ion-icon name="mail-outline" style="font-size: 1.5rem; vertical-align: middle; margin-right: 10px;"></ion-icon>
+                    Email
+                </a>
+                
+            </div>
+            
+            <!-- Ubicación y Disponibilidad -->
+            <p style="color: #999; font-size: 0.95rem; margin-top: 30px;">
+                <ion-icon name="location-outline" style="margin-right: 5px;"></ion-icon> Bogotá, Colombia
+                <span style="margin: 0 15px;">•</span>
+                <ion-icon name="briefcase-outline" style="margin-right: 5px;"></ion-icon> Disponible para trabajo Remoto / Híbrido
+            </p>
+            
+        </div>
+    </section>
 
-          <!-- Ecos de una Ciudad (Proyecto destacado) -->
-          <div class="col-md-6 col-lg-4">
-              <div class="glass-panel h-100 p-0 overflow-hidden video-card" style="border: 2px solid var(--color-accent);">
-                  <div class="p-4" style="background: linear-gradient(135deg, rgba(255,214,10,0.1) 0%, transparent 100%);">
-                      <ion-icon name="construct-outline" style="font-size: 3rem; color: var(--color-accent); display: block; margin-bottom: 15px;"></ion-icon>
-                      <h3 class="text-gradient mb-2">Ecos de una Ciudad</h3>
-                      <p class="mb-3" style="font-size: 0.95em;">Proyecto web sobre la historia de Bogotá con galería 3D interactiva navegable. Uno de los mejores proyectos presentados en SENA.</p>
-                      <div class="mb-3">
-                          <span class="badge" style="background: var(--accent-dark); border: 1px solid var(--color-accent); margin-right: 5px;">Three.js</span>
-                          <span class="badge" style="background: var(--accent-dark); border: 1px solid var(--color-primary);">Web Dev</span>
-                      </div>
-                      <a href="https://github.com/Alexfonse/Ecos_de_una_ciudad" target="_blank" class="btn btn-outline-light w-100 rounded-pill" style="border-color: var(--color-accent);">
-                          <ion-icon name="logo-github"></ion-icon> Ver en GitHub
-                      </a>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </div>
-</div>
-
-    <script src="js/script.js"></script>
-
-    <script type="module" src=" https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js "> </script>
-    <script nomodule src=" https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js "> </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-        crossorigin="anonymous"></script>
+    <!-- SCRIPTS -->
+    <!-- Core Scripts -->
+    <script src="js/script.js" defer></script>
+    
+    <!-- Arcane Systems -->
+    <script src="js/custom-cursor.js" defer></script>
+    <script src="js/floating-particles.js" defer></script>
+    
+    <!-- Bootstrap & Icons -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    
+    <!-- Inline Styles for this page specific overrides -->
+    <style>
+        .banner video {
+            filter: brightness(0.6) contrast(1.1);
+        }
+        
+        .project-thumbnail:hover img {
+            transform: scale(1.1);
+        }
+    </style>
+    
+    <!-- ⚡ BLUR TEXT ANIMATION -->
+    <script src="js/blur-text.js"></script>
 </body>
 
 </html>

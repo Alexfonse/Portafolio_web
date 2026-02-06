@@ -1,0 +1,145 @@
+/* --------------------------------------------------------------------------
+   ARCANE FLOW TREE V2 (Interactive Branching)
+   -------------------------------------------------------------------------- */
+.arcane-tree {
+    position: relative;
+    padding: 20px 0;
+    margin: 40px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* The Main Magical Trunk */
+.arcane-tree::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 4px;
+    background: linear-gradient(180deg, 
+        rgba(16, 185, 129, 0) 0%, 
+        var(--arcane-emerald) 10%, 
+        var(--arcane-cyan) 40%, 
+        var(--arcane-gold) 70%, 
+        rgba(255, 214, 10, 0) 100%
+    );
+    transform: translateX(-50%);
+    box-shadow: 0 0 15px var(--arcane-emerald);
+    z-index: 0;
+    border-radius: 4px;
+}
+
+/* Branch Container (Alternating Sides) */
+.tree-branch-node {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 50px;
+    opacity: 0.8;
+    transition: all 0.4s ease;
+}
+
+.tree-branch-node:hover {
+    opacity: 1;
+    transform: scale(1.02);
+}
+
+.tree-branch-node:nth-child(odd) { flex-direction: row-reverse; } /* Right side items */
+.tree-branch-node:nth-child(even) { flex-direction: row; } /* Left side items */
+
+/* The Connection Line (Branch) */
+.tree-connector {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    width: 50%; /* Reach to edge */
+    height: 2px;
+    background: linear-gradient(90deg, var(--color-primary), transparent);
+    z-index: 0;
+    opacity: 0; /* Hidden by default, animated in specific logic if needed */
+}
+
+/* The Content Box (The Fruit) */
+.node-card {
+    width: 45%; /* Slightly less than half */
+    background: rgba(5, 8, 22, 0.9);
+    border: 1px solid var(--color-primary);
+    padding: 15px;
+    border-radius: 12px;
+    position: relative;
+    z-index: 2;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    /* Margin to push away from center trunk */
+    margin-left: 40px; 
+}
+
+.tree-branch-node:nth-child(odd) .node-card { margin-left: 40px; margin-right: 0; border-left: 3px solid var(--color-primary); }
+.tree-branch-node:nth-child(even) .node-card { margin-right: 40px; margin-left: 0; border-right: 3px solid var(--color-primary); text-align: right; }
+
+/* Center Orb on Trunk */
+.trunk-orb {
+    position: absolute;
+    left: 50%;
+    top: 20px;
+    transform: translateX(-50%);
+    width: 20px;
+    height: 20px;
+    background: #000;
+    border: 3px solid var(--arcane-emerald);
+    border-radius: 50%;
+    z-index: 5;
+    box-shadow: 0 0 10px var(--arcane-emerald);
+    transition: all 0.3s;
+}
+
+.tree-branch-node:hover .trunk-orb {
+    background: var(--arcane-emerald);
+    box-shadow: 0 0 20px var(--arcane-emerald);
+}
+
+/* Hover Preview Image (The Magic Reveal) */
+.node-preview-image {
+    position: absolute;
+    top: 0;
+    left: 0; /* Adjust dynamically via JS or CSS classes */
+    width: 200px;
+    height: 120px;
+    background: #000;
+    border: 1px solid var(--color-primary);
+    border-radius: 8px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px) scale(0.9);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 10;
+    pointer-events: none;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+}
+.node-preview-image img { width: 100%; height: 100%; object-fit: cover; }
+
+/* Show on Hover */
+.node-card:hover .node-preview-image {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(-130%) scale(1); /* Pop up above */
+}
+
+/* Specific Colors per Step */
+.step-input .node-card { border-color: var(--arcane-emerald); }
+.step-input .trunk-orb { border-color: var(--arcane-emerald); box-shadow: 0 0 10px var(--arcane-emerald); }
+
+.step-process .node-card { border-color: var(--arcane-cyan); }
+.step-process .trunk-orb { border-color: var(--arcane-cyan); box-shadow: 0 0 10px var(--arcane-cyan); }
+
+.step-check .node-card { border-color: var(--arcane-gold); }
+.step-check .trunk-orb { border-color: var(--arcane-gold); box-shadow: 0 0 10px var(--arcane-gold); }
+
+/* Typography */
+.node-card h6 { color: #fff; margin-bottom: 5px; font-family: var(--font-display); letter-spacing: 1px; }
+.node-card p { font-size: 0.8rem; color: #bbb; line-height: 1.4; margin: 0; }

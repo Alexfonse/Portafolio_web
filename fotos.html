@@ -9,347 +9,491 @@
     <!-- Base Styles -->
     <link rel="stylesheet" href="css/imports.css">
 
+    <!-- ⚡ CRITICAL FONTS (Matched to Proyectos.html) -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
     <link rel="stylesheet" href="css/style.base.css">
     <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/header-navbar.css">
+
+    <!-- ⚡ UNIFIED STYLES (New Arcane Theme) -->
+    <link rel="stylesheet" href="css/unified-styles.css">
+
+    <!-- <link rel="stylesheet" href="css/header-navbar.css"> Unified to prevent conflicts -->
     <link rel="stylesheet" href="css/hamburger-menu.css">
     <link rel="stylesheet" href="css/overflow-fix.css">
-    
+
     <!-- Dark Arcane Identity -->
     <link rel="stylesheet" href="css/arcane-palette.css">
+    <link rel="stylesheet" href="css/flashlight-interactions.css">
     <link rel="stylesheet" href="css/magical-typography.css">
     <link rel="stylesheet" href="css/glitch-effects.css">
     <link rel="stylesheet" href="css/custom-cursor.css">
     <link rel="stylesheet" href="css/spotlight-effect.css">
-    
+
     <!-- Interactive Systems -->
-    <link rel="stylesheet" href="css/custom-scrollbar.css">
     <link rel="stylesheet" href="css/interactive-enhancements.css">
-    <link rel="stylesheet" href="css/magic-orb-menu.css">
+    <link rel="stylesheet" href="css/blur-text.css"> <!-- NEW BLUR EFFECT -->
+    <!-- unified-styles moved up -->
+    <!-- link rel="stylesheet" href="css/magic-orb-menu.css" -->
+    <!-- Removed to avoid conflicts with unified-styles.css -->
     <link rel="stylesheet" href="css/gallery-enhancements.css">
     <link rel="stylesheet" href="css/masonry-grid.css">
     <link rel="stylesheet" href="css/floating-particles.css">
-    
+
     <!-- Framework -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <!-- Fonts managed by style.css -->
+    <!-- ⚡ ARCANE THEME OVERRIDES (Matched to Proyectos.html) -->
+    <style>
+        /* ARCANE THEME OVERRIDES - Background Synchronization */
+        body {
+            background-color: #02040a;
+            /* Deep Bio-Void */
+            background-image:
+                radial-gradient(circle at 15% 50%, rgba(16, 185, 129, 0.05) 0%, transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(0, 217, 255, 0.05) 0%, transparent 25%);
+            background-attachment: fixed;
+            /* Parallax feel */
+        }
+
+        /* FIX: Remove harsh gradient cuts between sections */
+        .gallery-section,
+        .section-creative,
+        .section-experience,
+        .contenedor_4,
+        .contenedor_5,
+        .contenedor_2,
+        .contenedor_3 {
+            background: transparent !important;
+            /* Let body bg show through */
+            box-shadow: none !important;
+        }
+
+        /* Update glass panel to ensure readability against dynamic background */
+        .glass-panel {
+            background: rgba(8, 12, 20, 0.75) !important;
+            backdrop-filter: blur(10px) !important;
+            border: 1px solid rgba(255, 255, 255, 0.05) !important;
+            /* Ash/White border for 'ashy' connection */
+        }
+    </style>
 </head>
 
 <body>
 
     <!-- Menú Fixed (Fuera del flujo normal) -->
     <!-- Menú Fixed (Fuera del flujo normal) -->
-    <nav class="menu-container">
-        <ul class="menu fixed-menu">
-            <div class="toggle">
-                <ion-icon name="add-outline"></ion-icon>
-            </div>
-            <li style="--i:0">
-                <a href="index.html" data-label="Inicio">
-                    <ion-icon class="icon" name="home-outline"></ion-icon>
-                    <span class="label">Inicio</span>
-                </a>
-            </li>
-            <li style="--i:1" class="active">
-                <a href="fotos.html" data-label="Fotos">
-                    <ion-icon class="icon" name="camera-outline"></ion-icon>
-                    <span class="label">Fotos</span>
-                </a>
-            </li>
-            <li style="--i:2">
-                <a href="videos.html" data-label="Videos">
-                    <ion-icon class="icon" name="videocam-outline"></ion-icon>
-                    <span class="label">Videos</span>
-                </a>
-            </li>
-            <li style="--i:3">
-                <a href="proyectos.html" data-label="Proyectos">
-                    <ion-icon class="icon" name="briefcase-outline"></ion-icon>
-                    <span class="label">Proyectos</span>
-                </a>
-            </li>
-            <li style="--i:4">
-                <a href="perfil.html" data-label="Perfil">
-                    <ion-icon class="icon" name="person-outline"></ion-icon>
-                    <span class="label">Perfil</span>
-                </a>
-            </li>
-            <li style="--i:5">
-                <a href="flower.html" data-label="Flores">
-                    <ion-icon class="icon" name="flower-outline"></ion-icon>
-                    <span class="label">Flores</span>
-                </a>
-            </li>
-            <li style="--i:6">
-                <a href="contacto.html" data-label="Contacto">
-                    <ion-icon class="icon" name="mail-outline"></ion-icon>
-                    <span class="label">Contacto</span>
-                </a>
-            </li>
-            
-            <!-- Indicator dentro del ul para que funcione el selector ~ -->
-            <div class="indicator"></div>
-        </ul>
-    </nav>
 
+
+
+    <!-- HEADER NAVBAR (Shows on scroll) -->
+    <header class="header-navbar hidden">
+        <div class="header-container">
+            <div class="header-content">
+                <a href="index.html" class="header-logo logo-link">
+                    <img src="assets/img/logo_blanco.svg" alt="Estudio Paradox">
+                </a>
+
+                <button class="mobile-menu-toggle" aria-label="Abrir Menú">
+                    <span>MENÚ</span>
+                    <ion-icon name="menu-outline"></ion-icon>
+                </button>
+
+                <nav class="header-nav main-nav">
+                    <a href="index.html" class="nav-link nav-item">Inicio</a>
+                    <a href="proyectos.html" class="nav-link nav-item">Proyectos</a>
+                    <a href="fotos.html" class="nav-link nav-item active">Fotografías</a>
+                    <a href="videos.html" class="nav-link nav-item">Videos</a>
+                </nav>
+            </div>
+        </div>
+    </header>
 
     <!-- Hero Section Reducido -->
-    <div class="contenedor_1 hero-internal">
+    <div class="contenedor_1 hero-internal" style="height: 85vh; min-height: 600px;">
         <!--video-->
         <div class="banner">
             <video autoplay muted loop class="bgvideo">
                 <source src="assets/video/fondo_1.webm" type="video/webm">
             </video>
-            <div class="overlay-gradient"></div> <!-- Nuevo overlay para legibilidad -->
+            <div class="overlay-gradient"
+                style="background: linear-gradient(180deg, rgba(5,8,22,0.3) 0%, rgba(5,8,22,0.6) 60%, var(--bg-void) 100%);">
+            </div> <!-- Nuevo overlay para legibilidad -->
         </div>
 
-        <!--header-->
-        <header>
-            <div class="logo">
-                <img src="assets/img/logo_blanco.svg" alt="Logo Marca de Agua">
-            </div>
-        </header>
+        <!-- Arcane Circular Menu (Standardized - Absolute Center) -->
+        <nav class="circular-menu" style="top: 60%;">
+            <button class="menu-toggle" aria-label="Toggle Menu">
+                <ion-icon name="add-outline"></ion-icon>
+            </button>
+            <div class="menu-text-label">MENÚ</div>
 
-        <div class="contenedor_6">
-            <div class="titulo_1">
-                <h4 class="elementor-heading-title elementor-size-default">Portafolio Visual</h4>
-                <h1 class="elementor-heading-title elementor-size-default glitch-title" data-text="Fotografía">Fotografía</h1>
+            <ul class="menu-items">
+                <li class="menu_item" style="--angle: 270deg;">
+                    <a href="index.html" aria-label="Inicio">
+                        <ion-icon name="home-outline"></ion-icon>
+                        <span class="menu-label">Inicio</span>
+                    </a>
+                </li>
+                <li class="menu_item" style="--angle: 0deg;">
+                    <a href="proyectos.html" aria-label="Proyectos">
+                        <ion-icon name="briefcase-outline"></ion-icon>
+                        <span class="menu-label">Proyectos</span>
+                    </a>
+                </li>
+                <li class="menu_item" style="--angle: 90deg;">
+                    <a href="fotos.html" aria-label="Fotografías">
+                        <ion-icon name="camera-outline"></ion-icon>
+                        <span class="menu-label">Fotos</span>
+                    </a>
+                </li>
+                <li class="menu_item" style="--angle: 180deg;">
+                    <a href="videos.html" aria-label="Videos">
+                        <ion-icon name="videocam-outline"></ion-icon>
+                        <span class="menu-label">Videos</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Hero Title (Restored above menu) -->
+        <!-- Hero Title (Restored above menu) -->
+        <div class="container text-center hero-title-container"
+            style="position: absolute; top: 12% !important; left: 0; right: 0; z-index: 5; pointer-events: none; transition: opacity 0.3s ease;">
+            <h4 class="text-gradient mb-2 blur-text" data-delay="30" style="letter-spacing: 4px; font-size: 1.2rem;">
+                PORTAFOLIO</h4>
+            <h1 class="neon-text" style="font-size: clamp(3rem, 6vw, 5rem);">Galería <span
+                    class="text-gradient">Fotográfica</span></h1>
+            <div
+                style="width: 80px; height: 1px; background: var(--color-primary); margin: 20px auto; box-shadow: 0 0 10px var(--color-primary);">
             </div>
         </div>
-    </div>        
+
+        <!-- Scroll Hint -->
+        <div class="scroll-hint"
+            style="position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%); z-index: 10; animation: bounce 2s infinite;">
+            <ion-icon name="chevron-down-outline" style="font-size: 2rem; color: var(--color-primary);"></ion-icon>
+        </div>
+    </div>
 
     <!-- Galería Principal -->
     <div class="contenedor_4 gallery-section" id="fotografias">
-        
-        <!-- Filtros de Categoría -->
-        <div class="gallery-filters">
-            <button class="filter-btn active" data-filter="all">Todas</button>
-            <button class="filter-btn" data-filter="retrato">Retrato</button>
-            <button class="filter-btn" data-filter="editorial">Editorial</button>
-            <button class="filter-btn" data-filter="montaje">Fotomontaje</button>
-            <button class="filter-btn" data-filter="evento">Eventos</button>
-        </div>
+
+        <!-- Filtros Eliminados (Generados dinámicamente por JS) -->
 
         <!-- Grid de Imágenes con Masonry -->
         <div class="list gallery-container masonry-grid">
             <!-- Asignando categorías, títulos y descripciones -->
-            <div class="masonry-item" data-category="retrato" data-title="Retrato Místico 1" data-description="Fotografía de retrato con atmósfera oscura">
-                <img src="assets/img/cuervo_1.jpg" loading="lazy" alt="Retrato Cuervo 1">
+            <div class="masonry-item blur-load" data-category="montaje">
+                <img src="assets/img/radiactivo_0.webp" loading="lazy">
                 <div class="masonry-overlay">
-                    <h3>Retrato Místico 1</h3>
-                    <p>Atmósfera oscura</p>
-                </div>
-                <span class="masonry-category">Retrato</span>
-            </div>
-            <div class="masonry-item" data-category="retrato" data-title="Retrato Místico 2" data-description="Serie de retratos conceptuales">
-                <img src="assets/img/cuervo_2.jpg" loading="lazy" alt="Retrato Cuervo 2">
-                <div class="masonry-overlay">
-                    <h3>Retrato Místico 2</h3>
-                    <p>Serie conceptual</p>
-                </div>
-                <span class="masonry-category">Retrato</span>
-            </div>
-            <div class="masonry-item" data-category="editorial" data-title="Editorial Dark" data-description="Fotografía editorial con iluminación dramática">
-                <img src="assets/img/cuervo_3.jpg" loading="lazy" alt="Editorial Cuervo">
-                <div class="masonry-overlay">
-                    <h3>Editorial Dark</h3>
-                    <p>Iluminación dramática</p>
-                </div>
-                <span class="masonry-category">Editorial</span>
-            </div>
-            <div class="masonry-item" data-category="editorial" data-title="Narrativa Visual" data-description="Editorial storytelling">
-                <img src="assets/img/cuervo_4.jpg" loading="lazy" alt="Editorial Dark">
-                <div class="masonry-overlay">
-                    <h3>Narrativa Visual</h3>
-                    <p>Editorial storytelling</p>
-                </div>
-                <span class="masonry-category">Editorial</span>
-            </div>
-            
-            <div class="masonry-item" data-category="montaje" data-title="Arte Digital 1" data-description="Fotomontaje conceptual">
-                <img src="assets/img/fotomontaje_1.jpg" loading="lazy" alt="Arte Digital 1">
-                <div class="masonry-overlay">
-                    <h3>Arte Digital 1</h3>
-                    <p>Fotomontaje conceptual</p>
+                    <h3>Arte Digital</h3>
                 </div>
                 <span class="masonry-category">Montaje</span>
             </div>
-            <div class="masonry-item" data-category="evento" data-title="Poster Evento" data-description="Diseño para evento especial">
-                <img src="assets/img/poster_1.jpg" loading="lazy" alt="Poster Evento">
+            <div class="masonry-item blur-load" data-category="montaje">
+                <img src="assets/img/Hollow_knight.webp" loading="lazy">
                 <div class="masonry-overlay">
-                    <h3>Poster Evento</h3>
-                    <p>Diseño especial</p>
-                </div>
-                <span class="masonry-category">Evento</span>
-            </div>
-            
-            <div class="masonry-item" data-category="montaje" data-title="Composición Arcana 2">
-                <img src="assets/img/fotomontaje_2.jpg" loading="lazy">
-                <div class="masonry-overlay">
-                    <h3>Composición Arcana 2</h3>
+                    <h3>cosplay</h3>
                 </div>
                 <span class="masonry-category">Montaje</span>
             </div>
-            <div class="masonry-item" data-category="montaje" data-title="Composición Arcana 3">
-                <img src="assets/img/fotomontaje_3.jpg" loading="lazy">
+            <div class="masonry-item blur-load" data-category="montaje">
+                <img src="assets/img/fotomontaje_26.webp" loading="lazy">
                 <div class="masonry-overlay">
-                    <h3>Composición Arcana 3</h3>
+                    <h3>Arte Digital</h3>
                 </div>
                 <span class="masonry-category">Montaje</span>
             </div>
-            <div class="masonry-item" data-category="montaje" data-title="Arte Conceptual 4">
-                <img src="assets/img/fotomontaje_4.jpg" loading="lazy">
+            <div class="masonry-item blur-load" data-category="montaje">
+                <img src="assets/img/soichi.webp" loading="lazy">
                 <div class="masonry-overlay">
-                    <h3>Arte Conceptual 4</h3>
+                    <h3>Junji ito</h3>
                 </div>
                 <span class="masonry-category">Montaje</span>
             </div>
-            <div class="masonry-item" data-category="montaje" data-title="Diseño Digital 5">
-                <img src="assets/img/fotomontaje_5.jpg" loading="lazy">
+            <div class="masonry-item blur-load" data-category="montaje">
+                <img src="assets/img/tomie_junji_foto_referencia.webp" loading="lazy">
                 <div class="masonry-overlay">
-                    <h3>Diseño Digital 5</h3>
+                    <h3>Junji ito</h3>
                 </div>
                 <span class="masonry-category">Montaje</span>
             </div>
-            <div class="masonry-item" data-category="retrato" data-title="Retrato Artístico">
-                <img src="assets/img/fotomontaje_6.jpg" loading="lazy">
+            <div class="masonry-item blur-load" data-category="montaje">
+                <img src="assets/img/fotomontaje_24.webp" loading="lazy">
                 <div class="masonry-overlay">
-                    <h3>Retrato Artístico</h3>
-                </div>
-                <span class="masonry-category">Retrato</span>
-            </div>
-            <div class="masonry-item" data-category="editorial" data-title="Editorial Fashion">
-                <img src="assets/img/fotomontaje_7.jpg" loading="lazy">
-                <div class="masonry-overlay">
-                    <h3>Editorial Fashion</h3>
-                </div>
-                <span class="masonry-category">Editorial</span>
-            </div>
-            <div class="masonry-item" data-category="montaje" data-title="Collage Místico">
-                <img src="assets/img/fotomontaje_8.jpg" loading="lazy">
-                <div class="masonry-overlay">
-                    <h3>Collage Místico</h3>
+                    <h3>Arte Digital</h3>
                 </div>
                 <span class="masonry-category">Montaje</span>
             </div>
-            <div class="masonry-item" data-category="montaje" data-title="Diseño Experimental">
-                <img src="assets/img/fotomontaje_9.jpg" loading="lazy">
+            <div class="masonry-item blur-load" data-category="montaje">
+                <img src="assets/img/fotomontaje_25.webp" loading="lazy">
                 <div class="masonry-overlay">
-                    <h3>Diseño Experimental</h3>
+                    <h3>Arte Digital</h3>
                 </div>
                 <span class="masonry-category">Montaje</span>
             </div>
-            <div class="masonry-item" data-category="montaje" data-title="Arte Surrealista">
-                <img src="assets/img/fotomontaje_10.jpg" loading="lazy">
+            <div class="masonry-item blur-load" data-category="montaje">
+                <img src="assets/img/doctor_peste_1.webp" loading="lazy">
+                <div class="masonry-overlay">
+                    <h3>Doctor Peste</h3>
+                </div>
+                <span class="masonry-category">Montaje</span>
+            </div>
+            <div class="masonry-item blur-load" data-category="montaje">
+                <img src="assets/img/doctor_peste_negra_0.webp" loading="lazy">
+                <div class="masonry-overlay">
+                    <h3>Doctor Peste</h3>
+                </div>
+                <span class="masonry-category">Montaje</span>
+            </div>
+            <div class="masonry-item blur-load" data-category="montaje">
+                <img src="assets/img/doctor_peste_2.webp" loading="lazy">
+                <div class="masonry-overlay">
+                    <h3>Doctor Peste</h3>
+                </div>
+                <span class="masonry-category">Montaje</span>
+            </div>
+            <div class="masonry-item blur-load" data-category="montaje" data-title="Arte Surrealista">
+                <img src="assets/img/fotomontaje_10.webp" loading="lazy">
                 <div class="masonry-overlay">
                     <h3>Arte Surrealista</h3>
                 </div>
+                <div class="masonry-item blur-load" data-category="evento" data-title="Poster Evento"
+                    data-description="Diseño para evento especial">
+                    <img src="assets/img/poster_1.webp" loading="lazy" alt="Poster Evento">
+                    <div class="masonry-overlay">
+                        <h3>Poster Evento</h3>
+                        <p>Diseño especial</p>
+                    </div>
+                    <span class="masonry-category">Evento</span>
+                </div>
+
+                <div class="masonry-item blur-load" data-category="montaje" data-title="Composición Arcana 2">
+                    <img src="assets/img/fotomontaje_2.webp" loading="lazy">
+                    <div class="masonry-overlay">
+                        <h3>Composición Arcana 2</h3>
+                    </div>
+                    <span class="masonry-category">Montaje</span>
+                </div>
+                <div class="masonry-item blur-load" data-category="montaje" data-title="Composición Arcana 3">
+                    <img src="assets/img/fotomontaje_3.webp" loading="lazy">
+                    <div class="masonry-overlay">
+                        <h3>Composición Arcana 3</h3>
+                    </div>
+                    <span class="masonry-category">Montaje</span>
+                </div>
+                <div class="masonry-item blur-load" data-category="montaje" data-title="Arte Conceptual 4">
+                    <img src="assets/img/fotomontaje_4.webp" loading="lazy">
+                    <div class="masonry-overlay">
+                        <h3>Arte Conceptual 4</h3>
+                    </div>
+                    <span class="masonry-category">Montaje</span>
+                </div>
+                <div class="masonry-item blur-load" data-category="montaje" data-title="Diseño Digital 5">
+                    <img src="assets/img/fotomontaje_5.webp" loading="lazy">
+                    <div class="masonry-overlay">
+                        <h3>Diseño Digital 5</h3>
+                    </div>
+                    <span class="masonry-category">Montaje</span>
+                </div>
+                <div class="masonry-item blur-load" data-category="retrato" data-title="Retrato Artístico">
+                    <img src="assets/img/fotomontaje_6.jpg" loading="lazy">
+                    <div class="masonry-overlay">
+                        <h3>Retrato Artístico</h3>
+                    </div>
+                    <span class="masonry-category">Retrato</span>
+                </div>
+                <div class="masonry-item blur-load" data-category="editorial" data-title="Editorial Fashion">
+                    <img src="assets/img/fotomontaje_7.jpg" loading="lazy">
+                    <div class="masonry-overlay">
+                        <h3>Editorial Fashion</h3>
+                    </div>
+                    <span class="masonry-category">Editorial</span>
+                </div>
+                <div class="masonry-item blur-load" data-category="montaje" data-title="Collage Místico">
+                    <img src="assets/img/fotomontaje_8.webp" loading="lazy">
+                    <div class="masonry-overlay">
+                        <h3>Collage Místico</h3>
+                    </div>
+                    <span class="masonry-category">Montaje</span>
+                </div>
+                <div class="masonry-item blur-load" data-category="montaje" data-title="Diseño Experimental">
+                    <img src="assets/img/fotomontaje_9.webp" loading="lazy">
+                    <div class="masonry-overlay">
+                        <h3>Diseño Experimental</h3>
+                    </div>
+                    <span class="masonry-category">Montaje</span>
+                </div>
+
                 <span class="masonry-category">Montaje</span>
             </div>
-            <div class="masonry-item" data-category="montaje" data-title="Composición Abstracta">
-                <img src="assets/img/fotomontaje_11.jpg" loading="lazy">
+            <div class="masonry-item blur-load" data-category="montaje" data-title="Composición Abstracta">
+                <img src="assets/img/fotomontaje_11.webp" loading="lazy">
                 <div class="masonry-overlay">
                     <h3>Composición Abstracta</h3>
                 </div>
                 <span class="masonry-category">Montaje</span>
             </div>
-            <div class="masonry-item" data-category="montaje" data-title="Digital Art">
-                <img src="assets/img/fotomontaje_12.jpg" loading="lazy">
+            <div class="masonry-item blur-load" data-category="montaje" data-title="Digital Art">
+                <img src="assets/img/fotomontaje_12.webp" loading="lazy">
                 <div class="masonry-overlay">
-                    <h3>Digital Art</h3>
+                    <h3>Color Grading</h3>
                 </div>
                 <span class="masonry-category">Montaje</span>
             </div>
-            <div class="masonry-item" data-category="montaje" data-title="Fotomontaje Conceptual">
-                <img src="assets/img/fotomontaje_13.jpg" loading="lazy">
+            <div class="masonry-item blur-load" data-category="montaje" data-title="Fotomontaje Conceptual">
+                <img src="assets/img/fotomontaje_13.webp" loading="lazy">
                 <div class="masonry-overlay">
-                    <h3>Fotomontaje Conceptual</h3>
+                    <h3>Color Grading</h3>
                 </div>
                 <span class="masonry-category">Montaje</span>
             </div>
-            <div class="masonry-item" data-category="montaje" data-title="Diseño Gráfico">
-                <img src="assets/img/fotomontaje_14.jpg" loading="lazy">
+            <div class="masonry-item blur-load" data-category="montaje" data-title="Diseño Gráfico">
+                <img src="assets/img/fotomontaje_14.webp" loading="lazy">
                 <div class="masonry-overlay">
-                    <h3>Diseño Gráfico</h3>
+                    <h3>Color Grading</h3>
                 </div>
                 <span class="masonry-category">Montaje</span>
             </div>
-            <div class="masonry-item" data-category="montaje" data-title="Arte Compuesto">
-                <img src="assets/img/fotomontaje_15.jpg" loading="lazy">
+            <div class="masonry-item blur-load" data-category="montaje" data-title="Arte Compuesto">
+                <img src="assets/img/fotomontaje_15.webp" loading="lazy">
                 <div class="masonry-overlay">
                     <h3>Arte Compuesto</h3>
                 </div>
                 <span class="masonry-category">Montaje</span>
             </div>
-            <div class="masonry-item" data-category="montaje" data-title="Manipulación Digital">
-                <img src="assets/img/fotomontaje_16.jpg" loading="lazy">
+            <div class="masonry-item blur-load" data-category="montaje" data-title="Manipulación Digital">
+                <img src="assets/img/fotomontaje_16.webp" loading="lazy">
                 <div class="masonry-overlay">
                     <h3>Manipulación Digital</h3>
                 </div>
                 <span class="masonry-category">Montaje</span>
             </div>
-            <div class="masonry-item" data-category="montaje" data-title="Visión Artística">
-                <img src="assets/img/fotomontaje_17.jpg" loading="lazy">
+            <div class="masonry-item blur-load" data-category="montaje" data-title="Visión Artística">
+                <img src="assets/img/fotomontaje_17.webp" loading="lazy">
                 <div class="masonry-overlay">
                     <h3>Visión Artística</h3>
                 </div>
                 <span class="masonry-category">Montaje</span>
             </div>
-            <div class="masonry-item" data-category="montaje" data-title="Creación Digital">
-                <img src="assets/img/fotomontaje_18.jpg" loading="lazy">
+            <div class="masonry-item blur-load" data-category="montaje" data-title="Creación Digital">
+                <img src="assets/img/fotomontaje_18.webp" loading="lazy">
                 <div class="masonry-overlay">
                     <h3>Creación Digital</h3>
                 </div>
                 <span class="masonry-category">Montaje</span>
             </div>
-            <div class="gallery-item" data-category="montaje">
-                <img src="assets/img/fotomontaje_19.jpg" loading="lazy">
+            <div class="masonry-item blur-load" data-category="montaje">
+                <img src="assets/img/fotomontaje_19.webp" loading="lazy">
+                <div class="masonry-overlay">
+                    <h3>Arte Digital</h3>
+                </div>
+                <span class="masonry-category">Montaje</span>
             </div>
-            <div class="gallery-item" data-category="montaje">
-                <img src="assets/img/fotomontaje_20.jpg" loading="lazy">
+            <div class="masonry-item blur-load" data-category="montaje">
+                <img src="assets/img/fotomontaje_20.webp" loading="lazy">
+                <div class="masonry-overlay">
+                    <h3>Arte Digital</h3>
+                </div>
+                <span class="masonry-category">Montaje</span>
             </div>
-            <div class="gallery-item" data-category="montaje">
-                <img src="assets/img/fotomontaje_23.jpg" loading="lazy">
+            <div class="masonry-item blur-load" data-category="montaje">
+                <img src="assets/img/fotomontaje_23.webp" loading="lazy">
+                <div class="masonry-overlay">
+                    <h3>Arte Digital</h3>
+                </div>
+                <span class="masonry-category">Montaje</span>
             </div>
-            <div class="gallery-item" data-category="montaje">
-                <img src="assets/img/fotomontaje_24.jpg" loading="lazy">
-            </div>
-            <div class="gallery-item" data-category="montaje">
-                <img src="assets/img/fotomontaje_25.jpg" loading="lazy">
-            </div>
-            <div class="gallery-item" data-category="montaje">
-                <img src="assets/img/cuarto_isometrico.png" loading="lazy">
-            </div>
+
         </div>
 
-        <div id="myModal" class="modal">
-            <span class="close">&times;</span>
-            <a class="modal-prev">&#10094;</a>
-            <a class="modal-next">&#10095;</a>
-            <img class="modal-content" id="modalImg">
-            <div class="modal-caption"></div> <!-- Espacio para metadatos -->
-        </div>
-    </div>
+        <!-- CTA SECTION -->
+        <section class="lazy-section section-creative" style="padding: 100px 20px 100px; position: relative;">
+            <div class="container text-center">
+
+                <!-- Título CTA -->
+                <h2 class="neon-text mb-3 blur-text" data-delay="50" style="font-size: clamp(2.2rem, 5vw, 3.5rem);">
+                    ¿Deseas que participe en tu proyecto?
+                </h2>
+
+                <!-- Subtítulo -->
+                <p
+                    style="color: #10B981; font-size: clamp(1.1rem, 2.5vw, 1.3rem); max-width: 700px; margin: 0 auto 50px; line-height: 1.7; opacity: 0.95;">
+                    Trabajemos juntos para crear experiencias digitales que <span class="text-gradient">destaquen y
+                        generen
+                        impacto</span>.
+                </p>
+
+                <!-- Botones de Redes Sociales -->
+                <div class="d-flex flex-wrap justify-content-center gap-3 mb-4">
+
+                    <!-- LinkedIn -->
+                    <a href="https://www.linkedin.com/in/jhon-fonseca-paradox" target="_blank" rel="noopener"
+                        class="btn btn-lg social-btn"
+                        style="background: linear-gradient(135deg, #0077B5, #005582); color: white; border: none; padding: 15px 35px; border-radius: 50px; font-weight: 600; transition: all 0.3s ease;"
+                        aria-label="Visitar perfil de LinkedIn">
+                        <ion-icon name="logo-linkedin"
+                            style="font-size: 1.5rem; vertical-align: middle; margin-right: 10px;"></ion-icon>
+                        LinkedIn
+                    </a>
+
+                    <!-- GitHub -->
+                    <a href="https://github.com/Alexfonse" target="_blank" rel="noopener" class="btn btn-lg social-btn"
+                        style="background: linear-gradient(135deg, #333, #000); color: white; border: none; padding: 15px 35px; border-radius: 50px; font-weight: 600; transition: all 0.3s ease;"
+                        aria-label="Visitar perfil de GitHub">
+                        <ion-icon name="logo-github"
+                            style="font-size: 1.5rem; vertical-align: middle; margin-right: 10px;"></ion-icon>
+                        GitHub
+                    </a>
+
+                    <!-- Email -->
+                    <a href="mailto:martinezharry2016@gmail.com" class="btn btn-lg social-btn"
+                        style="background: linear-gradient(135deg, var(--color-primary), #00B8A3); color: #000; border: none; padding: 15px 35px; border-radius: 50px; font-weight: 600; transition: all 0.3s ease;"
+                        aria-label="Enviar email">
+                        <ion-icon name="mail-outline"
+                            style="font-size: 1.5rem; vertical-align: middle; margin-right: 10px;"></ion-icon>
+                        Email
+                    </a>
+
+                </div>
+
+                <!-- Ubicación y Disponibilidad -->
+                <p style="color: #999; font-size: 0.95rem; margin-top: 30px;">
+                    <ion-icon name="location-outline" style="margin-right: 5px;"></ion-icon> Bogotá, Colombia
+                    <span style="margin: 0 15px;">•</span>
+                    <ion-icon name="briefcase-outline" style="margin-right: 5px;"></ion-icon> Disponible para trabajo
+                    Remoto
+                    / Híbrido
+                </p>
+
+            </div>
+        </section>
 
 
-    <!-- Core Scripts -->
-    <script src="js/script.js"></script>
-    
-    <!-- Arcane Systems -->
-    <script src="js/custom-cursor.js"></script>
-    <script src="js/custom-scrollbar.js"></script>
-    <script src="js/enhanced-gallery.js"></script>
-    <script src="js/spotlight-gallery.js"></script>
-    <script src="js/masonry-grid.js"></script>
-    <script src="js/floating-particles.js"></script>
-    
-    <!-- Bootstrap & Icons -->
+        <!-- Core Scripts -->
+        <script src="js/script.js"></script>
 
-    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-        crossorigin="anonymous"></script>
+        <!-- Arcane Systems -->
+        <script src="js/custom-cursor.js"></script>
+        <script src="js/custom-scrollbar.js"></script>
+
+        <script src="js/masonry-grid.js"></script>
+        <script src="js/flashlight-system.js"></script>
+        <script src="js/floating-particles.js"></script>
+
+        <!-- Bootstrap & Icons -->
+
+        <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+            crossorigin="anonymous"></script>
+
+        <!-- ⚡ BLUR TEXT ANIMATION -->
+        <script src="js/blur-text.js"></script>
 </body>
 
 </html>

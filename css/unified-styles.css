@@ -18,14 +18,15 @@
   --arcane-gold: #FFD60A;       /* Highlight */
   --arcane-void: #050816;       /* Deep Background */
   
-  /* Text */
-  --text-color: #ffffff;
-  --text-secondary: #d1d5db;
+  /* Colors - Text High Contrast */
+  --text-color: #f8fafc;        /* Luminous Matte White */
+  --text-secondary: #94a3b8;    /* Cool Grey for contrast */
   
-  /* Typography */
-  --font-display: 'Orbitron', sans-serif;
-  --font-body: 'Rajdhani', sans-serif;
-  --font-accent: 'Cinzel', serif;
+  /* Typography - Design System 2.0 */
+  --font-magic: 'Cinzel', serif;       /* Accents / Magic / Menu */
+  --font-display: 'Outfit', sans-serif; /* Headers / Creative */
+  --font-body: 'Manrope', sans-serif;   /* Body / Legible */
+  --font-accent: 'Cinzel', serif;       /* Alias for legacy support */
   
   /* Glow Effects */
   --glow-emerald: 0 0 15px rgba(16, 185, 129, 0.5);
@@ -185,7 +186,7 @@ a {
   background: linear-gradient(180deg, 
       rgba(5, 8, 22, 0.3) 0%, 
       rgba(5, 8, 22, 0.6) 60%,
-      rgba(10, 14, 39, 1) 100%
+      var(--bg-void) 100%
   );
   z-index: 1;
   pointer-events: none;
@@ -195,7 +196,21 @@ a {
    GRADIENT CORRECTIONS & SECTIONS
 -------------------------------------------------------------------------- */
 
-/* Hero Connector - Darker Transition */
+/* ===================================== */
+/* ARCANE THEME - GLOBAL BACKGROUND (Seamless) */
+/* ===================================== */
+
+body {
+    background-color: #02040a; /* Deep Bio-Void */
+    /* Removed radial gradients that create bright spots - keep it clean */
+    background-attachment: fixed; /* Parallax feel */
+}
+
+/* --------------------------------------------------------------------------
+   GRADIENT CORRECTIONS & SECTIONS
+-------------------------------------------------------------------------- */
+
+/* Hero Connector - Smooth Transition to Transparent */
 .contenedor_1::after {
   content: '';
   position: absolute;
@@ -205,36 +220,30 @@ a {
   height: 200px;
   background: linear-gradient(to bottom, 
       transparent 0%,
-      #000000 100%
+      var(--bg-void) 100% /* Seamless to Bio-Void */
   );
   z-index: 2;
   pointer-events: none;
 }
 
-/* Gallery Section (Sobre Mí) - Starts from Black (Hero end) -> Dark Blue */
-.gallery-section, .contenedor_4 {
-    padding-top: 50px;
-    background: linear-gradient(to bottom, #000000 0%, #050816 100%) !important;
+/* SEAMLESS SECTIONS - Gradient Continuation from Video Overlay */
+.gallery-section, 
+.section-creative, 
+.contenedor_4,
+.contenedor_5,
+.section-experience,
+.contenedor_2, 
+.contenedor_3,
+.contenedor_6 {
+    /* Match overlay ending: start pure black, fade to deep void */
+    background: linear-gradient(to bottom, 
+        #000000 0%, 
+        #0c0505 50%,
+        #02040a 100%
+    ) !important;
+    box-shadow: none !important;
     position: relative;
     z-index: 2;
-}
-
-/* Skills Section - Starts from Dark Blue -> Deeper Blue */
-.contenedor_5 {
-    min-height: 100vh;
-    width: 100%;
-    z-index: 2;
-    background: linear-gradient(to bottom, #050816 0%, #0A0E27 100%) !important;
-}
-
-/* Experience Section (To be applied via specific class if needed, or inline override) */
-.section-experience {
-    background: linear-gradient(to bottom, #0A0E27 0%, #050816 100%) !important;
-}
-
-/* Creative Nexus / CTA - Starts from Dark Blue -> Black */
-.section-creative {
-    background: linear-gradient(to bottom, #050816 0%, #000000 100%) !important;
 }
 
 /* --------------------------------------------------------------------------
@@ -361,10 +370,11 @@ a {
 
 /* Glass Panel Styling */
 .glass-panel {
-  background: rgba(10, 14, 39, 0.6);
+  background: linear-gradient(135deg, rgba(20, 20, 35, 0.6) 0%, rgba(10, 14, 39, 0.8) 100%);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.15); /* Slightly greener border */
+  border-top: 1px solid rgba(16, 185, 129, 0.3); /* Highlight top */
   border-radius: 20px;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
 }
@@ -781,8 +791,107 @@ body {
     opacity: 1;
 }
 
-/* Photo Frame Enhancement */
-/* Photo Frame Enhancement - Elegant & Minimal */
+/* --------------------------------------------------------------------------
+   8. TYPEWRITER & GLITCH NEON EFFECTS (Profile Name)
+   -------------------------------------------------------------------------- */
+
+/* Neon Text - Clean Version (No Shadow) */
+.neon-text {
+    color: var(--color-primary);
+    text-shadow: none !important;
+    font-family: var(--font-display);
+    font-weight: 700;
+}
+
+/* Cursor Animation */
+.typing-cursor {
+    display: inline-block;
+    color: var(--arcane-cyan);
+    margin-left: 5px;
+    animation: blink 1s step-end infinite;
+    font-weight: normal;
+    text-shadow: 0 0 10px var(--arcane-cyan);
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+/* Refined Neon Style (Cleaner, less blurry) */
+.neon-clean {
+    color: #ffffff;
+    text-shadow: 0 0 15px rgba(0, 217, 255, 0.5);
+    letter-spacing: 1px;
+    position: relative; /* Anchor for pseudo-elements */
+    display: inline-block; /* Ensure width fits content */
+}
+
+/* Glitch Animation Mixin */
+.glitch-active {
+    position: relative;
+    /* No skewed transform on main element to keep text readable */
+}
+
+.glitch-active::before,
+.glitch-active::after {
+    content: attr(data-typing-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.8;
+    background: #0A0E27; /* Match background to hide original momentarily */
+    pointer-events: none; /* CRITICAL: Prevent blocking clicks */
+}
+
+.glitch-active::before {
+    color: #ff00ff;
+    z-index: -1;
+    animation: glitch-anim-clean-1 4s infinite linear alternate-reverse;
+}
+
+.glitch-active::after {
+    color: #00ffff;
+    z-index: -2;
+    animation: glitch-anim-clean-2 4s infinite linear alternate-reverse;
+}
+
+/* Cleaner Glitch Keyframes using clip-path */
+@keyframes glitch-anim-clean-1 {
+    0% { clip-path: inset(20% 0 80% 0); transform: translate(-2px, 0); }
+    20% { clip-path: inset(60% 0 10% 0); transform: translate(2px, 0); }
+    40% { clip-path: inset(40% 0 50% 0); transform: translate(-2px, 0); }
+    60% { clip-path: inset(80% 0 5% 0); transform: translate(2px, 0); }
+    80% { clip-path: inset(10% 0 60% 0); transform: translate(-1px, 0); }
+    100% { clip-path: inset(30% 0 30% 0); transform: translate(1px, 0); }
+}
+
+@keyframes glitch-anim-clean-2 {
+    0% { clip-path: inset(10% 0 60% 0); transform: translate(2px, 0); }
+    20% { clip-path: inset(30% 0 20% 0); transform: translate(-2px, 0); }
+    40% { clip-path: inset(70% 0 10% 0); transform: translate(2px, 0); }
+    60% { clip-path: inset(20% 0 50% 0); transform: translate(-2px, 0); }
+    80% { clip-path: inset(50% 0 30% 0); transform: translate(1px, 0); }
+    100% { clip-path: inset(0% 0 80% 0); transform: translate(-1px, 0); }
+}
+
+/* FIX MENU Z-INDEX */
+.circular-menu {
+    z-index: 9999 !important;
+}
+
+@keyframes glitch-skew-subtle {
+    0% { transform: skew(0deg); }
+    20% { transform: skew(-1deg); }
+    40% { transform: skew(1deg); }
+    60% { transform: skew(-0.5deg); }
+    80% { transform: skew(0.5deg); }
+    100% { transform: skew(0deg); }
+}
+/* Photo Frame Enhancement ================================================= */
+/* Elegant & Minimal */
 .glass-panel img {
     border: 1px solid rgba(255, 255, 255, 0.1);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
@@ -793,6 +902,13 @@ body {
     border-color: rgba(16, 185, 129, 0.4);
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6), 0 0 20px rgba(16, 185, 129, 0.1);
     transform: translateY(-2px);
+}
+
+/* INTERACTION FIX: Hide scroll hint when menu is open to prevent overlap */
+.circular-menu.active ~ .scroll-hint {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s;
 }
 
 /* @keyframes border-rotate removed for elegance */
@@ -832,4 +948,28 @@ body {
     mix-blend-mode: screen; /* Nice blending with dark backgrounds */
     display: block; /* Ensure it is not hidden */
 }
+}
+
+/* ==========================================================================
+   GLOBAL TYPOGRAPHY UNIFICATION (From videos.html)
+   ========================================================================== */
+
+/* Cleaner, more elegant title styles (White Primary) */
+h1.neon-text {
+    color: #ffffff !important;
+    text-shadow: 0 0 20px rgba(0, 217, 255, 0.4) !important; 
+    letter-spacing: 2px;
+    margin-bottom: 0.2em; /* Tighter spacing */
+}
+
+/* Blue Gradient Secondary Text */
+h1 .text-gradient {
+    background: linear-gradient(to right, #00c6ff, #0072ff) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    text-shadow: none !important;
+    filter: drop-shadow(0 0 10px rgba(0, 114, 255, 0.5));
+    font-weight: 800;
+    display: block; /* Force new line cleanly */
+    margin-top: -10px; /* Pull it up closer */
 }
