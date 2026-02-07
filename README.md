@@ -258,6 +258,9 @@ npx http-server -p 8000
 ### ✅ Completado Recientemente
 
 - [x] Sistema de galería con Masonry Grid (`fotos.html`)
+- [x] Optimización de imágenes a formato WebP
+- [x] Unificación del tema Arcano en `fotos.html`
+- [x] Corrección de referencias de imágenes (`fotomontaje_6` y `fotomontaje_7`)
 - [x] Custom cursor con glow effect
 - [x] Floating particles system
 - [x] Reorganización de archivos del proyecto
@@ -267,8 +270,8 @@ npx http-server -p 8000
 
 ## 🐛 Issues Conocidos
 
-1. **Space Shooter desactivado temporalmente** - Ver `documentacion/SPACE_SHOOTER_GAME.md` para reactivación
-2. **`proyectos.html`** - Contiene métricas placeholder, pendiente de actualización con datos reales
+1. **Space Shooter desactivado temporalmente** - Ver documentación interna para reactivación.
+2. **`proyectos.html`** - Contiene métricas placeholder, pendiente de actualización con datos reales.
 
 ---
 

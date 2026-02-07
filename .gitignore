@@ -23,3 +23,8 @@ node_modules/
 
 # Scripts / Instruments
 convert_to_webp.py
+specific_convert.py
+
+# Documentation & Context (Local only)
+contexto_y_tareas/
+documentacion/
