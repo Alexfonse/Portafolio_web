@@ -206,9 +206,17 @@
                             <!-- Visual Column (60% - Left for alternating flow) -->
                             <div class="col-lg-7 p-0" style="background: rgba(5, 8, 22, 0.6); position: relative; min-height: 400px;">
                                 <!-- Background Video/Image Container -->
-                                <div style="width: 100%; height: 100%; overflow: hidden; position: relative;">
-                                    <img src="assets/img/Macbook-Air-alexfonse.github.io.webp" alt="Ecos de una Ciudad 3D" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.7s ease;">
-                                    <div class="project-overlay" style="background: linear-gradient(90deg, rgba(5,8,22,0.2) 0%, rgba(5,8,22,1) 100%);"></div>
+                                <div style="width: 100%; height: 100%; overflow: hidden; position: relative; display: flex; align-items: center; justify-content: center; gap: 15px; padding: 20px;">
+                                    <!-- Mobile View (ecos_1 - Celular) -->
+                                    <video autoplay muted loop playsinline style="width: 22%; max-width: 150px; min-width: 90px; height: auto; border-radius: 8px; box-shadow: 0 20px 40px rgba(0,0,0,0.6); position: relative; z-index: 2; margin-right: -6%; transform: translateY(5%); border: 2px solid rgba(255,255,255,0.1);">
+                                        <source src="assets/video/ecos_1.webm" type="video/webm">
+                                    </video>
+                                    <!-- Desktop View (ecos_1_1 - Escritorio) -->
+                                    <video autoplay muted loop playsinline style="width: 78%; max-width: 680px; height: auto; border-radius: 8px; box-shadow: 0 10px 40px rgba(0,0,0,0.5); position: relative; z-index: 1;">
+                                        <source src="assets/video/ecos_1_1.webm" type="video/webm">
+                                    </video>
+                                    <!-- Overlay Gradient -->
+                                    <div class="project-overlay" style="background: linear-gradient(90deg, rgba(5,8,22,0) 50%, rgba(5,8,22,1) 100%); position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none;"></div>
                                 </div>
                                 <div style="position: absolute; bottom: 30px; left: 30px; z-index: 2;">
                                     <span class="badge-tech" style="background: rgba(0,0,0,0.7); border: 1px solid var(--color-primary); color: var(--color-primary);">Three.js</span>
