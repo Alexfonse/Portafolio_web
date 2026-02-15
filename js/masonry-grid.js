@@ -230,11 +230,18 @@ class PulseVisualizer {
         this.resetTransform();
         this.modal.classList.add('active');
         document.body.style.overflow = 'hidden';
+
+        const lanternToggle = document.querySelector('.lantern-toggle');
+        if (lanternToggle) lanternToggle.style.display = 'none';
     }
 
     close() {
         this.modal.classList.remove('active');
         document.body.style.overflow = '';
+
+        const lanternToggle = document.querySelector('.lantern-toggle');
+        if (lanternToggle) lanternToggle.style.display = '';
+
         setTimeout(() => {
             this.img.src = '';
         }, 300);
